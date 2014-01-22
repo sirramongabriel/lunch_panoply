@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 describe Company do
+	it 'has a valid factory' do
+		company = create :company
+		expect(company).to be_valid
+	end
+
 	it 'should return a .total number of companies' do
 		companies = []
 		company1 = create :company

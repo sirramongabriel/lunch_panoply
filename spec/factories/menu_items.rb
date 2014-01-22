@@ -1,34 +1,29 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
+require 'faker'
 
 FactoryGirl.define do
   factory :menu_item do
-    title "MyString"
-    ingredient1 "MyString"
-    ingredient2 "MyString"
-    ingredient3 "MyString"
-    ingredient4 "MyString"
-    ingredient5 "MyString"
-    ingredient6 "MyString"
-    ingredient7 "MyString"
-    ingredient8 "MyString"
-    ingredient9 "MyString"
-    ingredient10 "MyString"
-    ingredient11 "MyString"
-    ingredient12 "MyString"
-    ingredient13 "MyString"
-    ingredient14 "MyString"
-    ingredient15 "MyString"
-    ingredient16 "MyString"
-    ingredient17 "MyString"
-    ingredient18 "MyString"
-    ingredient19 "MyString"
-    ingredient20 "MyString"
-    calories "MyString"
-    price "MyString"
-    img1 ""
-    img2 ""
-    img3 ""
-    img4 ""
-    img5 ""
+    title        { Faker::Commerce.product_name }
+    ingredient1  { Faker::Lorem.word }
+    ingredient2  { Faker::Lorem.word }
+    ingredient3  { Faker::Lorem.word }
+    ingredient4  { Faker::Lorem.word }
+    ingredient5  { Faker::Lorem.word }
+    ingredient6  { Faker::Lorem.word }
+    ingredient7  { Faker::Lorem.word }
+    ingredient8  { Faker::Lorem.word }
+    ingredient9  { Faker::Lorem.word }
+    ingredient10 { Faker::Lorem.word }
+    ingredient11 { Faker::Lorem.word }
+    ingredient12 { Faker::Lorem.word } 
+    ingredient13 { Faker::Lorem.word }
+    ingredient14 { Faker::Lorem.word }
+    ingredient15 { Faker::Lorem.word }
+    ingredient16 { Faker::Lorem.word }
+    ingredient17 { Faker::Lorem.word }
+    ingredient18 { Faker::Lorem.word }
+    ingredient19 { Faker::Lorem.word }
+    ingredient20 { Faker::Lorem.word }
+    calories     { Faker::Number.number(3) }
+    price        { Faker::Number.number(2) }
   end
 end
