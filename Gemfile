@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.16'
 gem 'pg'
 gem 'jquery-rails'
+gem 'rails3-generators'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -13,7 +14,7 @@ end
 
 group :development, :test do
 	gem 'rspec-rails'
-	gem 'factory_girl_rails', require: false
+	gem 'factory_girl_rails', :require => false
 	gem 'shoulda'
 	gem 'shoulda-matchers'
 end

@@ -80,6 +80,8 @@ GEM
       activesupport (= 3.2.16)
       bundler (~> 1.0)
       railties (= 3.2.16)
+    rails3-generators (1.0.0)
+      railties (>= 3.0.0)
     railties (3.2.16)
       actionpack (= 3.2.16)
       activesupport (= 3.2.16)
@@ -140,6 +142,7 @@ DEPENDENCIES
   launchy
   pg
   rails (= 3.2.16)
+  rails3-generators
   rspec-rails
   sass-rails (~> 3.2.3)
   shoulda
