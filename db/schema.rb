@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140122201810) do
+ActiveRecord::Schema.define(:version => 20140122213805) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -27,6 +27,44 @@ ActiveRecord::Schema.define(:version => 20140122201810) do
   create_table "employees", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "menu_items", :force => true do |t|
+    t.string   "title"
+    t.string   "ingredient1"
+    t.string   "ingredient2"
+    t.string   "ingredient3"
+    t.string   "ingredient4"
+    t.string   "ingredient5"
+    t.string   "ingredient6"
+    t.string   "ingredient7"
+    t.string   "ingredient8"
+    t.string   "ingredient9"
+    t.string   "ingredient10"
+    t.string   "ingredient11"
+    t.string   "ingredient12"
+    t.string   "ingredient13"
+    t.string   "ingredient14"
+    t.string   "ingredient15"
+    t.string   "ingredient16"
+    t.string   "ingredient17"
+    t.string   "ingredient18"
+    t.string   "ingredient19"
+    t.string   "ingredient20"
+    t.string   "calories"
+    t.string   "price"
+    t.binary   "img1"
+    t.binary   "img2"
+    t.binary   "img3"
+    t.binary   "img4"
+    t.binary   "img5"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "menus", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
