@@ -1,8 +1,9 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
+require 'faker'
 
 FactoryGirl.define do
-  factory :employee do
-    first_name "MyString"
-    last_name "MyString"
+  factory :employee do |e|
+  	# e.association :company, factory: :company
+    e.first_name { Faker::Name.first_name }
+    e.last_name  { Faker::Name.last_name }
   end
 end
