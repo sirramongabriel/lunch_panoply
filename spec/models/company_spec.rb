@@ -1,7 +1,59 @@
 require 'spec_helper'
 
 describe Company do
-	context 'with valid credentials' do	
+	it 'should return a .total number of companies' do
+		companies = []
+		company1 = create :company
+		company2 = create :company
+		companies << company1 << company2
+		expect(companies.size).to eq 2
+	end
+
+	it 'should not return a number less than .total companies' do
+		companies = []
+		company1 = create :company
+		company2 = create :company
+		companies << company1 << company2
+		expect(companies.size).not_to eq 1
+	end
+
+	# it 'should return all companies .by_name in ascending order' do
+	# 	companies = []
+	# 	company1 = build :company
+	# 	company2 = build :company
+	# 	company3 = build :company
+	# 	expect(companies[0]).to eq [company1.name]
+	# end
+
+	it 'returns a sorted array of companies .by_oldest_first' do
+		companies = []
+		company1 = create :company
+		company2 = create :company
+		company3 = create :company
+		companies << company1 << company2 << company3
+		expect(companies).to eq [company1, company2, company3]
+	end
+
+	it 'returns a sorted array of companies .by_newest_first' do
+		companies = []
+		company1 = create :company
+		company2 = create :company
+		company3 = create :company
+		companies << company1 << company2 << company3
+		companies.reverse!
+		expect(companies).to eq [company3, company2, company1]
+	end
+
+	it 'returns a sorted array of companys .by_city' do
+		companies = []
+		company1 = create :company
+		company2 = create :company
+		company3 = create :company
+		companies << company1.city << company2.city << company3.city
+		expect(companies).to eq [company1.city, company2.city, company3.city]
+	end
+
+	context 'with valid credentials' do
  		it 'is valid with a #name' do
  			company = build :company, name: 'sample name'
  			expect(company.name).to eq 'sample name'
