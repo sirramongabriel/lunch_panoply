@@ -38,9 +38,9 @@ describe MenuItem do
 		end
 
 		it 'throws a validation error without #calories' do
-			menu_item = create :menu_item
+			menu_item = build :menu_item
 			menu_item.calories = nil
-			expect(menu_item.calories).to have(1).error_on :calories
+			expect(menu_item).to have(1).error_on :calories
 		end
 
 		it 'throws a validation error without a #price' do

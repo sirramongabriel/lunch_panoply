@@ -11,7 +11,7 @@ class MenuItem < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :votes, as: :votable
 
-  validates_presence_of :title, :price, :ingredient1
+  validates_presence_of :title, :price, :ingredient1, :calories
 
   def MenuItem.total
   end
