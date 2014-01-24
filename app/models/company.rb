@@ -15,8 +15,8 @@ class Company < ActiveRecord::Base
   has_many :employees
 
 
-  def Company.total
-  end
+  # def Company.total
+  # end
 
   # def Company.by_name
   #   Company.all.order(name: :asc)

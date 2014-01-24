@@ -13,13 +13,13 @@ class MenuItem < ActiveRecord::Base
 
   validates_presence_of :title, :price, :ingredient1, :calories
 
-  def MenuItem.total
+  # def MenuItem.total
+  # end
+
+  def MenuItem.by_title
   end
 
-  def MenuItem.by_title_asc
-  end
-
-  def MenuItem.by_title_desc
+  def MenuItem.by_title_reverse
   end
 
   def MenuItem.by_calories_low_first
