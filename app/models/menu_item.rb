@@ -6,7 +6,8 @@ class MenuItem < ActiveRecord::Base
   								:ingredient3, :ingredient4, :ingredient5, :ingredient6, 
   								:ingredient7, :ingredient8, :ingredient9, :price, :title
 
-  belongs_to :menueable, polymorphic: true
+  belongs_to :venue
+  belongs_to :menu
 
   has_many :comments, as: :commentable
   has_many :votes, as: :votable

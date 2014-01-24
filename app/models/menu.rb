@@ -1,4 +1,4 @@
 class Menu < ActiveRecord::Base
-	belongs_to :venue
-	has_many :menu_items, as: :menuable
+	has_many :menu_items
+	has_one :venue, through: :menu_items
 end

@@ -101,4 +101,124 @@ describe MenuItem do
 		ingredients << menu_item.ingredient1 << menu_item.ingredient2 << menu_item.ingredient3
 		expect(ingredients.reverse).to eq ['turkey', 'beef', 'chicken']
 	end
+
+	it 'returns the value of ingredient1 as a string' do
+		menu_item = create :menu_item
+		menu_item.ingredient1 = 'kale'
+		expect(menu_item.ingredient1).to be_a String
+	end
+
+	it 'returns the value of ingredient2 as a string' do
+		menu_item = create :menu_item
+		menu_item.ingredient1 = 'lettuce'
+		expect(menu_item.ingredient1).to be_a String
+	end
+
+	it 'returns the value of ingredient3 as a string' do
+		menu_item = create :menu_item
+		menu_item.ingredient1 = 'broccoli'
+		expect(menu_item.ingredient1).to be_a String
+	end
+
+	it 'returns the value of ingredient4 as a string' do 
+		menu_item = create :menu_item
+		menu_item.ingredient1 = 'arugula'
+		expect(menu_item.ingredient1).to be_a String
+	end
+
+	it 'returns the value of ingredient5 as a string' do
+		menu_item = create :menu_item
+		menu_item.ingredient1 = 'spinach'
+		expect(menu_item.ingredient1).to be_a String
+	end
+
+	it 'returns the value of ingredient6 as a string' do
+		menu_item = create :menu_item
+		menu_item.ingredient1 = 'cilantro'
+		expect(menu_item.ingredient1).to be_a String
+	end
+
+	it 'returns the value of ingredient7 as a string' do
+		menu_item = create :menu_item
+		menu_item.ingredient1 = 'carrots'
+		expect(menu_item.ingredient1).to be_a String
+	end
+
+	it 'returns the value of ingredient8 as a string' do
+		menu_item = create :menu_item
+		menu_item.ingredient1 = 'brussell sprouts'
+		expect(menu_item.ingredient1).to be_a String
+	end
+
+	it 'returns the value of ingredient9 as a string' do
+		menu_item = create :menu_item
+		menu_item.ingredient1 = 'cheese'
+		expect(menu_item.ingredient1).to be_a String
+	end
+
+	it 'returns the value of ingredient10 as a string' do
+		menu_item = create :menu_item
+		menu_item.ingredient1 = 'balsamic vinegrette'
+		expect(menu_item.ingredient1).to be_a String
+	end
+
+	it 'returns the value of ingredient11 as a string' do
+		menu_item = create :menu_item
+		menu_item.ingredient1 = 'cheese'
+		expect(menu_item.ingredient1).to be_a String
+	end
+
+	it 'returns the value of ingredient12 as a string' do
+		menu_item = create :menu_item
+		menu_item.ingredient1 = 'milk'
+		expect(menu_item.ingredient1).to be_a String
+	end
+
+	it 'returns the value of ingredient13 as a string' do
+		menu_item = create :menu_item
+		menu_item.ingredient1 = 'orange'
+		expect(menu_item.ingredient1).to be_a String
+	end
+
+	it 'returns the value of ingredient14 as a string' do
+		menu_item = create :menu_item
+		menu_item.ingredient1 = 'apple'
+		expect(menu_item.ingredient1).to be_a String
+	end
+
+	it 'returns the value of ingredient15 as a string' do
+		menu_item = create :menu_item
+		menu_item.ingredient1 = 'cherrie'
+		expect(menu_item.ingredient1).to be_a String
+	end
+
+	it 'returns the value of ingredient16 as a string' do
+		menu_item = create :menu_item
+		menu_item.ingredient1 = 'pear'
+		expect(menu_item.ingredient1).to be_a String
+	end
+
+	it 'returns the value of ingredient17 as a string' do
+		menu_item = create :menu_item
+		menu_item.ingredient1 = 'banana'
+		expect(menu_item.ingredient1).to be_a String
+	end
+
+	it 'returns the value of ingredient18 as a string' do
+		menu_item = create :menu_item
+		menu_item.ingredient1 = 'bread'
+		expect(menu_item.ingredient1).to be_a String
+	end
+
+	it 'returns the value of ingredient19 as a string' do
+		menu_item = create :menu_item
+		menu_item.ingredient1 = 'sugar'
+		expect(menu_item.ingredient1).to be_a String
+	end
+
+	it 'returns the value of ingredient20 as a string' do
+		menu_item = create :menu_item
+		menu_item.ingredient1 = 'salnt'
+		expect(menu_item.ingredient1).to be_a String
+	end
 end
