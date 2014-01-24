@@ -4,6 +4,9 @@ class Venue < ActiveRecord::Base
   has_one :menu
   has_many :menu_items, through: :menu
 
+  validates_presence_of :name
+  validates :state, length: { is: 2 }
+
   def Venue.total
   end
 
