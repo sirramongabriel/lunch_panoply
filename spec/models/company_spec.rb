@@ -6,7 +6,7 @@ describe Company do
 		expect(company).to be_valid
 	end
 
-	it 'should return a .total number of companies' do
+	it 'returns a .total number of companies' do
 		companies = []
 		company1 = create :company
 		company2 = create :company
@@ -14,7 +14,7 @@ describe Company do
 		expect(companies.size).to eq 2
 	end
 
-	it 'should not return a number less than .total companies' do
+	it 'does not return a number less than .total number of companies' do
 		companies = []
 		company1 = create :company
 		company2 = create :company
@@ -22,13 +22,14 @@ describe Company do
 		expect(companies.size).not_to eq 1
 	end
 
-	# it 'should return all companies .by_name in ascending order' do
-	# 	companies = []
-	# 	company1 = build :company
-	# 	company2 = build :company
-	# 	company3 = build :company
-	# 	expect(companies[0]).to eq [company1.name]
-	# end
+	it 'should return all companies .by_name in ascending order' do
+		companies = []
+		company1 = build :company, name: 'harold'
+		company2 = build :company, name: 'johnny'
+		company3 = build :company, name: 'eldridge'
+		companies << company1.name << company2.name << company3.name
+		expect(companies.sort!).to eq ['eldridge', 'harold', 'johnny']
+	end
 
 	it 'returns a sorted array of companies .by_oldest_first' do
 		companies = []
