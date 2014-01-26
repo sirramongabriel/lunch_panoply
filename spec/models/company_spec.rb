@@ -2,22 +2,22 @@ require 'spec_helper'
 
 describe Company do
 	it 'has a valid factory' do
-		company = create :company
+		company = build :company
 		expect(company).to be_valid
 	end
 
 	it 'returns a .total number of companies' do
 		companies = []
-		company1 = create :company
-		company2 = create :company
+		company1 = build :company
+		company2 = build :company
 		companies << company1 << company2
 		expect(companies.size).to eq 2
 	end
 
 	it 'does not return a number less than .total number of companies' do
 		companies = []
-		company1 = create :company
-		company2 = create :company
+		company1 = build :company
+		company2 = build :company
 		companies << company1 << company2
 		expect(companies.size).not_to eq 1
 	end
@@ -33,18 +33,18 @@ describe Company do
 
 	it 'returns a sorted array of companies .by_oldest_first' do
 		companies = []
-		company1 = create :company
-		company2 = create :company
-		company3 = create :company
+		company1 = build :company
+		company2 = build :company
+		company3 = build :company
 		companies << company1 << company2 << company3
 		expect(companies).to eq [company1, company2, company3]
 	end
 
 	it 'returns a sorted array of companies .by_newest_first' do
 		companies = []
-		company1 = create :company
-		company2 = create :company
-		company3 = create :company
+		company1 = build :company
+		company2 = build :company
+		company3 = build :company
 		companies << company1 << company2 << company3
 		companies.reverse!
 		expect(companies).to eq [company3, company2, company1]
@@ -52,9 +52,9 @@ describe Company do
 
 	it 'returns a sorted array of companys .by_city' do
 		companies = []
-		company1 = create :company
-		company2 = create :company
-		company3 = create :company
+		company1 = build :company
+		company2 = build :company
+		company3 = build :company
 		companies << company1.city << company2.city << company3.city
 		expect(companies).to eq [company1.city, company2.city, company3.city]
 	end

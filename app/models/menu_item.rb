@@ -11,6 +11,7 @@ class MenuItem < ActiveRecord::Base
 
   has_many :comments, as: :commentable
   has_many :votes, as: :votable
+  has_many :favorites
 
   validates_presence_of :title, :price, :ingredient1, :calories
 

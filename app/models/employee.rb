@@ -8,7 +8,8 @@ class Employee < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :votes, as: :votable
   has_many :emails, as: :emailable
-  has_many :favorites, as: :favoritable
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_menu_items, through: :favorites, source: :menu_item
 
   def Employee.by_first_name
   	Employee.all.order(first_name: asc)
