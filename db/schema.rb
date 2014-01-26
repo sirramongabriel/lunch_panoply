@@ -11,14 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140126041456) do
+ActiveRecord::Schema.define(:version => 20140126185434) do
 
-  create_table "comments", :primary_key => "commentable_id", :force => true do |t|
+  create_table "comments", :force => true do |t|
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-    t.string   "commentable_type"
+    t.integer  "employee_id"
+    t.integer  "menu_item_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "companies", :force => true do |t|
@@ -40,10 +41,18 @@ ActiveRecord::Schema.define(:version => 20140126041456) do
     t.integer  "company_id"
   end
 
-  create_table "favorites", :primary_key => "favoritable_id", :force => true do |t|
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-    t.string   "favoritable_type"
+  create_table "favorite_menu_items", :force => true do |t|
+    t.integer  "employee_id"
+    t.integer  "menu_item_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "favorites", :force => true do |t|
+    t.integer  "employee_id"
+    t.integer  "menu_item_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "menu_items", :force => true do |t|
@@ -95,12 +104,6 @@ ActiveRecord::Schema.define(:version => 20140126041456) do
     t.string   "fax"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "votes", :primary_key => "votable_id", :force => true do |t|
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.string   "votable_type"
   end
 
 end

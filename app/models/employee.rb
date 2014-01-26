@@ -5,10 +5,13 @@ class Employee < ActiveRecord::Base
 
   belongs_to :company
 
-  has_many :comments, as: :commentable
-  has_many :votes, as: :votable
-  has_many :emails, as: :emailable
-  has_many :favorites, as: :favoritable
+  has_many :comments
+  has_many :menu_items, through: :comments
+  has_many :favorites
+  has_many :menu_items, through: :favorites
+  # has_many :menu_items, through: :favorites
+  # has_many :votes
+  # has_many :menu_items, through: :votes
 
   def Employee.by_first_name
   	Employee.all.order(first_name: asc)

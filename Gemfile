@@ -26,4 +26,5 @@ group :test do
 	gem 'faker'
 	gem 'database_cleaner'
 	gem 'launchy'
+	gem 'shoulda-matchers'
 end

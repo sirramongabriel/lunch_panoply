@@ -2,5 +2,7 @@
 
 FactoryGirl.define do
   factory :favorite do
+    employee_id 1
+    menu_item_id 1
   end
 end
