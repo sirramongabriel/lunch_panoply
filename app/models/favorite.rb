@@ -1,3 +1,3 @@
 class Favorite < ActiveRecord::Base
-	belongs_to :favoritable, polymorphic: true, primary_key: 'favoritable_id'
+	belongs_to :favoritable, polymorphic: true
 end

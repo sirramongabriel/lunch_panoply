@@ -1,8 +1,9 @@
-require 'faker'
+# Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
   factory :comment do
-    title   { Faker::Lorem.sentence(word_count = 5, supplemental = false) }
-    content { Faker::Lorem.paragraphs(paragraph_count = 2, supplimental = false) }
+    content "MyText"
+    title "MyString"
+    commentable_type "MyString"
   end
 end
