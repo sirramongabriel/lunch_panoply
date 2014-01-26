@@ -17,7 +17,7 @@ class EmployeesController < ApplicationController
 
   def show
     get_company
-    @employee = @company.employeees
+    @employee = @company.employees
   end
 
   def edit
