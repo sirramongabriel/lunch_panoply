@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140126023507) do
+ActiveRecord::Schema.define(:version => 20140126024816) do
 
   create_table "comments", :primary_key => "commentable_id", :force => true do |t|
     t.string   "title"
@@ -40,8 +40,9 @@ ActiveRecord::Schema.define(:version => 20140126023507) do
   end
 
   create_table "favorites", :primary_key => "favoritable_id", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.string   "favoritable_type"
   end
 
   create_table "menu_items", :force => true do |t|
@@ -96,8 +97,9 @@ ActiveRecord::Schema.define(:version => 20140126023507) do
   end
 
   create_table "votes", :primary_key => "votable_id", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "votable_type"
   end
 
 end
