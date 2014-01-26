@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140126024816) do
+ActiveRecord::Schema.define(:version => 20140126041456) do
 
   create_table "comments", :primary_key => "commentable_id", :force => true do |t|
     t.string   "title"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20140126024816) do
     t.string   "last_name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "company_id"
   end
 
   create_table "favorites", :primary_key => "favoritable_id", :force => true do |t|

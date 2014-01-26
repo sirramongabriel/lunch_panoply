@@ -1,5 +1,5 @@
 class Employee < ActiveRecord::Base
-  attr_accessible :first_name, :last_name
+  attr_accessible :first_name, :last_name, :company_id
 
   validates_presence_of :first_name, :last_name
 
