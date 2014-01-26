@@ -7,8 +7,8 @@ class MenuItem < ActiveRecord::Base
   								:ingredient3, :ingredient4, :ingredient5, :ingredient6, 
   								:ingredient7, :ingredient8, :ingredient9, :price, :title
 
-  belongs_to :venue
   belongs_to :menu
+  belongs_to :venue
 
   has_many :comments
   has_many :employees, through: :comments

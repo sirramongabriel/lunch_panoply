@@ -15,8 +15,7 @@ end
 group :development, :test do
 	gem 'rspec-rails'
 	gem 'factory_girl_rails', require: false
-	gem 'shoulda-matchers'
-	gem 'shoulda'
+
 	gem 'pry-rails'
 	gem 'guard-zeus'
 	gem 'guard-rspec', require: false
@@ -26,5 +25,6 @@ group :test do
 	gem 'faker'
 	gem 'database_cleaner'
 	gem 'launchy'
+	gem 'shoulda'
 	gem 'shoulda-matchers'
 end

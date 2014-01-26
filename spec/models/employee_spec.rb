@@ -1,6 +1,16 @@
 require 'spec_helper'
 
 describe Employee do
+  it 'has many comments' do
+    c = Employee.reflect_on_association(:comments)
+    expect(c.macro).to eq :has_many
+  end
+
+  # it 'has many favorites' do
+  #   f = Favorite.reflect_on_association(:favorites)
+  #   expect(f.macro).to eq :has_many
+  # end
+
 	it 'has a valid factory' do
 		employee = create :employee
 		expect(employee).to be_valid

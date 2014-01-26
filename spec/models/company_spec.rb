@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 describe Company do
+	it 'should have many employees' do
+		e = Company.reflect_on_association(:employees)
+		expect(e.macro).to eq :has_many
+	end
+
 	it 'has a valid factory' do
 		company = build :company
 		expect(company).to be_valid

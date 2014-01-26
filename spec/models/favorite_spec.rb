@@ -1,5 +1,6 @@
 require 'spec_helper'
 
 describe Favorite do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should belong_to(:employee) }
+  it { should belong_to(:menu_item) }
 end
