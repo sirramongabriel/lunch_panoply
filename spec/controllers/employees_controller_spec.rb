@@ -2,10 +2,11 @@ require 'spec_helper'
 
 describe EmployeesController do
   describe 'GET #index' do
-    it 'returns http success' do
+    it 'returns http success and renders the :index template' do
       employee = create :employee
       get :index, company_id: employee.company_id
       expect(response).to be_success
+      expect(response).to render_template :index
     end
 
     it 'populates an array of employees' do
