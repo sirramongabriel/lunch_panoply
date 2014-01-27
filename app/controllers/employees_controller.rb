@@ -1,14 +1,12 @@
 class EmployeesController < ApplicationController
   def index
-    # get_company
-    # @employee = @company.employees
-    @employee = Employee.all
+    get_company
+    @employee = @company.employees
   end
 
   def new
-    # get_company
-    # @employee = @company.employees.build
-    @employee = Employee.new
+    get_company
+    @employee = @company.employees.build
   end
 
   def create
@@ -24,7 +22,6 @@ class EmployeesController < ApplicationController
   def show
     get_company
     @employee = @company.employees.find(params[:id])
-    # @employee = Employee.find(params[:id])
   end
 
   def edit
@@ -32,15 +29,22 @@ class EmployeesController < ApplicationController
     @employee = @company.employees.find(params[:id])
   end
 
-  def update
+  def update 
+    get_company
+    @employee = @company.employees.find(params[:id])
     if @employee.update_attributes(params[:employee])
-      redirect_to([@company, @employee], success: 'Employee successfully updated!')
+      redirect_to([@company, @employee], success: 'Employee updated!')
     else
-      render(:edit, error: 'There was an error processing your form')
+      render(:edit, error: 'There was an error updatomg this form')
     end
   end
 
   def destroy
+    get_company
+    @employee = @company.employees.find(params[:id])
+    @employee.delete
+    flash.now[:notice] = 'You sure?'
+    redirect_to company_employees_path(@company)
   end
 
   private

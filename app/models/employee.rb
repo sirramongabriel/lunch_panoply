@@ -33,3 +33,10 @@ class Employee < ActiveRecord::Base
 		"#{first_name} #{last_name}"
 	end  
 end
+
+class InvalidEmployee < ActiveRecord::Base 
+  belongs_to :company
+
+  has_many :comments
+  has_many :menu_items, through: :comments
+end
