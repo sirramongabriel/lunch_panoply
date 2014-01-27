@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe EmployeesController do
-  let(:employee) { FactoryGirl.create :employee }
   describe 'GET #index' do
     it 'returns http success' do
+      employee = create :employee
       get :index
-      response.should be_success
+      expect(response).to be_success
     end
 
     it 'populates an array of employees' do
@@ -28,15 +28,17 @@ describe EmployeesController do
     it 'returns http success' do
       employee = create :employee
       get :new, company_id: employee.company_id, id: employee.id
-      response.should be_success
+      expect(response).to be_success
     end
 
     it 'assigns a new Employee to @employee' do
+      employee = create :employee
       get :new, company_id: employee.company_id, id: employee.id
       expect(employee).to be_a_kind_of Employee
     end
 
     it 'renders the :new template' do
+      employee = create :employee
       get :new, company_id: employee.company_id, id: employee.id
       expect(response).to render_template(:new)
     end
@@ -45,6 +47,7 @@ describe EmployeesController do
   describe 'GET #create' do
     context 'given valid credentials' do
       it 'returns http success and redirects to the :show template' do
+        employee = create :employee
         get :create, employee: FactoryGirl.attributes_for(:employee),
         company_id: employee.company_id, id: employee.id
         employee = Employee.order(:created_at).last      
@@ -54,6 +57,7 @@ describe EmployeesController do
 
     context 'given invalid credentials' do
       it 'returns http client error' do
+        employee = create :employee
         post :create, employee: FactoryGirl.attributes_for(:employee),
         company_id: employee.company_id, id: employee.id
         employee = Employee.order(:created_at).last
@@ -61,6 +65,7 @@ describe EmployeesController do
       end
 
       it 'should render the :new template' do
+        employee = create :employee
         post :create, company_id: employee.company_id, id: employee.id
         expect(response).to render_template(:new)
       end
@@ -69,30 +74,32 @@ describe EmployeesController do
 
   describe 'GET #show' do
     it 'returns http success and renders the :show template' do
+      employee = create :employee
       get :show, company_id: employee.company_id, id: employee.id
       expect(response).to render_template(:show)
-      expect(response).to be_success
     end
   end
 
   describe 'GET #edit' do
     it 'returns http success and render the :edit template' do
+      employee = create :employee
       get :edit, company_id: employee.company_id, id: employee.id
       expect(response).to render_template(:edit)
     end
   end
 
-  describe 'GET #update' do
-    it 'returns http success and redirects to the :show template' do
-      get :update, company_id: employee.company_id, id: employee.id
-      expect(response).to be_redirect
-      response.should be_success
+  describe 'PUT #update' do
+    it 'returns http success' do
+      employee = create :employee
+      put :update, company_id: employee.company_id, id: employee.id
+      expect(response).to be_success
     end
   end
 
   describe 'GET #destroy' do
     it 'returns http success' do
-      get :destroy
+      employee = create :employee
+      get :destroy, company_id: employee.company_id,  id: employee.id
       response.should be_success
     end
   end

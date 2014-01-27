@@ -1,8 +1,14 @@
 class EmployeesController < ApplicationController
   def index
+    # get_company
+    # @employee = @company.employees
+    @employee = Employee.all
   end
 
   def new
+    # get_company
+    # @employee = @company.employees.build
+    @employee = Employee.new
   end
 
   def create
@@ -17,10 +23,13 @@ class EmployeesController < ApplicationController
 
   def show
     get_company
-    @employee = @company.employees
+    @employee = @company.employees.find(params[:id])
+    # @employee = Employee.find(params[:id])
   end
 
   def edit
+    get_company 
+    @employee = @company.employees.find(params[:id])
   end
 
   def update

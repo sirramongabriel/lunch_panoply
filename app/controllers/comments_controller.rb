@@ -10,9 +10,9 @@ class CommentsController < ApplicationController
   end
 
   def create
-    get_employee
-    @comment = @employees.comments.build(params[:comment])
-    # @comment = Comment.new(params[:comment])
+    # get_employee
+    # @comment = @employees.comments.build(params[:comment])
+    @comment = Comment.new(params[:comment])
     if @comment.save
       redirect_to @comment, success: 'Comment created!'
     else

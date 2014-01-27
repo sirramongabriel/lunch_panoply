@@ -3,7 +3,7 @@ development:
   encoding: unicode
   database: lunch_panoply_development
   pool: 5
-  username: baracus
+  username: baracus 
 
 test:
   adapter: postgresql
@@ -11,7 +11,6 @@ test:
   database: lunch_panoply_test
   pool: 5
   username: baracus
-
 
 production:
   adapter: postgresql
