@@ -31,3 +31,7 @@ class Venue < ActiveRecord::Base
   def Venue.by_zip
   end
 end
+
+class InvalidVenue < Venue
+  attr_accessible :address, :city, :email, :fax, :name, :phone, :state, :zip
+end

@@ -136,7 +136,7 @@ describe EmployeesController do
              }.to change(Employee, :count).by(-1)
     end
 
-    it 'successfully redirects to Employee :index template' do
+    it 'successfully redirects to the Employee :index template' do
       employee = create :employee
       delete :destroy, company_id: employee.company_id, id: employee.id
       expect(response).to redirect_to company_employees_path

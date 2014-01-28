@@ -1,4 +1,18 @@
 LunchPanoply::Application.routes.draw do
+  get "venues/index"
+
+  get "venues/new"
+
+  get "venues/create"
+
+  get "venues/show"
+
+  get "venues/edit"
+
+  get "venues/update"
+
+  get "venues/destroy"
+
   # resources :companies
   # resources :employees
   # resources :comments
