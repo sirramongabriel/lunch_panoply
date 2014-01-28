@@ -56,3 +56,9 @@ class Company < ActiveRecord::Base
   def Company.third_favorite_menu_item
   end
 end
+
+class InvalidCompany < Company
+  attr_accessible :name, :address, :city, :state, :zip, :phone
+
+  has_many :employees
+end

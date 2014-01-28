@@ -16,12 +16,6 @@ describe EmployeesController do
       get :index, company_id: employee1.company_id, id: employee1.id
       expect(employees).to eq [employee1]
     end
-
-    it 'renders the :index template' do
-      employee = create :employee
-      get :index, company_id: employee.company_id
-      expect(response).to render_template :index
-    end
   end
 
   describe 'GET #new' do
@@ -60,12 +54,12 @@ describe EmployeesController do
         employee = create :employee
         post :create, employee: attributes_for(:employee),
         company_id: employee.company_id, id: employee.id
-        employee = Employee.order(:created_at).last
-        employee.first_name = nil
-        expect(employee).to have(1).error_on :first_name
+        last_employee = Employee.order(:created_at).last
+        last_employee.first_name = nil
+        expect(last_employee).to have(1).error_on :first_name
       end
 
-      it 'should render the :new template' do
+      it 'renders the :new template' do
         employee = create :employee
         post :create, company_id: employee.company_id, id: employee.id
         expect(response).to render_template :new

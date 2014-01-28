@@ -1,32 +1,4 @@
 LunchPanoply::Application.routes.draw do
-  get "companies/index"
-
-  get "companies/new"
-
-  get "companies/create"
-
-  get "companies/show"
-
-  get "companies/edit"
-
-  get "companies/update"
-
-  get "companies/destroy"
-
-  get "employees/index"
-
-  get "employees/new"
-
-  get "employees/create"
-
-  get "employees/show"
-
-  get "employees/edit"
-
-  get "employees/update"
-
-  get "employees/destroy"
-
   # resources :companies
   # resources :employees
   # resources :comments

@@ -35,7 +35,7 @@ class EmployeesController < ApplicationController
     if @employee.update_attributes(params[:employee])
       redirect_to([@company, @employee], success: 'Employee updated!')
     else
-      render(:edit, error: 'There was an error updatomg this form')
+      render(:edit, error: 'There was an error updating this form')
     end
   end
 
