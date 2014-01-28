@@ -7,7 +7,7 @@
 # ignore specific files
 .DS_Store
 # .env
-/config/initializers/secret_token.rb
+# /config/initializers/secret_token.rb
 
 # Ignore bundler config
 /.bundle
