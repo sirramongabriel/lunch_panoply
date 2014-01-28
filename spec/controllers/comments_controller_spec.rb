@@ -2,10 +2,11 @@ require 'spec_helper'
 
 describe CommentsController do
   describe 'GET #index' do
-    it 'returns http success' do
+    it 'returns http success and renders the :index template' do
       comment = create :comment
       get :index, employee_id: comment.employee_id, id: comment.id
-      response.should be_success
+      expect(response).to be_success
+      expect(response).to render_template :index
     end
 
     it 'populates an array of comments' do
