@@ -20,6 +20,7 @@ group :development, :test do
 	gem 'pry-rails'
 	gem 'guard-zeus'
 	gem 'guard-rspec', require: false
+	gem 'dotenv-rails'
 end
 
 group :test do
