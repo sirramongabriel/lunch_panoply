@@ -5,6 +5,8 @@ gem 'rails', '3.2.16'
 gem 'pg'
 gem 'jquery-rails'
 gem 'rails3-generators'
+gem 'omniauth-facebook'
+
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
