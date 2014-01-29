@@ -1,18 +1,19 @@
 require 'spec_helper'
 
 describe Company do
+	let(:companies) { companies = [] }
+	let(:company)   { create :company }
+
 	it 'should have many employees' do
 		e = Company.reflect_on_association(:employees)
 		expect(e.macro).to eq :has_many
 	end
 
 	it 'has a valid factory' do
-		company = build :company
 		expect(company).to be_valid
 	end
 
 	it 'returns a .total number of companies' do
-		companies = []
 		company1 = build :company
 		company2 = build :company
 		companies << company1 << company2
@@ -20,7 +21,6 @@ describe Company do
 	end
 
 	it 'does not return a number less than .total number of companies' do
-		companies = []
 		company1 = build :company
 		company2 = build :company
 		companies << company1 << company2
@@ -28,7 +28,6 @@ describe Company do
 	end
 
 	it 'should return all companies .by_name in ascending order' do
-		companies = []
 		company1 = build :company, name: 'harold'
 		company2 = build :company, name: 'johnny'
 		company3 = build :company, name: 'eldridge'
@@ -37,113 +36,100 @@ describe Company do
 	end
 
 	it 'returns a sorted array of companies .by_oldest_first' do
-		companies = []
-		company1 = build :company
-		company2 = build :company
-		company3 = build :company
+		company1 = build :company, created_at: (Time.now - 1.hour.ago)
+		company2 = build :company, created_at: (Time.now - 4.hours.ago)
+		company3 = build :company, created_at: (Time.now - 2.days.ago)
 		companies << company1 << company2 << company3
-		expect(companies).to eq [company1, company2, company3]
-	end
-
-	it 'returns a sorted array of companies .by_newest_first' do
-		companies = []
-		company1 = build :company
-		company2 = build :company
-		company3 = build :company
-		companies << company1 << company2 << company3
-		companies.reverse!
+		companies.sort! { |x, y| y.created_at <=> x.created_at }
 		expect(companies).to eq [company3, company2, company1]
 	end
 
+	it 'returns a sorted array of companies .by_newest_first' do
+		company1 = build :company, created_at: (Time.now - 1.hour.ago)
+		company2 = build :company, created_at: (Time.now - 4.hours.ago)
+		company3 = build :company, created_at: (Time.now - 2.days.ago)
+		companies << company1 << company2 << company3
+		companies.sort! { |x, y| x.created_at <=> y.created_at }
+		expect(companies).to eq [company1, company2, company3]
+	end
+
 	it 'returns a sorted array of companys .by_city' do
-		companies = []
-		company1 = build :company
-		company2 = build :company
-		company3 = build :company
+		company1 = build :company, city: 'san diego'
+		company2 = build :company, city: 'albuquerque'
+		company3 = build :company, city: 'chattanooga'
 		companies << company1.city << company2.city << company3.city
-		expect(companies).to eq [company1.city, company2.city, company3.city]
+		companies.sort! { |x, y| x[0] <=> y[0] }
+		expect(companies).to eq [company2.city, company3.city, company1.city]
 	end
 
 	context 'with valid credentials' do
- 		it 'is valid with a #name' do
- 			company = build :company, name: 'sample name'
- 			expect(company.name).to eq 'sample name'
- 		end
+	 	it { should allow_mass_assignment_of(:address) }
 
- 		it 'is valid with an #address' do
- 			company = build :company, address: '123 sample avenue'
- 			expect(company.address).to eq '123 sample avenue'
- 		end
+ 		it { should allow_mass_assignment_of(:city) }
 
- 		it 'is valid with a #city' do
- 			company = build :company, city: 'sample city'
- 			expect(company.city).to eq 'sample city'
- 		end
+ 		it { should allow_mass_assignment_of(:state) }
 
- 		it 'is valid with a #state' do
- 			company = build :company, state: 'TS'
- 			expect(company.state).to eq 'TS'
- 		end
-
- 		it 'is valid with a #zip' do 
- 			company = build :company, zip: '11111'
+ 		it 'is valid with the presence of a #zip' do 
+ 			company.zip = '11111'
  			expect(company.zip).to eq '11111'
  		end
 
- 		it 'requires a #zip to have a length >= 5' do
-	 		company = build :company, zip: '12345'
+ 		it 'requires a #zip to have a length greater than or equal to 5 characters' do
+	 		company.zip = '12345'
 	 		expect(company.zip.size).to eq 5 
 	 	end
 
- 		it 'is valid with a #phone' do
- 			company = build :company, phone: '111-555-1212'
+ 		it 'is valid with the presence of a #phone' do
+ 			company.phone = '111-555-1212'
  			expect(company.phone).to eq '111-555-1212'
  		end
 
  		it 'requires a #phone length to be 10' do
- 			company = build :company, phone: '111-555-1212'
+ 			company.phone = '111-555-1212'
  			expect(company.phone.gsub!('-', '').size).to eq 10
  		end
  	end
 
  	context 'with invalid credentials' do
-	 	it 'is invalid without a #name' do
-	 		company = build :company, name: nil
+	 	it 'is invalid without the presence of a #name' do
+	 		company.name = nil
 	 		expect(company.name).not_to be_true
 	 	end
 
-	 	it 'is invalid without an #address' do
-	 		company = build :company, address: nil
+
+
+	 	it 'is invalid without the presence of an #address' do
+	 		company.address = nil
 	 		expect(company.address).not_to be_true
 	 	end
 
-	 	it 'is invalid without a #city' do
-	 		company = build :company, city: nil
+	 	it 'is invalid without the presence of a #city' do
+	 		company.city = nil
 	 		expect(company.city).not_to be_true
 	 	end
 
-	 	it 'is invalid without a #state' do
-	 		company = build :company, state: nil
+	 	it 'is invalid without the presence of a #state' do
+	 		company.state = nil
 	 		expect(company.state).not_to be_true
 	 	end
 
-	 	it 'is invalid without a #zip' do 
-	 		company = build :company, zip: nil
+	 	it 'is invalid without the presence of a #zip' do 
+	 		company.zip = nil
 	 		expect(company.zip).not_to be_true
 	 	end
 
-	 	it 'is invalid with a #zip length less than 5' do
-	 		company = build :company, zip: '1234'
+	 	it 'is invalid when the presence of a #zip code length is less than 5 characters' do
+	 		company.zip = '1234'
 	 		expect(company.zip.size).not_to eq 5
 	 	end
 
-	 	it 'is invalid without a #phone' do
-	 		company = build :company, phone: nil
+	 	it 'is invalid without the presence of a #phone' do
+	 		company.phone = nil
 	 		expect(company.phone).not_to be_true
 	 	end
 
-	 	it 'is invalid with a #phone length less than 10' do
-	 		company = build :company, phone: '123-456-787'
+	 	it 'is invalid when the presence of a #phone number length of less than 10 characters' do
+	 		company.phone = '123-456-787'
 	 		expect(company.phone.gsub!('-', '').size).not_to eq 10
 	 	end
 	end

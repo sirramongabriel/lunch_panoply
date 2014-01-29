@@ -5,6 +5,8 @@ FactoryGirl.define do
   	e.association :company, factory: :company
   	e.first_name { Faker::Name.first_name }
     e.last_name  { Faker::Name.last_name }
+    e.email 		 { Faker::Internet.email }
+    e.password   '12345678'
     e.company_id 1 
   end
 end

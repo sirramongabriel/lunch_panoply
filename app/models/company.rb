@@ -1,7 +1,7 @@
 class Company < ActiveRecord::Base
   attr_accessible :address, :city, :name, :phone, :state, :zip
 
-  validates_presence_of :name, :address, :city, :state, :zip, :phone
+  validates_presence_of :name, :address, :city, :state, :zip, :phone 
 
   validates_length_of :state, is: 2, too_long: 'please enter a two character state abbreviation',
   										too_short: 'please enter a two character state abreviation'
