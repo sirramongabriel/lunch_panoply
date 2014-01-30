@@ -1,9 +1,10 @@
 require 'spec_helper'
 
 describe CompaniesController do
+  let(:company)  { create :company }
+
   describe 'GET #index' do
     it 'returns http success and renders the :index template' do
-      company = create :company
       get :index, id: company.id
       expect(response).to be_success
       expect(response).to render_template :index
@@ -20,14 +21,12 @@ describe CompaniesController do
 
   describe 'GET #new' do
     it 'returns http success and renders the :new template' do
-      company = create :company
       get :new, id: company.id
       expect(response).to be_success
       expect(response).to render_template :new
     end
 
     it 'assigns a new Company to company' do
-      company = create :company
       get :new, id: company.id
       expect(assigns(:company)).to be_a_new Company
     end
@@ -36,7 +35,6 @@ describe CompaniesController do
   describe 'POST #create' do
     context 'given valid credentials' do
       it 'returns http success and redirects to the :show template' do
-        company = create :company
         post :create, id: company.id, company: attributes_for(:company)
         expect(response).to be_redirect
       end
@@ -44,7 +42,6 @@ describe CompaniesController do
 
     context 'given invalid credentials' do
       it 'returns http client error' do
-        company = create :company
         post :create, company: attributes_for(:company),
         id: company.id
         last_company = Company.order(:created_at).last
@@ -53,7 +50,6 @@ describe CompaniesController do
       end
 
       it 'renders the :new template' do
-        company = create :company
         post :create, id: company.id
         expect(response).to render_template :new
       end
@@ -62,7 +58,6 @@ describe CompaniesController do
 
   describe 'GET #show' do
     it 'returns http success and renders the :show template' do
-      company = create :company
       get :show, id: company.id
       expect(response).to be_success
       expect(response).to render_template :show
@@ -71,7 +66,6 @@ describe CompaniesController do
 
   describe 'GET #edit' do
     it 'returns http success and renders the :edit template' do
-      company = create :company
       get :edit, id: company.id
       expect(response).to be_success
       expect(response).to render_template :edit
@@ -81,7 +75,6 @@ describe CompaniesController do
   describe 'PUT #update' do
     context 'with valid attributes' do
       it 'returns http success and redirects to the :show template' do
-        company = create :company
         put :update, id: company.id
         expect(response).to redirect_to company_path(company.id)
       end
@@ -89,7 +82,6 @@ describe CompaniesController do
 
     context 'with invalid attributes' do
       it 'does not change the company attributes' do
-        company = create :company
         put :update, id: company.id, company: attributes_for(
                                                               :company, 
                                                               name: nil, 
@@ -97,14 +89,14 @@ describe CompaniesController do
                                                               city: 'sample city',
                                                               state: 'ts',
                                                               zip: '12345', 
-                                                              phone: '11122233333')
+                                                              phone: '11122233333'
+                                                             )
         company.reload
         expect(company).not_to eq nil
         expect(company.address).not_to eq '123 clovertree'
       end
 
       it 're-renders the :edit template' do
-        company = create :company
         put :update, id: company.id, company: attributes_for(:invalid_company)
         expect(response).to render_template :edit
       end
@@ -118,7 +110,6 @@ describe CompaniesController do
     end
 
     it 'successfully redirects to the Company :index template' do
-      company = create :company
       delete :destroy, id: company.id
       expect(response).to redirect_to companies_path
     end
