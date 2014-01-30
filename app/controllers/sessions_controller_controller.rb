@@ -3,7 +3,7 @@ class SessionsControllerController < ApplicationController
   end
 
   def create
-  	auth = Employee.request.env["omniauth.auth"])
+  	auth = Employee.request.env["omniauth.auth"]
     employee = Employee.find_by_provider_and_uid(auth["provider"], auth["uid"]) ||
     Employee.create_with_omniauth(auth)
   	session[:employee_id] = employee.id
