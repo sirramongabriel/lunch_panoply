@@ -4,9 +4,13 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.16'
 gem 'pg'
 gem 'jquery-rails'
+gem 'omniauth-identity'
 gem 'rails3-generators'
 gem 'omniauth-facebook'
 gem 'devise'
+gem 'bcrypt-ruby'
+
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -20,6 +24,10 @@ group :development, :test do
 	gem 'guard-zeus'
 	gem 'guard-rspec', require: false
 	gem 'dotenv-rails'
+end
+
+group :development do
+	gem 'nifty-generators'
 end
 
 group :test do

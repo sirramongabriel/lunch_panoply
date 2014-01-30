@@ -19,6 +19,19 @@ class Employee < ActiveRecord::Base
   # has_many :votes
   # has_many :menu_items, through: :votes
 
+  def Employee.from_omniauth(auth)
+    find_by_provider_and_uid(auth["provider"], auth["uid"]) ||
+    create_with_omniauth(auth)
+  end
+
+  def Employee.create_with_omniauth(auth)
+    create! do |employee|
+      employee.provider = auth["provider"]
+      employee.uid = auth["uid"]
+      employee.full_name = auth["info"]["full_name"]
+    end
+  end
+
   def Employee.by_first_name
   	Employee.all.order(first_name: asc)
   end

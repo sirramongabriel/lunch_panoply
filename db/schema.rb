@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140128215744) do
+ActiveRecord::Schema.define(:version => 20140130194155) do
 
   create_table "comments", :force => true do |t|
     t.string   "title"
@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(:version => 20140128215744) do
     t.string   "last_sign_in_ip"
     t.string   "provider"
     t.string   "uid"
+    t.string   "token"
+    t.string   "secret_token"
   end
 
   add_index "employees", ["email"], :name => "index_employees_on_email", :unique => true
@@ -68,6 +70,14 @@ ActiveRecord::Schema.define(:version => 20140128215744) do
     t.integer  "menu_item_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "identities", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "menu_items", :force => true do |t|

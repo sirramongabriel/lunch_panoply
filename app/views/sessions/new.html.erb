@@ -1,0 +1,19 @@
+<h1>SessionsController#new</h1>
+<p>Find me in app/views/sessions_controller/new.html.erb</p>
+<hr />
+
+<%= form_tag "/auth/identity/callback" do %>
+	<div class="field">
+		<%= label_tag :auth_key, 'Email' %><br />
+		<%= text_field_tag :auth_key %>
+	</div>
+	<div class="field">
+		<%= label_tag :password %>
+		<%= password_field_tag :password %>
+	</div>
+	<div class="actions">
+		<%= submit_tag 'Login' %>
+	</div>
+
+	<%= link_to 'New Employee Sign up', new_identity_path %>
+<% end %>

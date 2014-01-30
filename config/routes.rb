@@ -1,7 +1,17 @@
 LunchPanoply::Application.routes.draw do
+  root to: 'static_pages#index'
+
   devise_for :employees
 
-  root to: 'static_pages#index'
+  resources :sessions, only: [:new, :create, :destroy, :failure]
+
+  resources :identities
+
+  match '/auth/:provider/callback' => 'sessions#create'
+
+  match '/signout' => 'sessions#destroy', as: :signout
+
+  match '/auth/failure' => 'sessions#failure'
 
   # resources :companies
   # resources :employees
