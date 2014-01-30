@@ -1,1 +1,5 @@
 <h1>Welcome to Lunch Panoply!</h1>
+<hr />
+<% @employees.each do |employee| %>
+	<p>Employee: <%= employee.full_name %></p>
+<% end %>

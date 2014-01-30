@@ -47,9 +47,12 @@ def Employee.find_for_facebook_oauth(auth, signed_in_resource=nil)
 
   def Employee.create_with_omniauth(auth)
     create! do |employee|
-      employee.provider = auth["provider"]
-      employee.uid = auth["uid"]
-      employee.full_name = auth["info"]["full_name"]
+      employee.provider = auth['provider']
+      employee.uid = auth['uid']
+      if auth['info']
+        employee.full_name = auth['info']['full_name'] || ""
+        employee.email = auth['info']['email'] || ""
+      end
     end
   end
 

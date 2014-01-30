@@ -1,4 +1,7 @@
 class EmployeesController < ApplicationController
+  before_filter :authenticate_employee!
+  before_filter :correct_employee?
+
   def index
     get_company
     @employee = @company.employees

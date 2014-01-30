@@ -21,6 +21,7 @@
 
 # Ingnore Facebook constants
 /config/initializers/constants.rb
+/config/initializers/omniauth.rb
 
 # Ignore application configuration
 /config/application.yml
