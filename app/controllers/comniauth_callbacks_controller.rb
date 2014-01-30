@@ -1,6 +1,6 @@
-class ComniauthCallbacksController < ApplicationController
+class OmniauthCallbacksController < ApplicationController
 	def facebook     
-     @employee = Employee.find_for_facebook_oauth(request.env["omniauth.auth"], current_Employee)      
+     @employee = Employee.find_for_facebook_oauth(request.env["omniauth.auth"], current_employee)      
      if @employee.persisted?       
       sign_in_and_redirect @employee, :event => :authentication #this will throw if @employee is not activated
       set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?

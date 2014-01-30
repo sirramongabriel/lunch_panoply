@@ -3,6 +3,8 @@ LunchPanoply::Application.routes.draw do
 
   devise_for :employees, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
+  match '/employees/auth/facebook'
+
   resources :sessions, only: [:new, :create, :destroy, :failure]
 
   resources :identities
