@@ -4,7 +4,11 @@ require 'omniauth-facebook'
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
   # omniauth-facebook config
+<<<<<<< HEAD
   config.omniauth :facebook, APP_ID, APP_SECRET, { access_type: 'offline', approval_prompt: '' }
+=======
+  config.omniauth :facebook, "", "", { access_type: 'offline', approval_prompt: '' }
+>>>>>>> bbdfedaf38ce0492a8e1b114e35ba495bb57a4af
   # config.omniauth :facebook, 'APP_ID', 'APP_SECRET', 
   #                 strategy_class: OmniAuth::Strategies::Facebook,
   #                 client_options: { :ssl => { ca_path: '/etc/ssl/certs' } },
