@@ -1,11 +1,10 @@
 require 'spec_helper'
 
 describe VenuesController do
+  let(:venue) { create :venue }
 
   describe 'GET #index' do
-    it 'returns http success and renders the :index template' do
-      venue = create :venue
-      get :index
+    it 'returns http success and renders the :index template' do      get :index
       expect(response).to be_success
       expect(response).to render_template(:index)
     end
@@ -20,16 +19,12 @@ describe VenuesController do
   end
 
   describe 'GET #new' do
-    it 'returns http success and renders the :new template' do
-      venue = create :venue
-      get :new, id: venue.id
+    it 'returns http success and renders the :new template' do      get :new, id: venue.id
       expect(response).to be_success
       expect(response).to render_template(:new)
     end
 
-    it 'assigns a new Venue to venue' do
-      venue = create :venue
-      get :new, id: venue.id
+    it 'assigns a new Venue to venue' do      get :new, id: venue.id
       expect(assigns(:venue)).to be_a_new(Venue)
     end
   end
@@ -37,14 +32,12 @@ describe VenuesController do
   describe 'POST #create' do
     context 'given valid credentials' do
       it 'returns http success and redirects to the :show template' do
-        venue = create :venue
         post :create, id: venue.id, venue: attributes_for(:venue)
         last_venue = Venue.order(:created_at).last
         expect(response).to be_redirect 
       end
 
       it 'saves the new venue in the database' do
-        venue = create :venue
         expect {
                   post :create,
                   venue: attributes_for(:venue, id: venue.id)
@@ -54,7 +47,6 @@ describe VenuesController do
 
     context 'given invalid credentials' do
       it 'returns http client error' do
-        venue = create :venue
         post :create, attributes_for(:venue), id: venue.id
         last_venue = Venue.order(:created_at).last
         last_venue.name = nil
@@ -62,7 +54,6 @@ describe VenuesController do
       end
 
       it 'renders the :new template' do
-        venue = create :venue
         post :create, id: venue.id
         expect(response).to render_template(:new)
       end
@@ -70,18 +61,14 @@ describe VenuesController do
   end
 
   describe 'GET #show' do
-    it 'returns http success and renders the :show template' do
-      venue = create :venue
-      get :show, id: venue.id
+    it 'returns http success and renders the :show template' do      get :show, id: venue.id
       expect(response).to be_success
       expect(response).to render_template(:show)
     end
   end
 
   describe 'GET #edit' do
-    it 'returns http success and renders the :edit template' do
-      venue = create :venue
-      get :edit, id: venue.id
+    it 'returns http success and renders the :edit template' do      get :edit, id: venue.id
       expect(response).to be_success
       expect(response).to render_template(:edit)
     end
@@ -90,20 +77,17 @@ describe VenuesController do
   describe 'PUT #update' do
     context 'with valid attributes' do
       it 'locates the requested venue' do
-        venue = create :venue
         put :update, id: venue.id, venue: attributes_for(:venue)
         expect(assigns(:venue)).to eq venue
       end
 
       it 'changes the venue attributes' do
-        venue = create :venue
         put :update, id: venue.id, venue: attributes_for(:venue, name: 'test name')
         venue.reload
         expect(venue.name).to eq 'test name'
       end
 
       it 'redirects to the updated venue' do
-        venue = create :venue
         put :update, id: venue.id, venue: attributes_for(:venue)
         expect(response).to redirect_to venue_path
       end
@@ -111,14 +95,12 @@ describe VenuesController do
 
     context 'with invalid attributes' do
       it 'does not change the venue attributes' do
-        venue = create :venue
         put :update, id: venue.id, venue: attributes_for(:venue, name: nil)
         venue.reload
         expect(response).not_to eq nil 
       end
 
       it 're-renders the :edit template' do
-        venue = create :venue
         put :update, id: venue.id, venue: attributes_for(:invalid_venue)
         expect(response).to render_template(:edit)
       end
