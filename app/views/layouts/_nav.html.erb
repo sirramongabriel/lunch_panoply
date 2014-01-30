@@ -5,6 +5,6 @@
 	<%= link_to 'Logout', destroy_employee_session_path, method: :delete %>
 <% else %>
 	<%= link_to 'Sign up', new_employee_registration_path %> | 
-	<%= link_to 'Login', new_employee_registration_path %>
+	<%= link_to 'Login', new_employee_session_path %>
 	<li><%= link_to	'Facebook', employee_omniauth_authorize_path(:facebook) %></li>
 <% end %>
