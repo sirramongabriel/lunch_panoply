@@ -9,4 +9,8 @@ class OmniauthCallbacksController < ApplicationController
       redirect_to new_user_registration_url
     end
   end
+
+  def failure
+    render text: 'params[:message]'
+  end
 end
