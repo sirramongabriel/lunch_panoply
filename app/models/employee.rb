@@ -19,6 +19,26 @@ class Employee < ActiveRecord::Base
   # has_many :votes
   # has_many :menu_items, through: :votes
 
+
+def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
+    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    if user
+      return user
+    else
+      registered_user = User.where(:email => auth.info.email).first
+      if registered_user
+        return registered_user
+      else
+        user = User.create(name:auth.extra.raw_info.name,
+                            provider:auth.provider,
+                            uid:auth.uid,
+                            email:auth.info.email,
+                            password:Devise.friendly_token[0,20],
+                          )
+      end    end
+  end
+
+
   def Employee.from_omniauth(auth)
     find_by_provider_and_uid(auth["provider"], auth["uid"]) ||
     create_with_omniauth(auth)

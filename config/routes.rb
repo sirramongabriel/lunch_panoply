@@ -1,7 +1,7 @@
 LunchPanoply::Application.routes.draw do
   root to: 'static_pages#index'
 
-  devise_for :employees
+  devise_for :employees, :controllers => { :omniauth_callbacks =>"omniauth_callbacks" }
 
   resources :sessions, only: [:new, :create, :destroy, :failure]
 

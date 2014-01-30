@@ -1,0 +1,2 @@
+module ComniauthCallbacksHelper
+end
