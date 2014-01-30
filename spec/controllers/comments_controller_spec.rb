@@ -1,9 +1,10 @@
 require 'spec_helper'
 
 describe CommentsController do
+  let(:comment)  { create :comment }
+
   describe 'GET #index' do
     it 'returns http success and renders the :index template' do
-      comment = create :comment
       get :index, employee_id: comment.employee_id, id: comment.id
       expect(response).to be_success
       expect(response).to render_template(:index)
@@ -20,14 +21,12 @@ describe CommentsController do
 
   describe 'GET #new' do
     it 'returns http success and renders the :new template' do
-      comment = create :comment
       get :new, employee_id: comment.employee_id, id: comment.id
       expect(response).to be_success
       expect(response).to render_template(:new)
     end
 
     it 'assigns a new Comment to comment' do
-      comment = create :comment
       get :new, employee_id: comment.employee_id, id: comment.id
       expect(assigns(:comment)).to be_a_new(Comment)
     end
@@ -36,7 +35,6 @@ describe CommentsController do
   describe 'POST #create' do
     context 'given valid credentials' do
       it 'returns http success and redirects to the :show template' do
-        comment = create :comment
         post :create, employee_id: comment.employee_id, id: comment.id,
         comment: attributes_for(:comment)
         comment = Comment.order(:created_at).last
@@ -44,7 +42,6 @@ describe CommentsController do
       end
 
       it 'saves the new comment in the database' do
-        comment = create :comment
         expect {
                   post :create, 
                   comment: attributes_for(:comment, 
@@ -57,7 +54,6 @@ describe CommentsController do
 
     context 'given invalid credentials' do
       it 'returns http client error' do
-        comment = create :comment
         post :create, attributes_for(:comment), 
         employee_id: comment.employee_id, id: comment.id
         comment = Comment.order(:created_at).last
@@ -66,7 +62,6 @@ describe CommentsController do
       end
 
       it 'renders the :new template' do
-        comment = create :comment
         post :create, employee_id: comment.employee_id, id: comment.id
         expect(response).to render_template(:new)
       end
@@ -75,7 +70,6 @@ describe CommentsController do
 
   describe 'GET #show' do
     it 'returns http success and renders the :show tempalte' do
-      comment = create :comment
       get :show, employee_id: comment.employee_id, id: comment.id
       expect(response).to render_template(:show)
     end
@@ -83,7 +77,6 @@ describe CommentsController do
 
   describe 'GET #edit' do
     it 'returns http success and renders the :edit template' do
-      comment = create :comment
       get :edit, employee_id: comment.employee_id, id: comment.id
       expect(response).to render_template(:edit)
     end
@@ -92,14 +85,12 @@ describe CommentsController do
   describe 'PUT #update' do
     context 'with valid attributes' do
       it 'locates the requested comment' do
-        comment = create :comment
         put :update, employee_id: comment.employee_id, id: comment.id,
         comment: attributes_for(:comment)
         expect(assigns(:comment)).to eq comment
       end
 
       it 'changes the comment attributes' do
-        comment = create :comment
         put :update, employee_id: comment.employee_id, id: comment.id,
         comment: attributes_for(:comment, title: 'Here I am', content: 'testing testing')
         comment.reload
@@ -108,7 +99,6 @@ describe CommentsController do
       end
 
       it 'redirects to the updated contact' do 
-        comment = create :comment
         put :update, employee_id: comment.employee, id: comment.id,
         comment: attributes_for(:comment)
         expect(response).to redirect_to employee_comment_path
@@ -117,7 +107,6 @@ describe CommentsController do
 
     context 'with invalid attributes' do
       it 'does not change the employee attributes' do
-        comment = create :comment
         put :update, employee_id: comment.employee_id, id: comment.id,
         comment: attributes_for(:comment, title: 'The first title', content: nil)
         comment.reload
@@ -126,7 +115,6 @@ describe CommentsController do
       end
 
       it 're-renders the :edit template' do
-        comment = create :comment
         put :update, employee_id: comment.employee_id, id: comment.id,
         comment: attributes_for(:invalid_comment)
         expect(response).to render_template(:edit)
@@ -143,7 +131,6 @@ describe CommentsController do
     end
 
     it 'successfully redirects to the Comment :index template' do
-      comment = create :comment
       delete :destroy, employee_id: comment.employee_id, id: comment.id
       expect(response).to redirect_to employee_comments_path
     end
