@@ -2,7 +2,7 @@ LunchPanoply::Application.routes.draw do
   root to: 'static_pages#index'
 
   devise_for :employees, :controllers => { 
-                                            :registration => "registration"
+                                            :registration => "registration",
                                             :omniauth_callbacks => "omniauth_callbacks" 
                                          }
 
