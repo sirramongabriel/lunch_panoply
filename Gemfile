@@ -9,6 +9,7 @@ gem 'rails3-generators'
 gem 'omniauth-facebook'
 gem 'devise'
 gem 'bcrypt-ruby'
+gem 'figaro'
 
 
 group :assets do
