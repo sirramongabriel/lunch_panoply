@@ -65,29 +65,29 @@ describe Company do
 	context 'with valid credentials' do
 	 	it { should allow_mass_assignment_of(:address) }
 
+	 	it { should validate_presence_of(:address) }
+
  		it { should allow_mass_assignment_of(:city) }
+
+ 		it { should validate_presence_of(:city) }
 
  		it { should allow_mass_assignment_of(:state) }
 
- 		it 'is valid with the presence of a #zip' do 
- 			company.zip = '11111'
- 			expect(company.zip).to eq '11111'
- 		end
+ 		it { should validate_presence_of(:state) }
+
+ 		it { should allow_mass_assignment_of(:zip) }
+
+ 		it { should validate_presence_of(:zip) }
+
 
  		it 'requires a #zip to have a length greater than or equal to 5 characters' do
 	 		company.zip = '12345'
 	 		expect(company.zip.size).to eq 5 
 	 	end
 
- 		it 'is valid with the presence of a #phone' do
- 			company.phone = '111-555-1212'
- 			expect(company.phone).to eq '111-555-1212'
- 		end
+	 	it { should validate_presence_of(:phone) }
 
- 		it 'requires a #phone length to be 10' do
- 			company.phone = '111-555-1212'
- 			expect(company.phone.gsub!('-', '').size).to eq 10
- 		end
+	 	it { should ensure_length_of(:phone).is_equal_to(10)}
  	end
 
  	context 'with invalid credentials' do
@@ -95,8 +95,6 @@ describe Company do
 	 		company.name = nil
 	 		expect(company.name).not_to be_true
 	 	end
-
-
 
 	 	it 'is invalid without the presence of an #address' do
 	 		company.address = nil
