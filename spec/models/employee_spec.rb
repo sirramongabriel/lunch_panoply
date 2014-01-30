@@ -1,46 +1,38 @@
 require 'spec_helper'
 
 describe Employee do
-  it 'has many comments' do
-    c = Employee.reflect_on_association(:comments)
-    expect(c.macro).to eq :has_many
-  end
+  let(:employee)  { create :employee }
+  let(:employees) { employees = [] }
+
+  it { should have_many(:comments) }
 
 	it 'has a valid factory' do
-		employee = create :employee
 		expect(employee).to be_valid
 	end
 
   context 'with valid credentials' do
-  	it 'is valid with a #first_name' do
-  		employee = create :employee
-  		employee.first_name = 'Janet'
-  		expect(employee.first_name).to eq 'Janet'
-  	end
+    it { should allow_mass_assignment_of(:first_name) }
 
-  	it 'is valid with a #last_name ' do
-  		employee = create :employee
-  		employee.last_name = 'Reno'
-  		expect(employee.last_name).to eq 'Reno'
-  	end
+    it { should validate_presence_of(:first_name) }
+
+    it { should allow_mass_assignment_of(:last_name) }
+
+    it { should validate_presence_of(:last_name) }
   end
 
   context 'with invalid credentials' do
   	it 'is invalid without a #first_name' do
-  		employee = create :employee
   		employee.first_name = nil
   		expect(employee.first_name).not_to be_true
   	end
 
   	it 'is invalid without a #last_name' do
-  		employee = create :employee
   		employee.last_name = nil
   		expect(employee.last_name).not_to be_true
   	end
   end
 
   it 'returns a sorted array of employees .by_first_name' do
-  	employees = []
   	employee1 = create :employee
   	employee2 = create :employee
   	employee3 = create :employee
@@ -49,7 +41,6 @@ describe Employee do
   end
 
   it 'returns a sorted array of employees .by_last_name' do
-  	employees = []
   	employee1 = create :employee
   	employee2 = create :employee
   	employee3 = create :employee
@@ -58,7 +49,6 @@ describe Employee do
   end
 
   it 'returns a sorted array of employees .by_joined_on_newest_first' do
-  	employees = []
   	employee1 = create :employee
   	employee2 = create :employee
   	employee3 = create :employee
@@ -67,7 +57,6 @@ describe Employee do
   end
 
   it 'returns a sorted array of employees .by_joined_on_oldest_first' do
-  	employees = []
   	employee1 = create :employee
   	employee2 = create :employee
   	employee3 = create :employee
@@ -75,8 +64,7 @@ describe Employee do
   	expect(employees).to eq [employee3.created_at, employee2.created_at, employee1.created_at]
   end
 
-  it 'returns a #first_name and a #last_name as one #full_name' do 
-  	employee = build :employee
+  it 'returns a #first_name and a #last_name as one #full_name' do
   	employee.first_name = 'Janet'
   	employee.last_name = 'Jackson'
   	expect(employee.full_name).to eq 'Janet Jackson'
