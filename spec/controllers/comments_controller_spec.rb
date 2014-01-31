@@ -4,8 +4,8 @@ describe CommentsController do
   let(:comment)  { create :comment }
 
   describe 'GET #index' do
+    before(:each) { get :index, employee_id: comment.employee_id, id: comment.id }
     it 'returns http success and renders the :index template' do
-      get :index, employee_id: comment.employee_id, id: comment.id
       expect(response).to be_success
       expect(response).to render_template(:index)
     end
@@ -14,39 +14,41 @@ describe CommentsController do
       comments = []
       comment1 = create :comment
       comments << comment1
-      get :index, employee_id: comment1.employee_id
       expect(comments).to eq [comment1]
     end
   end
 
   describe 'GET #new' do
+    before(:each) { get :new, employee_id: comment.employee_id, id: comment.id }
     it 'returns http success and renders the :new template' do
-      get :new, employee_id: comment.employee_id, id: comment.id
       expect(response).to be_success
       expect(response).to render_template(:new)
     end
 
     it 'assigns a new Comment to comment' do
-      get :new, employee_id: comment.employee_id, id: comment.id
       expect(assigns(:comment)).to be_a_new(Comment)
     end
   end
 
   describe 'POST #create' do
+    before(:each) {
+                    post :create, 
+                    employee_id: comment.employee_id, 
+                    id: comment.id, 
+                    comment: attributes_for(:comment)
+                  }
     context 'given valid credentials' do
       it 'returns http success and redirects to the :show template' do
-        post :create, employee_id: comment.employee_id, id: comment.id,
-        comment: attributes_for(:comment)
         comment = Comment.order(:created_at).last
-        expect(response).to be_redirect
+        expect(response).to redirect_to employee_comment_path(employee_id: comment.employee_id, id: comment.id)
       end
 
       it 'saves the new comment in the database' do
         expect {
                   post :create, 
                   comment: attributes_for(:comment, 
-                                          employee_id: comment.employee_id, 
-                                          id: comment.id).to 
+                  employee_id: comment.employee_id, 
+                  id: comment.id).to 
                   change(Comment, :count).by(1)
                }
       end
@@ -54,8 +56,6 @@ describe CommentsController do
 
     context 'given invalid credentials' do
       it 'returns http client error' do
-        post :create, attributes_for(:comment), 
-        employee_id: comment.employee_id, id: comment.id
         comment = Comment.order(:created_at).last
         comment.title = nil
         expect(comment).to have(1).error_on(:title)
@@ -69,24 +69,32 @@ describe CommentsController do
   end
 
   describe 'GET #show' do
+    before(:each) { get :show, employee_id: comment.employee_id, id: comment.id }
+
     it 'returns http success and renders the :show tempalte' do
-      get :show, employee_id: comment.employee_id, id: comment.id
       expect(response).to render_template(:show)
     end
   end
 
   describe 'GET #edit' do
+    before(:each) { get :edit, employee_id: comment.employee_id, id: comment.id }
+
     it 'returns http success and renders the :edit template' do
-      get :edit, employee_id: comment.employee_id, id: comment.id
       expect(response).to render_template(:edit)
     end
   end
 
   describe 'PUT #update' do
+    before(:each) { put :update, 
+                    employee_id: comment.employee_id, 
+                    id: comment.id,
+                    comment: attributes_for(:comment)
+                  }
+
     context 'with valid attributes' do
       it 'locates the requested comment' do
-        put :update, employee_id: comment.employee_id, id: comment.id,
-        comment: attributes_for(:comment)
+        # put :update, employee_id: comment.employee_id, id: comment.id,
+        # comment: attributes_for(:comment)
         expect(assigns(:comment)).to eq comment
       end
 
@@ -99,8 +107,8 @@ describe CommentsController do
       end
 
       it 'redirects to the updated contact' do 
-        put :update, employee_id: comment.employee, id: comment.id,
-        comment: attributes_for(:comment)
+        # put :update, employee_id: comment.employee, id: comment.id,
+        # comment: attributes_for(:comment)
         expect(response).to redirect_to employee_comment_path
       end
     end
