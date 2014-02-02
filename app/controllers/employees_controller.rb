@@ -1,29 +1,26 @@
 class EmployeesController < ApplicationController
   before_filter :authenticate_employee!
   before_filter :correct_employee?
+  before_filter :get_company
 
   def index
-    get_company
     @employee = @company.employees
   end
 
   def new
-    get_company
     @employee = @company.employees.build
   end
 
   def create
-    get_company
     @employee = @company.employees.build(params[:employee])
     if @employee.save
-      redirect_to @employee, success: 'Employee created!'
+      redirect_to(@employee, success: 'Employee created!')
     else
-      render :new, error: 'There was an error processing your form'
+      render(:new, error: 'There was an error processing your form')
     end
   end
 
   def show
-    get_company
     @employee = @company.employees.find(params[:id])
   end
 
@@ -33,7 +30,6 @@ class EmployeesController < ApplicationController
   end
 
   def update 
-    get_company
     @employee = @company.employees.find(params[:id])
     if @employee.update_attributes(params[:employee])
       redirect_to([@company, @employee], success: 'Employee updated!')
@@ -43,11 +39,10 @@ class EmployeesController < ApplicationController
   end
 
   def destroy
-    get_company
     @employee = @company.employees.find(params[:id])
     @employee.delete
     flash.now[:notice] = 'You sure?'
-    redirect_to company_employees_path(@company)
+    redirect_to(company_employees_path(@company))
   end
 
   private

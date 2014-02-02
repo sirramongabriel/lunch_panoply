@@ -14,7 +14,7 @@ class CompaniesController < ApplicationController
     if @company.save
       redirect_to @company, success: 'Company created!'
     else
-      render :new, error: 'There was an error proccessing your form'
+      render(:new, error: 'There was an error proccessing your form')
     end
   end
 
@@ -35,7 +35,7 @@ class CompaniesController < ApplicationController
   def destroy
     @company.delete
     flash.now[:notice] = 'You sure?'
-    redirect_to companies_path
+    redirect_to(companies_path)
   end
 
   private

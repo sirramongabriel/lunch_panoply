@@ -37,6 +37,6 @@ class VenuesController < ApplicationController
     @venue = Venue.find(params[:id])
     @venue.delete
     flash.now[:notice] = 'You sure?'
-    redirect_to venues_path
+    redirect_to(venues_path)
   end
 end
