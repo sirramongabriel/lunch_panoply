@@ -10,7 +10,7 @@ LunchPanoply::Application.routes.draw do
 
   resources :identities
 
-  match '/auth/:provider/callback' => 'sessions#create'
+  match '/auth/:provider/callback', to: 'sessions#create'
 
   match '/signout' => 'sessions#destroy', as: :signout
   match '/signin' => 'sessions#new', as: :signin

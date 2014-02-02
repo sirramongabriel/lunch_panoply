@@ -4,12 +4,18 @@ class SessionsControllerController < ApplicationController
   end
 
   def create
-    auth = request.env["omniauth.auth"]
-    employee = Employee.where(provider: auth['provider'], uid: auth['uid']).first || 
-               Employee.create_with_omniauth(auth)
-    session[:employee_id] = employee.id
-    redirect_to root_path, success: 'Signed in!'
+    @employee = Employee.find_or_create_from_auth_hash(auth_hash)
+    self.current_employee = @employee
+    redirect_to('/')
   end
+
+  # def create
+  #   auth = request.env["omniauth.auth"]
+  #   employee = Employee.where(provider: auth['provider'], uid: auth['uid']).first || 
+  #              Employee.create_with_omniauth(auth)
+  #   session[:employee_id] = employee.id
+  #   redirect_to root_path, success: 'Signed in!'
+  # end
 
   # def create
   # 	auth = Employee.request.env["omniauth.auth"]
@@ -26,5 +32,10 @@ class SessionsControllerController < ApplicationController
 
   def failure
   	redirect_to root_path, alert: "Authentication error: #{params[:message].humanize}"
+  end
+
+  protected
+  def auth_hash
+    request.env['omniauth.auth']
   end
 end
