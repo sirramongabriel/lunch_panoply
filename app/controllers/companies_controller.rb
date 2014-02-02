@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_filter :get_company except: [:index, :new, :create]
+  before_filter :get_company, except: [:index, :new, :create]
 
   def index
     @companies = Company.all
