@@ -117,8 +117,8 @@ GEM
     omniauth (1.2.1)
       hashie (>= 1.2, < 3)
       rack (~> 1.0)
-    omniauth-facebook (1.6.0)
-      omniauth-oauth2 (~> 1.1)
+    omniauth-facebook (1.4.1)
+      omniauth-oauth2 (~> 1.1.0)
     omniauth-identity (1.1.1)
       bcrypt-ruby (~> 3.0)
       omniauth (~> 1.0)
@@ -233,7 +233,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   nifty-generators
-  omniauth-facebook
+  omniauth-facebook (~> 1.4.0)
   omniauth-identity
   pg
   pry-rails
