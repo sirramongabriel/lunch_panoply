@@ -1,4 +1,6 @@
 class CompaniesController < ApplicationController
+  before_filter :get_company except: [:index, :new, :create]
+
   def index
     @companies = Company.all
   end
@@ -17,15 +19,12 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    @company = Company.find(params[:id])
   end
 
   def edit
-    @company = Company.find(params[:id])
   end
 
   def update
-    @company = Company.find(params[:id])
     if @company.update_attributes(params[:company])
       redirect_to(@company, success: 'Company updated!')
     else
@@ -34,9 +33,13 @@ class CompaniesController < ApplicationController
   end
 
   def destroy
-    @company = Company.find(params[:id])
     @company.delete
     flash.now[:notice] = 'You sure?'
     redirect_to companies_path
+  end
+
+  private
+  def get_company
+    @company = Company.find(params[:id])
   end
 end

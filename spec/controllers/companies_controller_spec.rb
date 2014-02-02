@@ -1,33 +1,32 @@
-require 'spec_helper'
+ require 'spec_helper'
 
 describe CompaniesController do
   let(:company)  { create :company }
 
   describe 'GET #index' do
+    before(:each) { get :index, id: company.id }
+
     it 'returns http success and renders the :index template' do
-      get :index, id: company.id
       expect(response).to be_success
       expect(response).to render_template :index
     end
 
     it 'populates an array of companies' do
       companies = []
-      company1 = create :company
-      companies << company1
-      get :index, id: company1.id
-      expect(companies).to eq [company1]
+      companies << company
+      expect(companies).to eq [company]
     end
   end
 
   describe 'GET #new' do
+    before(:each) { get :new, id: company.id }
+
     it 'returns http success and renders the :new template' do
-      get :new, id: company.id
       expect(response).to be_success
       expect(response).to render_template :new
     end
 
     it 'assigns a new Company to company' do
-      get :new, id: company.id
       expect(assigns(:company)).to be_a_new Company
     end
   end
