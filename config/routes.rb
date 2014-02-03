@@ -1,4 +1,6 @@
 LunchPanoply::Application.routes.draw do
+  devise_for :admins
+
   root to: 'static_pages#index'
 
   devise_for :employees, :controllers => { 
