@@ -10,6 +10,7 @@ gem 'omniauth-facebook', '~> 1.4.0'
 gem 'devise'
 gem 'bcrypt-ruby'
 gem 'figaro'
+gem 'rubocop'
 
 
 group :assets do

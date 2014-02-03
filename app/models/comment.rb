@@ -1,4 +1,4 @@
-class Comment < ActiveRecord::Base
+ class Comment < ActiveRecord::Base
   attr_accessible :content, :title, :employee_id, :menu_item_id 
 
   validates_presence_of :content, :title

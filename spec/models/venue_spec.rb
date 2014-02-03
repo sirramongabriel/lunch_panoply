@@ -127,7 +127,7 @@ describe Venue do
 		venue1 = create :venue, name: 'George'
 		venue2 = create :venue, name: 'Xavior'
 		venues << venue3.name << venue1.name << venue2.name
-		expect(venues.sort).to eq ['Alphonzo', 'George', 'Xavior']
+		expect(venues.sort).to eq %w(Alphonzo George Xavior)
 	end
 
 	it 'returns a sorted list of venues .by_name_desc' do
@@ -135,15 +135,15 @@ describe Venue do
 		venue3 = create :venue, name: 'Bob'
 		venue1 = create :venue, name: 'Charles'
 		venues << venue2.name << venue3.name << venue1.name
-		expect(venues.sort).to eq ['Alfred', 'Bob', 'Charles' ]
+		expect(venues.sort).to eq %w(Alfred Bob Charles)
 	end
 
 	it 'returns a sorted list of venues .by_city in ascending order' do
 		venue1 = create :venue, city: 'Elkart'
-		venue2 = create :venue, city: 'Thousand Oaks'
+		venue2 = create :venue, city: 'Riverside'
 		venue3 = create :venue, city: 'Redlands'
 		venues << venue1.city << venue2.city << venue3.city
-		expect(venues.sort).to eq ['Elkart', 'Redlands', 'Thousand Oaks']
+		expect(venues.sort).to eq %w(Elkart Redlands Riverside)
 	end
 
 	it 'returns a sorted list of venues .by_state in ascending order' do
@@ -151,7 +151,7 @@ describe Venue do
 		venue2 = create :venue, state: 'CA'
 		venue3 = create :venue, state: 'AZ'
 		venues << venue1.state << venue2.state << venue3.state
-		expect(venues.sort).to eq ['AZ', 'CA', 'MI']
+		expect(venues.sort).to eq %w(AZ CA MI)
 	end
 
 	it 'returns a sorted list of venues .by_zip in ascending order' do
@@ -159,6 +159,6 @@ describe Venue do
 		venue2 = create :venue, zip: '12345'
 		venue3 = create :venue, zip: '54321'
 		venues << venue1.zip << venue2.zip << venue3.zip
-		expect(venues.sort).to eq ['12345', '32125', '54321']
-	end
+	  expect(venues.sort).to eq %w(12345 32125 54321)
+  end
 end
