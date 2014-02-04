@@ -1,4 +1,4 @@
-class OmniauthCallbacksController < ApplicationController
+class  Employees::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 	def facebook     
      @employee = Employee.find_for_facebook_oauth(request.env["omniauth.auth"], current_employee)      
      if @employee.persisted?       
@@ -10,6 +10,8 @@ class OmniauthCallbacksController < ApplicationController
     end
   end
 
+  def passthru
+  end
   def failure
     render text: 'Something went wrong'  # 'params[:message]'
   end

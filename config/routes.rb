@@ -5,7 +5,7 @@ LunchPanoply::Application.routes.draw do
 
   devise_for :employees, :controllers => { 
                                             :registration => "registration",
-                                            :omniauth_callbacks => "omniauth_callbacks" 
+                                            :omniauth_callbacks => "employees/omniauth_callbacks" 
                                          }
 
   resources :sessions, only: [:new, :create, :destroy, :failure]

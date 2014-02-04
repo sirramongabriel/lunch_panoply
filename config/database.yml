@@ -3,19 +3,17 @@ development:
   encoding: unicode
   database: lunch_panoply_development
   pool: 5
-  username: baracus 
+  host: localhost
 
 test:
   adapter: postgresql
   encoding: unicode
   database: lunch_panoply_test
   pool: 5
-  username: baracus
 
 production:
   adapter: postgresql
   encoding: unicode
   database: lunch_panoply_production
   pool: 5
-  username: baracus
 
