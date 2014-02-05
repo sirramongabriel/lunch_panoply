@@ -1,6 +1,6 @@
 class EmployeesController < ApplicationController
-  before_filter :authenticate_employee!
-  before_filter :correct_employee?
+  before_filter :authenticate_employee!, except: [:new, :create]
+  before_filter :correct_employee?, except: [:new, :create]
   before_filter :get_company
 
   def index

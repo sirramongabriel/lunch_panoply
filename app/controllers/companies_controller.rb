@@ -12,7 +12,7 @@ class CompaniesController < ApplicationController
   def create
     @company = Company.new(params[:company])
     if @company.save
-      redirect_to @company, success: 'Company created!'
+      redirect_to(company_path(@company), success: 'Company created!')
     else
       render(:new, error: 'There was an error proccessing your form')
     end

@@ -1,0 +1,32 @@
+<h3>Add A Company</h3>
+
+<%= form_for @company do |f| %>
+  <% @company.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+  <div>
+    <%= f.label :address %>
+    <%= f.text_area :address, size: '5x5' %>
+  </div>
+  <div>
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+  </div>
+  <div>
+    <%= f.label :state %>
+    <%= f.text_field :state %>
+  </div>
+  <div>
+    <%= f.label :zip %>
+    <%= f.text_field :zip %>
+  </div>
+  <div>
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+  </div>
+  <%= f.submit 'Add Company!', method: :post %>
+<% end %>
