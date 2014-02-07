@@ -1,5 +1,52 @@
-<h1>Welcome to Lunch Panoply!</h1>
-<hr />
-<% @employees.each do |employee| %>
-	<p>Employee: <%= employee.full_name %></p>
-<% end %>
+<!-- <h1>Welcome to Lunch Panoply!</h1> -->
+ <div id="home" class="section">
+      <div class="container">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            <div class="item active">
+              <a href="#" class="image-wrapper">
+                <img src="img/sintel-bedroom.png" alt="placeholder">                                  
+                <span class="overlay"><span class="valign"></span><i class="icon-link"></i></span>                    
+              </a>
+              <div class="carousel-caption">
+                <h2>Sintel Bedroom</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+              </div>
+            </div>
+            <div class="item">
+              <a href="#" class="image-wrapper">
+                <img src="img/sintel-snowscape.jpg" class="img-responsive" alt="placeholder">                                  
+                <span class="overlay"><span class="valign"></span><i class="icon-link"></i></span>                    
+              </a>
+              <div class="carousel-caption">
+                <h2>Sintel Snowscape</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+              </div>
+            </div>
+            <div class="item">
+              <a href="#" class="image-wrapper">
+                <img src="img/sintel-town-concept.jpg" alt="placeholder">                                  
+                <span class="overlay"><span class="valign"></span><i class="icon-link"></i></span>                    
+              </a>
+              <div class="carousel-caption">
+                <h2>Sintel Town</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"><i class="icon-angle-left"></i></a>
+          <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"><i class="icon-angle-right"></i></a>
+        </div>
+        
+      </div>
+    </div><!-- /.container -->
