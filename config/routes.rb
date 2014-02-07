@@ -14,15 +14,15 @@ LunchPanoply::Application.routes.draw do
 
   match '/auth/:provider/callback', to: 'sessions#create'
 
-  match '/signup', to: 'employees#new', as: :sign_up
-  match '/signout', to:  'sessions#destroy', as: :signout
-  match '/signin', to:  'sessions#new', as: :signin
+  match '/signup',  to: 'employees#new', as: :sign_up
+  match '/signout', to: 'sessions#destroy', as: :signout
+  match '/signin',  to: 'sessions#new', as: :signin
 
   match '/auth/failure', to: 'sessions#failure'
 
   # resources :companies
   # resources :employees
-  # resources :comments
+  resources :comments
   # resources :menues
   # resources :menu_items
 

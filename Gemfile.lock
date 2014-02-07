@@ -70,8 +70,10 @@ GEM
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
+    font-awesome-sass (4.0.2)
+      sass-rails (>= 3.1.1)
     formatador (0.2.4)
-    guard (2.3.0)
+    guard (2.4.0)
       formatador (>= 0.2.4)
       listen (~> 2.1)
       lumberjack (~> 1.0)
@@ -95,7 +97,7 @@ GEM
       multi_json (>= 1.5)
     launchy (2.4.2)
       addressable (~> 2.3)
-    listen (2.4.0)
+    listen (2.4.1)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -246,6 +248,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   figaro
+  font-awesome-sass
   guard-rspec
   guard-zeus
   jquery-rails
