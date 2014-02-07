@@ -1,5 +1,5 @@
 <%#= link_to 'Sign in with Facebook', employee_omniauth_authorize_path(:facebook) %>
-<div id="navbar" class="navbar navbar-inverse navbar-fixed-top">
+<div id="navbar" class="navbar navbar-inverse navbar-fixed-top"%>
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
       <span class="icon-bar"></span>
@@ -8,18 +8,15 @@
     </button>
     <h2><%= link_to 'Lunch Panoply', class: 'navbar-brand' %></h2>
   </div>
-  <div class="collapse navbar-collapse" style="margin-top: 15%;">
+  <div class="collapse navbar-collapse" style="margin-top: 0%;">
     <ul class="nav navbar-nav">
       <!-- This hidden one just makes scrollspy reset when going above the team section -->
       <li style="display: none;"><a href="#home"></a><i class="icon-home"></i>HOME</li><span class="arror-left"></span>
       <li>
         <%= link_to menus_path, class: 'scroll'  do %>
-          <i class="icon-list"></i>TODAY's MENU<span class="arrow-left" style="margin-left: 96%;"></span>
+          <i class="icon-list"></i>TODAY's MENU<span class="arrow-left"></span>
         <% end %>
       </li>
-     
-        
-     <!--  </li> -->
       <li>
         <%= link_to venues_path, class: 'scroll'  do %>
           <i class="icon-food"></i>VENUES<span class="arrow-left"></span>

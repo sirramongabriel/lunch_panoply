@@ -259,8 +259,8 @@ span.valign {
 /* Container */ 
 .container {
   max-width: 1050px;
-  padding: 30px;
-  margin: 100px 0;
+  padding: 41px; /* original == 30px; */
+  margin: 0px 0; /* Original == 100px 0; */
 }
 .row.last {
   margin-bottom: 0;
