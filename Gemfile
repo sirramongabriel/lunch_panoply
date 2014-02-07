@@ -12,6 +12,7 @@ gem 'bcrypt-ruby'
 gem 'figaro'
 gem 'rubocop'
 gem 'twitter-bootstrap-rails'
+gem 'puma'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
