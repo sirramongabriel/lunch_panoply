@@ -17,26 +17,23 @@
  
     
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="stylesheets/font-awesome.min.css">
+    <link href="../assets/stylesheets/bootstrap-theme.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="../assets/stylesheets/font-awesome.min.css"> -->
     
     <!-- Montserrat: http://www.google.com/fonts/#QuickUsePlace:quickUse/Family:Montserrat -->
     <link href='http://fonts.googleapis.com/css?family=Montserrat:700,100' rel='stylesheet' type='text/css'>
         
     <!-- Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="../assets/stylesheets/style.css" rel="stylesheet">
     <!--[if lt IE 9]>
       <script src="js/respond.min.js"></script>
     <![endif]-->
   </head>
 
   <body>
-    <%= render 'layouts/nav' %>
-    <div class="container-fluid" style="overflow: hidden;">
-        
-        <%= render 'layouts/flash_messages' %>
-        <%= yield %>
-        <%#= render 'layouts/footer' %>
-    </div>
+    <%= render 'layouts/sub_nav' %>      
+    <%#= render 'layouts/flash_messages' %>
+    <%= yield %>
+    <%#= render 'layouts/footer' %>
   </body>
 </html>

@@ -1,4 +1,4 @@
-class Employee < ActiveRecord::Base
+ class Employee < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
