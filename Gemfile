@@ -13,13 +13,15 @@ gem 'figaro'
 gem 'rubocop'
 gem 'twitter-bootstrap-rails'
 gem 'puma'
-gem 'green_light'
+
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'font-awesome-sass'
+  gem 'green_light'
+  gem 'jquery-validation-rails'
 end
 
 group :development, :test do
