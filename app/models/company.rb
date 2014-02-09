@@ -12,7 +12,7 @@ class Company < ActiveRecord::Base
   validates_length_of :phone, is: 10, too_long: 'please enter no more than 10 digits', 
   										too_short: 'please enter a 10 digit number'
 
-  has_many :employees
+  belongs_to :employee
 
 
   # def Company.total

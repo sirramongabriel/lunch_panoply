@@ -12,7 +12,7 @@ class Employee < ActiveRecord::Base
 
   validates_presence_of :first_name, :last_name
 
-  belongs_to :company
+  has_one :company
 
   has_many :comments
   has_many :menu_items, through: :comments

@@ -258,9 +258,9 @@ span.valign {
 
 /* Container */ 
 .container {
-  max-width: 1050px;
-  padding: 41px; /* original == 30px; */
-  margin: 0px 0; /* Original == 100px 0; */
+  max-width: 1050px; /* original = 1050px; */
+  padding: 0px; /* original == 30px; */
+  margin: 101px 0; /* Original == 100px 0; */
 }
 .row.last {
   margin-bottom: 0;
@@ -318,7 +318,7 @@ span.valign {
 form {
   position: relative;
   float: right;
-  width: 100%;
+  width: 100%; 
 }
   .search {
     
