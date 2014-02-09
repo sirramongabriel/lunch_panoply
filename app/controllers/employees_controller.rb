@@ -25,7 +25,6 @@ class EmployeesController < ApplicationController
   end
 
   def edit
-    # get_company 
     @employee = @company.employees.find(params[:id])
   end
 

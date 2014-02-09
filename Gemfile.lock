@@ -73,6 +73,7 @@ GEM
     font-awesome-sass (4.0.2)
       sass-rails (>= 3.1.1)
     formatador (0.2.4)
+    green_light (0.1.5)
     guard (2.4.0)
       formatador (>= 0.2.4)
       listen (~> 2.1)
@@ -249,6 +250,7 @@ DEPENDENCIES
   faker
   figaro
   font-awesome-sass
+  green_light
   guard-rspec
   guard-zeus
   jquery-rails

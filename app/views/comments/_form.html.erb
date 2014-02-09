@@ -4,7 +4,7 @@
         
         <div class="content">
          
-          <%= form_for @comment do |f| %>
+          <%= form_for @comment, html: { class: 'green_light' } do |f| %>
             <div class="form-group">
               <%= f.text_field :title, placeholder: 'Enter Title', class: 'form-control' %>
               <div class="clearfix"></div>
