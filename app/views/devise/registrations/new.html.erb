@@ -13,7 +13,7 @@
 
     <div class="form-group">
       <div style="margin-right: 90%;">
-        <%= f.label 'Email:', class: 'icon-envelope fa-lg' %>
+        <%= f.label 'Email:', class: 'icon-inbox fa-lg' %>
       </div><br /><br />
       <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
     </div>
@@ -53,11 +53,10 @@
   <% end %>
   <div style="margin-left: 45%;">
     <%#= render "devise/shared/links" %>
-    <%= link_to "Sign up", new_registration_path(resource_name) %><br />
-    <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "Sign up with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %><br />
-  <% end -%>
+  <%= link_to "Sign in", new_session_path(resource_name) %>
+  <br />
+  <% resource_class.omniauth_providers.each do |provider| %>
+    <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %><br />
+  <% end %>
   </div>
 </div><!--./content-->
-
- 
