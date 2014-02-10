@@ -7,20 +7,18 @@
          :omniauthable, :omniauth_providers => [:facebook]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :first_name, :last_name, :company_id
-  attr_accessible :provider, :uid
+  attr_accessible :email, :password, :password_confirmation, :remember_me,
+                  :first_name, :last_name, :company_id, :provider, :uid
+
   validates_presence_of :first_name, :last_name
 
   has_one :company
 
   has_many :comments
   has_many :menu_items, through: :comments
-  # has_many :votes
-  # has_many :menu_items, through: :votes
 
 
-def Employee.find_for_facebook_oauth(auth, signed_in_resource=nil)
+  def Employee.find_for_facebook_oauth(auth, signed_in_resource=nil)
     employee = Employee.where(:provider => auth.provider, :uid => auth.uid).first
     if employee
       return employee
