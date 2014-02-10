@@ -3,11 +3,11 @@ class SessionsControllerController < ApplicationController
     redirect_to 'auth/facebook'
   end
 
-  def create
-    @employee = Employee.find_or_create_from_auth_hash(auth_hash)
-    self.current_employee = @employee
-    redirect_to('/')
-  end
+  # def create
+  #   # @employee = Employee.find_or_create_from_auth_hash(auth_hash)
+  #   # self.current_employee = @employee
+  #   # redirect_to('/')
+  # end
 
   # def employee
   #   @employee = Employee.find(params[:employee_id])

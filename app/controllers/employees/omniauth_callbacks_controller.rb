@@ -1,7 +1,9 @@
 class  Employees::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-	def facebook     
+	def facebook
+        # binding.pry
+
      @employee = Employee.find_for_facebook_oauth(request.env["omniauth.auth"], current_employee)      
-     if @employee.persisted?       
+     if @employee.persisted?
       sign_in_and_redirect(@employee, event: :authentication) #this will throw if @employee is not activated
       set_flash_message(:notice, :success, kind: "Facebook") if is_navigational_format?
     else
@@ -10,9 +12,8 @@ class  Employees::OmniauthCallbacksController < Devise::OmniauthCallbacksControl
     end
   end
 
-  def passthru
-  end
+
   def failure
-    render text: 'Something went wrong'  # 'params[:message]'
+    render text: params.to_json.to_s
   end
 end
