@@ -1,26 +1,13 @@
 LunchPanoply::Application.routes.draw do
-  get "menus/index"
-
-  get "menus/new"
-
-  get "menus/create"
-
-  get "menus/show"
-
-  get "menus/edit"
-
-  get "menus/update"
-
-  get "menus/destroy"
-
   devise_for :admins
 
   root to: 'static_pages#index'
 
-  devise_for :employees, :controllers => { 
-                                            :registration => "registration",
-                                            :omniauth_callbacks => "employees/omniauth_callbacks" 
-                                         }
+  devise_for :employees, 
+             :controllers => { 
+                                :registration => "registration",
+                                :omniauth_callbacks => "employees/omniauth_callbacks" 
+                              }
 
   resources :sessions, only: [:new, :create, :destroy, :failure]
 
@@ -37,12 +24,8 @@ LunchPanoply::Application.routes.draw do
   resources :companies
   # resources :employees
   resources :comments
-  # resources :menues
+  resources :menus
   # resources :menu_items
-
-  # resources :companies do
-  #   resources :employees
-  # end
 
   resources :employees do
     resources :sessions
