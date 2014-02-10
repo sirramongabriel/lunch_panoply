@@ -14,9 +14,9 @@
      <div class="table-responsive">
      <table class="table table-bordered table-striped">
       <tr>
-        <th>Title</th>
-        <th>Date</th>
-        <th>Menu</th>
+        <th>Entrees</th>
+        <th>Images</th>
+        <th>Prices</th>
         <th>View</th>
         <% if current_employee.try(:admin?) %>
           <th>Edit</th>
@@ -26,9 +26,9 @@
       <% unless @menus.blank? %>
         <% @menus.each do |menu| %>
         <tr>
-          <td><%#= @menu.title %></td>
-          <td><%#= @menu.created_at.strftime('%a %B %d, %Y') %></td>
-          <td><%#= @menu.content %></td>
+          <td><%#= @menu.menu_item.name %></td>
+          <td><%#= @menu.menu_item.img %></td>
+          <td><%#= @menu.menu_item.price %></td>
           <td>
             <%= button_to :view, menu_path(menu), 
                           options = { 
