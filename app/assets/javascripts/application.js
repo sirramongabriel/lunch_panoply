@@ -14,3 +14,11 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+
+// <script type="text/javascript">
+//     $("#demo").collapse("hide");
+// </script>
+
+// $(function(){
+//    Your JavaScript goes here... 
+// });
