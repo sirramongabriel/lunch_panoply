@@ -26,11 +26,13 @@ LunchPanoply::Application.routes.draw do
   # resources :menues
   # resources :menu_items
 
-  resources :companies do
-    resources :employees
-  end
+  # resources :companies do
+  #   resources :employees
+  # end
 
   resources :employees do
+    resources :sessions
+    resources :companies
     resources :comments
     resources :favorites
   end
