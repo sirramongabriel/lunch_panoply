@@ -1,5 +1,5 @@
 class OmniauthCallbacksController < ApplicationController
-	def facebook     
+	def facebook
      @employee = Employee.find_for_facebook_oauth(request.env["omniauth.auth"], current_employee)      
      if @employee.persisted?       
       sign_in_and_redirect(@employee, event: :authentication) #this will throw if @employee is not activated

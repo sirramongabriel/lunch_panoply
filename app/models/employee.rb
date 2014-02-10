@@ -9,7 +9,7 @@
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :first_name, :last_name, :company_id
-
+  attr_accessible :provider, :uid
   validates_presence_of :first_name, :last_name
 
   has_one :company
@@ -29,7 +29,10 @@ def Employee.find_for_facebook_oauth(auth, signed_in_resource=nil)
       if registered_user
         return registered_user
       else
-        employee = Employee.create(name:auth.extra.raw_info.name,
+        first_name = auth.extra.raw_info.name.split(" ")[0]
+        last_name  = auth.extra.raw_info.name.split(" ")[-1]
+        employee = Employee.create(first_name: first_name,
+                            last_name: last_name,
                             provider:auth.provider,
                             uid:auth.uid,
                             email:auth.info.email,

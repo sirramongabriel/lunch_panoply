@@ -1,3 +1,5 @@
+require 'devise'
+
 require 'omniauth-facebook'
 
 # Use this hook to configure devise mailer, warden hooks and so forth.

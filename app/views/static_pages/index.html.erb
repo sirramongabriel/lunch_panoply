@@ -2,7 +2,7 @@
 <div class="row-fluid">
   <div id="home" class="section">
 
-    <div class="fixed-wrapper span14" ><h1>Welcome!</h1></div>
+    <div class="fixed-wrapper span14" ><h1>Welcome! <%= current_employee ? current_employee.first_name : "" %></h1></div>
     <div class="pull-right">
       <%= render 'layouts/auth_nav' %>
     </div>

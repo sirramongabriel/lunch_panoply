@@ -18,21 +18,21 @@ LunchPanoply::Application.routes.draw do
   root to: 'static_pages#index'
 
   devise_for :employees, :controllers => { 
-                                            :registration => "registration",
+                                            # :registration => "registration",
                                             :omniauth_callbacks => "employees/omniauth_callbacks" 
                                          }
 
-  resources :sessions, only: [:new, :create, :destroy, :failure]
+  # resources :sessions, only: [:new, :create, :destroy, :failure]
 
   resources :identities
 
-  match '/auth/:provider/callback', to: 'sessions#create'
+  # match '/auth/:provider/callback', to: 'sessions#create'
 
-  match '/signup',  to: 'employees#new', as: :sign_up
-  match '/signout', to: 'sessions#destroy', as: :signout
-  match '/signin',  to: 'sessions#new', as: :signin
+  # match '/signup',  to: 'employees#new', as: :sign_up
+  # match '/signout', to: 'sessions#destroy', as: :signout
+  # match '/signin',  to: 'sessions#new', as: :signin
 
-  match '/auth/failure', to: 'sessions#failure'
+  # match '/auth/failure', to: 'sessions#failure'
 
   resources :companies
   # resources :employees
@@ -44,12 +44,12 @@ LunchPanoply::Application.routes.draw do
   #   resources :employees
   # end
 
-  resources :employees do
-    resources :sessions
-    # resources :companies
-    # resources :comments
-    resources :favorites
-  end
+  # resources :employees do
+  #   resources :sessions
+  #   # resources :companies
+  #   # resources :comments
+  #   resources :favorites
+  # end
 
   resources :venues do
     resources :menus
