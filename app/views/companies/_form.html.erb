@@ -1,37 +1,42 @@
-<div id="contact" class="section">
-  <div class="fixed-wrapper"><h2>New Company</h2></div>
-  <div class="container">
+<div id="contact" class="section" style="overflow: hidden;">
+  <div class="fixed-wrapper">
+    <h2>New Company</h2>
+  </div>
+</div>
+  <div class="container" style="overflow: hidden; margin-top: -.2%; width: auto;">
     
-    <div class="content">      
+    <div class="content" style="margin-top: 10%; height: 600px;">      
       <%= form_for @company do |f| %>
         <% @company.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
         <div class="form-group">
-          <%= f.text_field :name, placeholder: "Your company's name", autofocus: true %>
+          <%= f.text_field :name, placeholder: "Your company's name", autofocus: true, class: 'form-control' %>
           <div class="clearfix"></div>
         </div>
         <div class="form-group">
-          <%= f.text_area :address, placeholder: 'Company address', size: '5x5' %>
+          <%= f.text_area :address, placeholder: 'Company address', class: 'form-control', size: '5x5' %>
           <div class="clearfix"></div>
         </div>
         <div class="form-group">
-          <%= f.text_field :city, placeholder: 'Company city' %>
+          <%= f.text_field :city, placeholder: 'Company city', class: 'form-control' %>
           <div class="clearfix"></div>
         </div>
         <div class="form-group">
-          <%= f.text_field :state, placeholder: 'Company state' %>
+          <%= f.text_field :state, placeholder: 'Company state', class: 'form-control' %>
           <div class="clearfix"></div>
         </div>
         <div class="form-group field_with_errors">
-          <%= f.text_field :zip, placeholder: 'Company zip code' %>
+          <%= f.text_field :zip, placeholder: 'Company zip code', class: 'form-control' %>
           <div class="clearfix"></div>
         </div>
         <div class="form-group">
-          <%= f.telephone_field :phone, placeholder: 'Company phone' %>
+          <%= f.telephone_field :phone, placeholder: 'Company phone', class: 'form-control' %>
           <div class="clearfix"></div>
         </div>        
-        <%= f.submit 'Add Company!', class: 'btn btn-lg', method: :post %> 
+        <div class="form-group" style="width: 80%; margin-left: 15%;"> 
+          <%= f.submit 'Add Company!', class: 'btn btn-block btn-primary', method: :post %> 
+        </div>
         <%#= render "Employee/shared/links" %>     
       <% end %>
     </div>

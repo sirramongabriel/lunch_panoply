@@ -20,7 +20,7 @@ LunchPanoply::Application.routes.draw do
 
   match '/auth/failure', to: 'sessions#failure'
 
-  # resources :companies
+  resources :companies
   # resources :employees
   resources :comments
   # resources :menues
