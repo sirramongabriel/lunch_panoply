@@ -4,82 +4,36 @@
     <h1>Venues</h1>
   </div>
 </div>
-  <div class="container" style="margin-left: 8%; overflow: hidden; padding: 5px; width: 90%;">
-    <div class="content">
-      <% @venues.each_slice(3) do |venue| %>
-      <div class="row" style="margin-left: 0%;">
-        <div class="col-md-4 col-sm-4 col-xs-12 pull-left" style="display: absolute; width: 30%;">
-          <div class="team-portrait block">              
-            <div class="title" style="margin-left: 10%; text-align: center;">
-              <h3>@venue.name</h3>
-              <h4 class="italic">@venue.city</h4>
-            </div>
-            <div class="portrait" style="margin-left: 16%; width: 75%; height: auto;">
-              <a href="#">
-               <!--  <img src="../images/portrait2.jpg" alt="Team Portrait">  -->  
-                <%= image_tag 'portrait2', options = { alt: 'Team Portrait', size: '50x50' } %>           
-                <span class="overlay"><span class="valign"></span><i class="icon-envelope"></i></span>                    
-              </a>
-            </div>
-            <p style="margin-left: 13%; text-align: center; width: 80%;">Hi, I'm Michael Chang. I am a developer who specializes on CSS, HTML and Javascript. I'm excited to work more and learn more about design.</p>
-            <div class="social-media" style="margin-left: 15%; width: 50%;">
-              <a href="#" data-toggle="tooltip" title="twitter"><i class="icon-twitter"></i></a>
-              <a href="#" data-toggle="tooltip" title="facebook"><i class="icon-facebook"></i></a>
-              <a href="#" data-toggle="tooltip" title="linkedin"><i class="icon-linkedin"></i></a>
-              <a href="#" data-toggle="tooltip" title="github"><i class="icon-github"></i></a>
-              <a href="#" data-toggle="tooltip" title="pinterest"><i class="icon-pinterest"></i></a>
-              <span class="stretch"></span>
-           </div>
+<div class="container" style="margin-left: 7.5%; overflow: hidden; padding: 5px; width: 90%;">
+  <div class="content">
+    <% @venues.each do |venue| %>
+    <div class="row" style="">
+      <div class="col-md-4 col-sm-4 col-xs-12 pull-left" style="display: absolute; width: 95%;;">
+        <div class="team-portrait block" style="margin-left: -2%;">              
+          <div class="title" style="text-align: center;">
+            <h3><%= venue.name %></h3>
+            <h4 class="italic"><%= venue.city %></h4>
           </div>
-        </div><!--/.col-md-4 col-sm-4 col-xs-12--> 
-       <!--  <div class="col-md-4 col-sm-4 col-xs-12 pull-left" style="margin-left: 10px; width: 30%;">
-          <div class="team-portrait block">              
-            <div class="title" style="margin-left: 10%; text-align: center;">
-              <h3 >Michael Chang</h3>
-              <h4 class="italic">Developer</h4>
-            </div>
-            <div class="portrait" style="margin-left: 16%; width: 75%; height: auto;">
-              <a href="#">
-                <%#= image_tag 'portrait2', options = { alt: 'Team Portrait', size: '50x50' } %>           
-                <span class="overlay"><span class="valign"></span><i class="icon-envelope"></i></span>                    
-              </a>
-            </div>
-            <p style="margin-left: 13%; text-align: center; width: 80%;">Hi, I'm Michael Chang. I am a developer who specializes on CSS, HTML and Javascript. I'm excited to work more and learn more about design.</p>
-            <div class="social-media" style="margin-left: 15%; width: 50%;">
-              <a href="#" data-toggle="tooltip" title="twitter"><i class="icon-twitter"></i></a>
-              <a href="#" data-toggle="tooltip" title="facebook"><i class="icon-facebook"></i></a>
-              <a href="#" data-toggle="tooltip" title="linkedin"><i class="icon-linkedin"></i></a>
-              <a href="#" data-toggle="tooltip" title="github"><i class="icon-github"></i></a>
-              <a href="#" data-toggle="tooltip" title="pinterest"><i class="icon-pinterest"></i></a>
-              <span class="stretch"></span>
-           </div>
+          <div class="portrait" style="margin-left: 15%; width: 75%; height: auto;">
+            <a href="#">
+              <%= image_tag 'portrait2', options = { alt: 'Team Portrait', size: '50x50' } %>
+              <span class="overlay"><span class="valign"></span><i class="icon-envelope"></i></span>                    
+            </a>
           </div>
-        </div>/.col-md-4 col-sm-4 col-xs-12--> 
-        <!-- <div class="col-md-4 col-sm-4 col-xs-12 pull-right" style="margin-right: 70px; width: 30%;">
-          <div class="team-portrait block">              
-            <div class="title" style="margin-left: 10%; text-align: center;">
-              <h3 >Michael Chang</h3>
-              <h4 class="italic">Developer</h4>
-            </div>
-            <div class="portrait" style="margin-left: 16%; width: 75%; height: auto;">
-              <a href="#">
-                <%#= image_tag 'portrait2', options = { alt: 'Team Portrait', size: '50x50' } %>           
-                <span class="overlay"><span class="valign"></span><i class="icon-envelope"></i></span>                    
-              </a>
-            </div>
-            <p style="margin-left: 13%; text-align: center; width: 80%;">Hi, I'm Michael Chang. I am a developer who specializes on CSS, HTML and Javascript. I'm excited to work more and learn more about design.</p>
-            <div class="social-media" style="margin-left: 15%; width: 50%;">
-              <a href="#" data-toggle="tooltip" title="twitter"><i class="icon-twitter"></i></a>
-              <a href="#" data-toggle="tooltip" title="facebook"><i class="icon-facebook"></i></a>
-              <a href="#" data-toggle="tooltip" title="linkedin"><i class="icon-linkedin"></i></a>
-              <a href="#" data-toggle="tooltip" title="github"><i class="icon-github"></i></a>
-              <a href="#" data-toggle="tooltip" title="pinterest"><i class="icon-pinterest"></i></a>
-              <span class="stretch"></span>
-           </div>
-          </div>
-        </div>/.col-md-4 col-sm-4 col-xs-12--> 
-      </div>/.row--> -->
-<!--     </div> -/.content-->
- </div><!--/.container-->
+          <p style="margin-left: 12%; text-align: center; width: 80%;">Hi, I'm Michael Chang. I am a developer who specializes on CSS, HTML and Javascript. I'm excited to work more and learn more about design.</p>
+          <div class="social-media" style="margin-left: 25%; width: 50%;">
+            <a href="#" data-toggle="tooltip" title="twitter"><i class="icon-twitter"></i></a>
+            <a href="#" data-toggle="tooltip" title="facebook"><i class="icon-facebook"></i></a>
+            <a href="#" data-toggle="tooltip" title="linkedin"><i class="icon-linkedin"></i></a>
+            <a href="#" data-toggle="tooltip" title="github"><i class="icon-github"></i></a>
+            <a href="#" data-toggle="tooltip" title="pinterest"><i class="icon-pinterest"></i></a>
+            <span class="stretch"></span>
+         </div>
+        </div>
+      </div><!--/.col-md-4 col-sm-4 col-xs-2--> 
+    </div><!--/.row-->
+    <br /><br />
+    <% end %>
+  </div><!--/.container-->
 </div><!-- /.container -->
-<% end %>
+
