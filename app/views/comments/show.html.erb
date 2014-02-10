@@ -1,2 +1,21 @@
-<h1>Comments#show</h1>
-<p>Find me in app/views/comments/show.html.erb</p>
+<div id="contact" class="section" style="overflor: hidden;">
+  <div class="fixed-wrapper">
+    <h1>Comment from: <small><em><%= @comment.created_at.strftime('%a %B %d, %Y at: %I:%M %p') %></em></small></h1>
+  </div>
+</div>
+<div class="container" style="border-style: solid; border-color: red; border-size: 1px; overflow: hidden; margin-top: -.2%; width: auto;">
+  <div class="content" style="margin-top: 10%; height: 600px;">
+    <ul class="list-group">
+      <a href="#" class="list-group-item active">
+        <h4 class="list-group-item-heading">comment title</h4>
+        <p class="list-group-item-text">comment date</p>
+      </a>
+      <li class="list-group-item">comment title</li>
+      <li class="list-group-item">comment content</li>
+      <li class="list-group-item">comment date</li>
+      <li class="list-group-item">view</li>
+      <li class="list-group-item">edit</li>
+      <li class="list-grou-item">delete</li>
+    </ul>
+  </div><!--/.content-->
+</div><!--/.container-->

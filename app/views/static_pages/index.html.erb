@@ -1,5 +1,11 @@
-<h1>Welcome to Lunch Panoply!</h1>
-<hr />
-<% @employees.each do |employee| %>
-	<p>Employee: <%= employee.full_name %></p>
-<% end %>
+
+<div class="row-fluid">
+  <div id="home" class="section">
+
+    <div class="fixed-wrapper span14" ><h1>Welcome!</h1></div>
+    <div class="pull-right">
+      <%= render 'layouts/auth_nav' %>
+    </div>
+  </div>
+</div>
+<%#= render 'employees/registrations/new' %>

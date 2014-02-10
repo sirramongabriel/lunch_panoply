@@ -9,6 +9,15 @@ class SessionsControllerController < ApplicationController
     redirect_to('/')
   end
 
+  # def employee
+  #   @employee = Employee.find(params[:employee_id])
+  #   if @employee.save
+  #     redirect_to @employee, success: 'Profile created successfully!'
+  #   else
+  #     render :new, error: 'There was an error processing your form'
+  #   end
+  # end
+
   # def create
   #   auth = request.env["omniauth.auth"]
   #   employee = Employee.where(provider: auth['provider'], uid: auth['uid']).first || 

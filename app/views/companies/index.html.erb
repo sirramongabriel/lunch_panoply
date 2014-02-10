@@ -1,2 +1,70 @@
-<h1>Companies#index</h1>
-<p>Find me in app/views/companies/index.html.erb</p>
+<div id="contact" class="section" style="overflor: hidden;">
+  <div class="fixed-wrapper">
+    <h1>Companies</h1>
+  </div>
+</div>
+  <div class="container" style="overflow: hidden; margin-top: -.2%; width: auto;">
+    <div>
+      <%= link_to 'Add a Company' do %>
+        <button class="btn btn-primary" style="width: auto%;">Add a Company</button>
+      <% end %>
+    </div>
+    <div class="content" style="margin-top: 10%; height: 600px;">
+     <div class="table-responsive">
+     <table class="table table-bordered table-striped">
+      <tr>
+        <th>Title</th>
+        <th>Date</th>
+        <th>Comment</th>
+        <th>View</th>
+        <% if current_employee.try(:admin?) %>
+          <th>Edit</th>
+          <th>Delete</th>
+        <% end %>
+      </tr>
+      <% unless @companies.blank? %>
+        <% @companies.each do |company| %>
+        <tr>
+          <td><%#= @company.title %></td>
+          <td><%#= @company.created_at.strftime('%a %B %d, %Y') %></td>
+          <td><%#= @company.content %></td>
+          <td>
+            <%= button_to :view, company_path(company), 
+                          options = { 
+                                      method: :get, 
+                                      class: 'btn btn-xs btn-info',
+                                      style: 'height: 35px; width: auto;',
+                                      type: 'button'
+                                     } %>
+          </td>
+          <% if current_employee.try(:admin?) %>
+            <td>
+              <%= button_to :edit, edit_company_path(company), 
+                            options = { 
+                                        method: :get,
+                                        clasS: 'btn btn-xs btn-default',
+                                        style: 'display: inline;',
+                                        type: 'button'
+                                       } %>
+            </td>
+            <td>
+              <%= button_to :delete, company_path(company), 
+                            options = {
+                                        method: :delete,
+                                        confirm: 'You sure?',
+                                        class: 'btn btn-xs btn-danger',
+                                        style: 'display: inline;',
+                                        type: 'button'
+                                       } %>
+            </td>
+          <% end %>
+        </tr>
+        <% end %>
+      <% end %>
+      </table>
+      </div>          
+    </div>
+    <br />
+  </div>
+</div><!-- /.container -->    
+

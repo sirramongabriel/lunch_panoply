@@ -1,0 +1,59 @@
+<!-- Contact Section -->
+<div id="contact" class="section" style="overflow: hidden;">
+  <div class="fixed-wrapper">
+    <h1>Sign In</h1>
+  </div>
+</div>
+<div class="container" style="overflow: hidden; margin-top: -.2%; width: auto;">
+  <div class="content">
+    <%= form_for(
+                  resource,
+                  :as => resource_name, 
+                  :url => session_path(resource_name)) do |f| %>
+
+    <div class="form-group">
+      <div style="margin-right: 90%;">
+        <%= f.label :email, class: 'icon-envelope fa-lg' %>
+      </div><br /><br />
+      <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
+    </div>
+    <br /><br /><br />
+    <div class="form-group">
+      <div style="margin-right: 90%;"> 
+        <%= f.label :password, class: 'icon-unlock fa-lg' %>
+      </div><br /><br />
+      <%= f.password_field :password, class: 'form-control' %>
+    </div>
+    <br /><br /><br />
+    <div class="form-group">
+      <div style="margin-right: 90%;"> 
+        <%= f.label :password_confirmation, class: 'icon-lock fa-lg' %>
+      </div><br /><br />
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+      <div class="clearfix"></div>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="span9" style="margin-left: 45%; display: inline;">
+        <li style="list-style: none; overflow: hidden;">
+          <%= f.check_box :remember_me %>
+          <span style="margin-left: 15%;">
+          <%= f.label :remember_me, class: 'form-checkbox form-control' %>
+        </span>
+        </li>
+        <div class="clearfix"></div>
+      </div>
+    <% end %>
+    <div class="form-group" style="width: auto;">
+      <div style="margin-left: -2%;">
+        <%= f.submit "Sign in", class: 'btn btn-primary' %>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  <% end %>
+  <div style="margin-left: 45%;">
+    <%= render "devise/shared/links" %>
+  </div>
+</div><!--./content-->
+
+ 

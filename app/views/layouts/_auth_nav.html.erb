@@ -1,0 +1,27 @@
+<ul class="nav nav-pages">
+  <% if employee_signed_in? %>
+    <li>
+      <%= button_to(
+                    'Logout', 
+                    destroy_employee_session_path, 
+                    method: :delete,
+                    class: 'btn btn-sm btn-default'
+                    ) %>
+    </li>
+  <% else %>
+    <li>
+      <span>
+        <h5>
+          <%= link_to('Login', new_employee_session_path) %>
+          -or-
+          <%= link_to(
+                      'Sign up', 
+                      new_employee_registration_path,
+                      class: 'label label-default'
+                      ) %>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+        </h5>
+      </span>
+    </li>
+  <% end %>
+</ul>

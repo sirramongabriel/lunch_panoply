@@ -1,4 +1,18 @@
 LunchPanoply::Application.routes.draw do
+  get "menus/index"
+
+  get "menus/new"
+
+  get "menus/create"
+
+  get "menus/show"
+
+  get "menus/edit"
+
+  get "menus/update"
+
+  get "menus/destroy"
+
   devise_for :admins
 
   root to: 'static_pages#index'
@@ -14,23 +28,26 @@ LunchPanoply::Application.routes.draw do
 
   match '/auth/:provider/callback', to: 'sessions#create'
 
-  match '/signout' => 'sessions#destroy', as: :signout
-  match '/signin' => 'sessions#new', as: :signin
+  match '/signup',  to: 'employees#new', as: :sign_up
+  match '/signout', to: 'sessions#destroy', as: :signout
+  match '/signin',  to: 'sessions#new', as: :signin
 
-  match '/auth/failure' => 'sessions#failure'
+  match '/auth/failure', to: 'sessions#failure'
 
-  # resources :companies
+  resources :companies
   # resources :employees
-  # resources :comments
+  resources :comments
   # resources :menues
   # resources :menu_items
 
-  resources :companies do
-    resources :employees
-  end
+  # resources :companies do
+  #   resources :employees
+  # end
 
   resources :employees do
-    resources :comments
+    resources :sessions
+    # resources :companies
+    # resources :comments
     resources :favorites
   end
 

@@ -1,2 +1,71 @@
-<h1>Comments#index</h1>
-<p>Find me in app/views/comments/index.html.erb</p>
+<div id="contact" class="section" style="overflor: hidden;">
+  <div class="fixed-wrapper">
+    <h1>Comments</h1>
+  </div>
+</div>
+  <div class="container" style="overflow: hidden; margin-top: -.2%; width: auto;">
+    <div>
+      <%#= button_to 'Add a comment', class: 'btn btn-large btn-primary' %>
+      <%= link_to 'Add a Comment' do %>
+        <button class="btn btn-primary" style="width: auto%;">Add a Comment</button>
+      <% end %>
+    </div>
+    <div class="content" style="margin-top: 10%; height: 600px;">
+     <div class="table-responsive">
+     <table class="table table-bordered table-striped">
+      <tr>
+        <th>Title</th>
+        <th>Date</th>
+        <th>Comment</th>
+        <th>View</th>
+        <% if current_employee.try(:admin?) %>
+          <th>Edit</th>
+          <th>Delete</th>
+        <% end %>
+      </tr>
+      <% unless @comments.blank? %>
+        <% @comments.each do |comment| %>
+        <tr>
+          <td><%#= @comment.title %></td>
+          <td><%#= @comment.created_at.strftime('%a %B %d, %Y') %></td>
+          <td><%#= @comment.content %></td>
+          <td>
+            <%= button_to :view, comment_path(comment), 
+                          options = { 
+                                      method: :get, 
+                                      class: 'btn btn-xs btn-info',
+                                      style: 'height: 35px; width: auto;',
+                                      type: 'button'
+                                     } %>
+          </td>
+          <% if current_employee.try(:admin?) %>
+            <td>
+              <%= button_to :edit, edit_comment_path(comment), 
+                            options = { 
+                                        method: :get,
+                                        clasS: 'btn btn-xs btn-default',
+                                        style: 'display: inline;',
+                                        type: 'button'
+                                       } %>
+            </td>
+            <td>
+              <%= button_to :delete, comment_path(comment), 
+                            options = {
+                                        method: :delete,
+                                        confirm: 'You sure?',
+                                        class: 'btn btn-xs btn-danger',
+                                        style: 'display: inline;',
+                                        type: 'button'
+                                       } %>
+            </td>
+          <% end %>
+        </tr>
+        <% end %>
+      <% end %>
+      </table>
+      </div>          
+    </div>
+    <br />
+  </div>
+</div><!-- /.container -->    
+
