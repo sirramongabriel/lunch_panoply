@@ -13,7 +13,7 @@ class EmployeesController < ApplicationController
   def create
     @employee = Employee.new(params[:employee])
     if @employee.save
-      redirect_to(@employee, success: 'Employee created!')
+      redirect_to(employee_path(@employee), success: 'Employee created!')
     else
       render(:new, error: 'There was an error processing your form')
     end
