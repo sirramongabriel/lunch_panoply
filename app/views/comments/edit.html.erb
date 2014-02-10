@@ -1,2 +1,29 @@
-<h1>Comments#edit</h1>
-<p>Find me in app/views/comments/edit.html.erb</p>
+<div id="contact" class="section" style="overflor: hidden;">
+  <div class="fixed-wrapper">
+    <h1><em style="color: #992828; opacity: .65;">Edit</em> Comment</h1>
+  </div>
+</div>
+  <div class="container" style="overflow: hidden; margin-top: -.2%; width: auto;">
+    
+    <div class="content" style="margin-top: 10%; height: 600px;">
+     
+      <%= form_for @comment do |f| %>
+        <div class="form-group">
+          <%= f.text_field :title, placeholder: 'Enter Title', class: 'form-control' %>
+          <div class="clearfix"></div>
+        </div>
+        <div class="form-group">
+          <%= f.text_area :content, placeholder: 'Enter Comment', class: 'form-control',
+                          size: '5x5' %>
+          <div class="clearfix"></div>
+        
+        <br />
+        <div class="span6" style=" width: 80%; margin-left: 15%;">
+          <%= f.submit 'Create Comment!', class: 'btn btn-block btn-primary' %>
+        </div>
+        </div>
+      <% end %>          
+    </div>
+    <br />
+  </div>
+</div><!-- /.container -->    
