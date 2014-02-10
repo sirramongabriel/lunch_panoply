@@ -1,0 +1,70 @@
+<div id="contact" class="section" style="overflor: hidden;">
+  <div class="fixed-wrapper">
+    <h1>Menus</h1>
+  </div>
+</div>
+  <div class="container" style="overflow: hidden; margin-top: -.2%; width: auto;">
+    <div>
+      <%#= button_to 'Add a menue', class: 'btn btn-large btn-primary' %>
+      <%#= link_to 'Add a Menu' do %>
+        <!-- <button class="btn btn-primary" style="width: auto%;">Add a menue</button> -->
+      <%# end %>
+    </div>
+    <div class="content" style="margin-top: 10%; height: 600px;">
+     <div class="table-responsive">
+     <table class="table table-bordered table-striped">
+      <tr>
+        <th>Title</th>
+        <th>Date</th>
+        <th>Menu</th>
+        <th>View</th>
+        <% if current_employee.try(:admin?) %>
+          <th>Edit</th>
+          <th>Delete</th>
+        <% end %>
+      </tr>
+      <% unless @menus.blank? %>
+        <% @menus.each do |menu| %>
+        <tr>
+          <td><%#= @menu.title %></td>
+          <td><%#= @menu.created_at.strftime('%a %B %d, %Y') %></td>
+          <td><%#= @menu.content %></td>
+          <td>
+            <%= button_to :view, menu_path(menu), 
+                          options = { 
+                                      method: :get, 
+                                      class: 'btn btn-xs btn-info',
+                                      style: 'height: 35px; width: auto;',
+                                      type: 'button'
+                                     } %>
+          </td>
+          <% if current_employee.try(:admin?) %>
+            <td>
+              <%= button_to :edit, edit_menue_path(menue), 
+                            options = { 
+                                        method: :get,
+                                        clasS: 'btn btn-xs btn-default',
+                                        style: 'display: inline;',
+                                        type: 'button'
+                                       } %>
+            </td>
+            <td>
+              <%= button_to :delete, menue_path(menue), 
+                            options = {
+                                        method: :delete,
+                                        confirm: 'You sure?',
+                                        class: 'btn btn-xs btn-danger',
+                                        style: 'display: inline;',
+                                        type: 'button'
+                                       } %>
+            </td>
+          <% end %>
+        </tr>
+        <% end %>
+      <% end %>
+      </table>
+      </div>          
+    </div>
+    <br />
+  </div>
+</div><!-- /.container -->    

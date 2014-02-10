@@ -1,4 +1,18 @@
 LunchPanoply::Application.routes.draw do
+  get "menus/index"
+
+  get "menus/new"
+
+  get "menus/create"
+
+  get "menus/show"
+
+  get "menus/edit"
+
+  get "menus/update"
+
+  get "menus/destroy"
+
   devise_for :admins
 
   root to: 'static_pages#index'
