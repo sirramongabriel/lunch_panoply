@@ -32,8 +32,8 @@ LunchPanoply::Application.routes.draw do
 
   resources :employees do
     resources :sessions
-    resources :companies
-    resources :comments
+    # resources :companies
+    # resources :comments
     resources :favorites
   end
 

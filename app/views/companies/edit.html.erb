@@ -1,2 +1,42 @@
-<h1>Companies#edit</h1>
-<p>Find me in app/views/companies/edit.html.erb</p>
+<div id="contact" class="section" style="overflow: hidden;">
+  <div class="fixed-wrapper">
+    <h1><em style="color: red; opacity: .65;">Edit</em> Company</h1>
+  </div>
+</div>
+<div class="container" style="overflow: hidden; margin-top: -.2%; width: auto;">
+  <div class="content" style="height: 600px;">      
+    <%= form_for @company do |f| %>
+      <% @company.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      <div class="form-group">
+        <%= f.text_field :name, placeholder: "Your company's name", autofocus: true, class: 'form-control' %>
+        <div class="clearfix"></div>
+      </div>
+      <div class="form-group">
+        <%= f.text_area :address, placeholder: 'Company address', class: 'form-control', size: '5x5' %>
+        <div class="clearfix"></div>
+      </div>
+      <div class="form-group">
+        <%= f.text_field :city, placeholder: 'Company city', class: 'form-control' %>
+        <div class="clearfix"></div>
+      </div>
+      <div class="form-group">
+        <%= f.text_field :state, placeholder: 'Company state', class: 'form-control' %>
+        <div class="clearfix"></div>
+      </div>
+      <div class="form-group field_with_errors">
+        <%= f.text_field :zip, placeholder: 'Company zip code', class: 'form-control' %>
+        <div class="clearfix"></div>
+      </div>
+      <div class="form-group">
+        <%= f.telephone_field :phone, placeholder: 'Company phone', class: 'form-control' %>
+        <div class="clearfix"></div>
+      </div>        
+      <div class="form-group" style="width: 80%; margin-left: 15%;"> 
+        <%= f.submit 'Update Company!', class: 'btn btn-block btn-sucecess', method: :post %> 
+      </div>
+      <%#= render "Employee/shared/links" %>     
+    <% end %>
+  </div><!--/.content-->
+</div><!--/.container-->  
