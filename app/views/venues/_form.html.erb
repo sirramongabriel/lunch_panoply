@@ -12,7 +12,7 @@
       <div style="margin-right: 90%;">
         <%= f.label 'Name:', class: 'icon-pencil fa-lg' %>
       </div><br /><br />
-      <%= f.email_field :name, :autofocus => true, class: 'form-control' %>
+      <%= f.text_field :name, :autofocus => true, class: 'form-control' %>
     </div>
     <br /><br /><br />
     <div class="form-group">
@@ -26,48 +26,48 @@
       <div style="margin-right: 90%;"> 
         <%= f.label 'City:', class: 'icon-key fa-lg' %>
       </div><br /><br />
-      <%= f.password_field :city, class: 'form-control' %>
+      <%= f.text_field :city, class: 'form-control' %>
       <div class="clearfix"></div>
     </div>
     <div class="form-group">
       <div style="margin-right: 90%;"> 
         <%= f.label 'State:', class: 'icon-flag fa-lg' %>
       </div><br /><br />
-      <%= f.password_field :state, class: 'form-control' %>
+      <%= f.text_field :state, class: 'form-control' %>
       <div class="clearfix"></div>
     </div>
     <div class="form-group">
       <div style="margin-right: 90%;"> 
         <%= f.label 'Zip:', class: 'icon-map-marker fa-lg' %>
       </div><br /><br />
-      <%= f.password_field :zip, class: 'form-control' %>
+      <%= f.text_field :zip, class: 'form-control' %>
       <div class="clearfix"></div>
     </div>
     <div class="form-group">
       <div style="margin-right: 90%;"> 
         <%= f.label 'Phone:', class: 'icon-phone fa-lg' %>
       </div><br /><br />
-      <%= f.password_field :phone, class: 'form-control' %>
+      <%= f.telephone_field :phone, class: 'form-control' %>
       <div class="clearfix"></div>
     </div>
     <div class="form-group">
       <div style="margin-right: 90%;"> 
         <%= f.label 'Fax:', class: 'icon-file-text fa-lg' %>
       </div><br /><br />
-      <%= f.password_field :fax, class: 'form-control' %>
+      <%= f.telephone_field :fax, class: 'form-control' %>
       <div class="clearfix"></div>
     </div>
     <div class="form-group">
       <div style="margin-right: 90%;"> 
         <%= f.label 'Email:', class: 'icon-inbox fa-lg' %>
       </div><br /><br />
-      <%= f.password_field :email, class: 'form-control' %>
+      <%= f.email_field :email, class: 'form-control' %>
       <div class="clearfix"></div>
     </div>
     <br /><br /><br />
     <div class="form-group" style="width: auto;">
       <div style="margin-left: -2%;">
-        <%= f.submit "Add Venue", class: 'btn btn-primary' %>
+        <%= f.submit "Add Venue!", class: 'btn btn-primary' %>
       </div>
       <div class="clearfix"></div>
     </div>

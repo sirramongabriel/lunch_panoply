@@ -1,2 +1,30 @@
-<h1>Venues#show</h1>
-<p>Find me in app/views/venues/show.html.erb</p>
+<div id="contact" class="section" style="overflor: hidden;">
+  <div class="fixed-wrapper">
+    <h1>Venue: <small><em><%= @venue.name %></em></small></h1>
+  </div>
+</div>
+<div class="container" style="border-style: solid; border-color: red; border-size: 1px; overflow: hidden; margin-top: -.2%; width: auto;">
+  <%= link_to 'back', :back, class: 'btn btn-sm btn-inverse' %>
+
+  <div class="content" style="margin-top: 10%; height: 600px;">
+    <ul class="list-group">
+      <a href="#" class="list-group-item active">
+        <h4 class="list-group-item-heading"><%= @venue.name %></h4>
+        <p class="list-group-item-text">
+          Eat Green
+        </p>
+      </a>
+      <li class="list-group-item"><%= @venue.name %></li>
+      <li class="list-group-item">
+        Phone: <%= @venue.phone %> Fax: <%= @venue.fax %>
+      </li>
+      <li class="list-group-item"><%= @venue.address %></li>
+      <li class="list-group-item"><%= @venue.city %></li>
+      <li class="list-group-item"><%= @venue.state %></li>
+      <li class="list-grou-item"><%= @venue.zip %></li>
+    </ul>
+    <br />
+    <br />
+    <%= link_to 'back', :back, class: 'btn btn-sm btn-inverse' %>
+  </div><!--/.content-->
+</div><!--/.container-->
