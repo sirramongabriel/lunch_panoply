@@ -6,9 +6,9 @@ class ApplicationController < ActionController::Base
  	# helper_method :correct_employee?
  
   private
-  # def current_employee
-  #   @current_employee ||= Employee.find(session[:employee_id]) if session[:employee_id]
-  # end
+  def current_employee
+    @current_employee ||= Employee.find(session[:employee_id]) if session[:employee_id]
+  end
 
   # def employee_signed_in?
   # 	return true if current_employee
