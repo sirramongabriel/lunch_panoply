@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140209005831) do
+ActiveRecord::Schema.define(:version => 20140212021255) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -98,6 +98,33 @@ ActiveRecord::Schema.define(:version => 20140209005831) do
     t.datetime "updated_at",      :null => false
   end
 
+  create_table "images", :force => true do |t|
+    t.integer  "menu_item_id", :null => false
+    t.string   "url"
+    t.string   "name"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "images", ["menu_item_id"], :name => "index_images_on_menu_item_id"
+
+  create_table "ingredients", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "menu_item_ingredients", :force => true do |t|
+    t.string   "quantity"
+    t.integer  "ingredient_id", :null => false
+    t.integer  "menu_item_id",  :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "menu_item_ingredients", ["ingredient_id"], :name => "index_menu_item_ingredients_on_ingredient_id"
+  add_index "menu_item_ingredients", ["menu_item_id"], :name => "index_menu_item_ingredients_on_menu_item_id"
+
   create_table "menu_items", :force => true do |t|
     t.string   "title"
     t.string   "ingredient1"
@@ -134,6 +161,7 @@ ActiveRecord::Schema.define(:version => 20140209005831) do
   create_table "menus", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "venue_id",   :null => false
   end
 
   create_table "venues", :force => true do |t|

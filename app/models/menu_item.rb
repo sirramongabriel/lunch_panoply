@@ -1,11 +1,5 @@
-
 class MenuItem < ActiveRecord::Base
-  attr_accessible :calories, :img1, :img2, :img3, :img4, :img5, :ingredient1, 
-  								:ingredient10, :ingredient11, :ingredient12, :ingredient13, 
-  								:ingredient14, :ingredient15, :ingredient16, :ingredient17, 
-  								:ingredient18, :ingredient19, :ingredient2, :ingredient20, 
-  								:ingredient3, :ingredient4, :ingredient5, :ingredient6, 
-  								:ingredient7, :ingredient8, :ingredient9, :price, :title
+  attr_accessible :calories, :price, :title
 
   belongs_to :menu
   belongs_to :venue
@@ -15,8 +9,12 @@ class MenuItem < ActiveRecord::Base
   has_many :favorites
   has_many :employees, through: :favorites
  
+  has_many :menu_item_ingredients
+  has_many :ingredients, through: :menu_item_ingredients
 
-  validates_presence_of :title, :price, :ingredient1, :calories
+  has_many :images
+
+  validates_presence_of :title, :price, :calories
 
   # def MenuItem.total
   # end

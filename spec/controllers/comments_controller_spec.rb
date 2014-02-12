@@ -71,7 +71,7 @@ describe CommentsController do
   describe 'GET #show' do
     before(:each) { get :show, employee_id: comment.employee_id, id: comment.id }
 
-    it 'returns http success and renders the :show tempalte' do
+    it 'returns http success and renders the :show template' do
       expect(response).to render_template(:show)
     end
   end
@@ -93,8 +93,6 @@ describe CommentsController do
 
     context 'with valid attributes' do
       it 'locates the requested comment' do
-        # put :update, employee_id: comment.employee_id, id: comment.id,
-        # comment: attributes_for(:comment)
         expect(assigns(:comment)).to eq comment
       end
 
@@ -106,9 +104,7 @@ describe CommentsController do
         expect(comment.content).to eq 'testing testing'
       end
 
-      it 'redirects to the updated contact' do 
-        # put :update, employee_id: comment.employee, id: comment.id,
-        # comment: attributes_for(:comment)
+      it 'redirects to the updated comment' do 
         expect(response).to redirect_to employee_comment_path
       end
     end

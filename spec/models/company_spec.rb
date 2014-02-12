@@ -4,10 +4,10 @@ describe Company do
 	let(:companies) { companies = [] }
 	let(:company)   { create :company }
 
-	it 'should have many employees' do
-		e = Company.reflect_on_association(:employees)
-		expect(e.macro).to eq :has_many
-	end
+	# it 'should have many employees' do
+	# 	e = Company.reflect_on_association(:employees)
+	# 	expect(e.macro).to eq :has_many
+	# end
 
 	it 'has a valid factory' do
 		expect(company).to be_valid

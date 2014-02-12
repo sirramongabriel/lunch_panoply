@@ -48,12 +48,6 @@ describe MenuItem do
 			menu_item.price = nil
 			expect(menu_item).to have(1).error_on :price
 		end
-
-		it 'throws a validation error without at least one #ingredient' do
-			menu_item = create :menu_item
-			menu_item.ingredient1 = nil
-			expect(menu_item).to have(1).error_on :ingredient1
-		end
 	end
 
 	it 'returns the .total list of menu items' do
