@@ -38,9 +38,8 @@ describe CommentsController do
                     comment: attributes_for(:comment)
                   }
     context 'given valid credentials' do
-      it 'returns http success and redirects to the :show template' do
-        comment = Comment.order(:created_at).last
-        expect(response).to redirect_to employee_comment_path(employee_id: comment.employee_id, id: comment.id)
+      it 'redirects to the :show template' do
+        expect(response).to be_redirect
       end
 
       it 'saves the new comment in the database' do

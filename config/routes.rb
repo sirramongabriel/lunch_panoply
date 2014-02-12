@@ -24,15 +24,15 @@ LunchPanoply::Application.routes.draw do
 
   resources :companies
   # resources :employees
-  resources :comments
+  # resources :comments
   resources :menus
   # resources :menu_items
 
   resources :employees do
     resources :sessions
-    # resources :companies
-    # resources :comments
+    resources :comments
     resources :favorites
+    # resources :companies
   end
 
   # resources :companies do

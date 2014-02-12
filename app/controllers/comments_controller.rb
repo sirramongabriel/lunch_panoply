@@ -1,19 +1,16 @@
 class CommentsController < ApplicationController
-  # before_filter :get_employee
+  before_filter :get_employee
 
   def index
-    @comments = Comment.all
-    # @comments = @employee.comments
+    @comments = @employee.comments
   end
 
   def new
-    @comment = Comment.new
-    # @comment = @employee.comments.build
+    @comment = @employee.comments.build
   end
 
   def create
-    @comment = Comment.new(params[:comment])
-    # @comment = @employee.comments.build(params[:comment])
+    @comment = @employee.comments.build(params[:comment])
     if @comment.save
       redirect_to(employee_comment_path(@employee, @comment), success: 'Comment created!')
     else
@@ -22,18 +19,15 @@ class CommentsController < ApplicationController
   end
 
   def show
-    @comment = Comment.find(params[:id])
-    # @comment = @employee.comments.find(params[:id])
+    @comment = @employee.comments.find(params[:id])
   end
 
   def edit
-    @comment = Comment.find(params[:id])
-    # @comment = @employee.comments.find(params[:id])
+    @comment = @employee.comments.find(params[:id])
   end
 
   def update
-    @comment = Comment.find(params[:id])        
-    # @comment = @employee.comments.find(params[:id])
+    @comment = @employee.comments.find(params[:id])
     if @comment.update_attributes(params[:comment])
       redirect_to([@employee, @comment], success: 'Comment updated!')
     else
@@ -52,4 +46,8 @@ class CommentsController < ApplicationController
   def get_employee
     @employee = Employee.find(params[:employee_id])
   end
+
+  # def get_company
+  #   @company = @employee.comments.find(params[:id])
+  # end
 end

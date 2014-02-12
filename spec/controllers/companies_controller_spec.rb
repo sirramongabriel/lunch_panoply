@@ -33,7 +33,7 @@ describe CompaniesController do
 
   describe 'POST #create' do
     context 'given valid credentials' do
-      it 'returns http success and redirects to the :show template' do
+      it 'redirects to the :show template' do
         post :create, id: company.id, company: attributes_for(:company)
         expect(response).to be_redirect
       end
