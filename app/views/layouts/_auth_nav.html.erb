@@ -2,10 +2,10 @@
   <% if employee_signed_in? %>
     <li style="margin-left: -30%; margin-top: 20%;">
       <%= button_to(
-                    'Logout', 
-                    destroy_employee_session_path, 
-                    method: :delete,
-                    class: 'btn btn-sm btn-default'
+                     'Logout', 
+                     destroy_employee_session_path, 
+                     method: :delete,
+                     class: 'btn btn-sm btn-default'
                     ) %>
     </li>
   <% else %>
@@ -15,9 +15,9 @@
           <%= link_to('Login', new_employee_session_path) %>
           -or-
           <%= link_to(
-                      'Sign up', 
-                      new_employee_registration_path,
-                      class: 'label label-default'
+                       'Sign up', 
+                       new_employee_registration_path,
+                       class: 'label label-default'
                       ) %>
           &nbsp;&nbsp;&nbsp;&nbsp;
         </h5>

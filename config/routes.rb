@@ -24,7 +24,7 @@ LunchPanoply::Application.routes.draw do
 
   resources :companies
   # resources :employees
-  # resources :comments
+  resources :comments
   resources :menus
   # resources :menu_items
 

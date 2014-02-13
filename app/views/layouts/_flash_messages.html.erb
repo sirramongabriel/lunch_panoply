@@ -1,8 +1,12 @@
-<div class="container">
-  <% flash.each do |name, msg| %>
-    <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
-      <a class="close" data-dismiss="alert">x</a>
-      <%= msg  %>
+<% flash.each do |type, message| %>
+  <div id="alert" class="section>
+    <div class="fixed-wrapper">
+      <div class="alert class="close data-dismiss="alert">
+        <div class="alert <%= bootstrap_class_for(type) %> fade in">
+          <button class="close" data-dismiss="alert">x</button>
+          <h3><%= type.capitalize %></h3> <p><%= message %></p>
+        </div>   
+      </div>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>
