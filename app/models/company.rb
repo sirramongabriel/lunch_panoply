@@ -1,5 +1,5 @@
 class Company < ActiveRecord::Base
-  attr_accessible :address, :city, :name, :phone, :state, :zip
+  attr_accessible :address, :city, :name, :phone, :state, :zip, :employee_id
 
   validates_presence_of :name, :address, :city, :state, :zip, :phone 
 
