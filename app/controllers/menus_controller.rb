@@ -3,16 +3,17 @@ class MenusController < ApplicationController
   before_filter :get_menu, except: [:index, :new, :create]
 
   def index
+    @menus = @venue.menu
   end
 
   def new
-    @menu = @venue.menus.build
+    @menu = @venue.menu.build
   end
 
   def create
-    @menu = @venue.menus.build(params[:menu])
+    @menu = @venue.menu.build(params[:menu])
     if @menu.save
-      redirect_to(venue_menu_path(@venue, @menu), success: 'Menu created!')
+      redirect_to([@venue, @menu], success: 'Menu created!')
     else
       render(:new, error: 'There was an error processing your menu')
     end
@@ -45,7 +46,6 @@ class MenusController < ApplicationController
 
   def get_menu
     get_venue
-    @menu = @venue.menus
-    @menu.find(params[:id])
+    @menu = @venue.menu.find(params[:id])
   end
 end

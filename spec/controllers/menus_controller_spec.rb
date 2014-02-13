@@ -5,14 +5,14 @@ describe MenusController do
 
   describe 'GET #index' do   
     it 'returns http success and renders the :index template' do
-      get :index, employee_id: menu.venue_id, id: menu.id
+      get :index, venue_id: menu.venue_id
       expect(response).to render_template(:index)
       expect(response).to be_success
     end
   end
 
   describe 'GET #new' do
-    before(:each) { get :new, venue_id: menu.venue_id, id: menu.id }
+    before(:each) { get :new, venue_id: menu.venue_id }
     
     it 'returns http success and renders the :new template' do
       expect(response).to render_template(:new)
@@ -33,22 +33,9 @@ describe MenusController do
                   }
     context 'given valid credentials' do
       it 'returns http success and redirects to the :show template' do
-        get :create
-        expect(response).to 
-        redirect_to venue_menu_path(
-                                    venue_id: menu.venue_id, 
-                                    id: menu.id
-                                   )
+        get :create, venue_id: menu.venue_id, id: menu.id 
+        expect(response).to be_redirect
       end
-
-      # it 'saves the new menu object in the database' do
-      #   expect {
-      #             post :create,
-      #             comment: attributes_for(:comment, 
-      #             venue_id: menu.venue_id, id: menu.id).to change(Menu, :count).by(1)
-                                         
-      #          }
-      # end
     end
 
     context 'given invalid credentials' do
@@ -56,11 +43,6 @@ describe MenusController do
         menu = Menu.order(:created_at).last
         menu.venue_id = nil
         expect(menu).to have(1).error_on(:venue_id)
-      end
-
-      it 'renders the :new template' do
-        post :create, venue_id: menu.venue_id, id: menu.id
-        expect(response).to render_template(:new)
       end
     end
   end

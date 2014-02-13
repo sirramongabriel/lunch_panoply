@@ -4,7 +4,7 @@ describe CommentsController do
   let(:comment)  { create :comment }
 
   describe 'GET #index' do
-    before(:each) { get :index, employee_id: comment.employee_id, id: comment.id }
+    before(:each) { get :index, employee_id: comment.employee_id }
     it 'returns http success and renders the :index template' do
       expect(response).to be_success
       expect(response).to render_template(:index)
