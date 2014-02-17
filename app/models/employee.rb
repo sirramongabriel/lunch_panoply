@@ -29,13 +29,14 @@
       else
         first_name = auth.extra.raw_info.name.split(" ")[0]
         last_name  = auth.extra.raw_info.name.split(" ")[-1]
-        employee = Employee.create(first_name: first_name,
-                            last_name: last_name,
-                            provider:auth.provider,
-                            uid:auth.uid,
-                            email:auth.info.email,
-                            password:Devise.friendly_token[0,20]
-                          )
+        employee = Employee.create(
+                                    first_name: first_name,
+                                    last_name: last_name,
+                                    provider:auth.provider,
+                                    uid:auth.uid,
+                                    email:auth.info.email,
+                                    password:Devise.friendly_token[0,20]
+                                  )
       end   
     end
   end
