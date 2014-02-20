@@ -3,7 +3,6 @@ require 'uri'
 
 class MenuItemsController < ApplicationController
   def index
-
     respond_to do |format|
       format.json { render json: @menu_items }
     end
