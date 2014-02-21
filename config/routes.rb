@@ -14,10 +14,6 @@ LunchPanoply::Application.routes.draw do
   end                           
 
   resources :companies
-  # resources :employees
-  resources :comments
-  resources :menus
-  # resources :menu_items
 
   resources :employees do
     resources :sessions
