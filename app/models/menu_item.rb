@@ -1,6 +1,10 @@
 class MenuItem < ActiveRecord::Base
   attr_accessible :calories, :price, :title
 
+  def initialize(retriever=MenuItemsRetriver.new)
+    @retriever = retriever
+  end
+
   belongs_to :menu
   belongs_to :venue
 
