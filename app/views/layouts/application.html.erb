@@ -34,7 +34,7 @@
     
     
     <span>   
-      <%= render 'layouts/sub_nav' %>
+      <%= render 'layouts/sub_nav', locals: { employee: @employee } %>
       <%= render 'layouts/flash_messages', flash: flash %>
       <%= yield %>
       <%#= render 'layouts/footer' %>

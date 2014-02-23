@@ -1,5 +1,13 @@
+require 'net/http'
+require 'uri'
+require 'open-uri'
+require 'httparty'
+
 class MenuItem < ActiveRecord::Base
+  include HTTParty
   extend MenuItemsRetriever
+  # format :json
+  format :html
 
   attr_accessible :calories, :price, :title
 
@@ -21,6 +29,10 @@ class MenuItem < ActiveRecord::Base
   has_many :images
 
   validates_presence_of :title, :price, :calories
+
+  def MenuItem.find_by_state
+
+  end
 
   # def MenuItem.total
   # end
