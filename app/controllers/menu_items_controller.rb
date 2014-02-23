@@ -3,7 +3,10 @@ require 'uri'
 
 class MenuItemsController < ApplicationController
   def index
-    @menu_items = MenuItemsRetriever.new(menu_items_filters).retrieve
+    # @menu_items = MenuItemsRetriever.new(menu_items_filters).retrieve
+
+    @uri = URI.parse("-H 'Accept: application/json; version=2' -H 'X-HASTY-API-KEY: efdb8f7f2fe9c47e34dfe1fb7c491d0638ec2d86' 'http://devapi.zesty.com/restaurants?latitude=37.7597272&longitude=-122.418352")
+
 
 
     respond_to do |format|

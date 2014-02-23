@@ -1,9 +1,11 @@
 class MenuItem < ActiveRecord::Base
+  extend MenuItemsRetriever
+
   attr_accessible :calories, :price, :title
 
-  def initialize(retriever=MenuItemsRetriver.new)
-    @retriever = retriever
-  end
+  # def initialize(retriever=MenuItemsRetriver.new)
+  #   @retriever = retriever
+  # end
 
   belongs_to :menu
   belongs_to :venue
@@ -41,4 +43,7 @@ class MenuItem < ActiveRecord::Base
   def MenuItem.by_price_high_first
   end
 
+  def send_request
+    send_request
+  end
 end
