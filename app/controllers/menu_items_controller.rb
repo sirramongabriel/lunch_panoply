@@ -1,6 +1,7 @@
 class MenuItemsController < ApplicationController
   def index
-    @menu_items = MenuItem.retrieve_zesty
+    # @menu_items = MenuItem.retrieve_zesty
+    @flickrs = MenuItem.retrieve_flickr
 
     respond_to do |format|
       format.html

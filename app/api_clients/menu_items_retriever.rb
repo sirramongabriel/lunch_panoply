@@ -4,7 +4,7 @@ require 'open-uri'
 module MenuItemsRetriever
   def MenuItemsRetriever.retrieve_flickr
     # Set request URL
-
+    url = 'https://api.flickr.com/services/rest/'
 
     # Set the request headers
     headers = {
@@ -27,7 +27,6 @@ module MenuItemsRetriever
               }
 
     # Send GET request
-    binding.pry
     response = open(url, headers).read
   end
 end
