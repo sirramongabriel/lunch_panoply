@@ -31,7 +31,7 @@ class MenuItem < ActiveRecord::Base
   validates_presence_of :title, :price, :calories
 
   def MenuItem.find_by_state
-
+    
   end
 
   # def MenuItem.total
