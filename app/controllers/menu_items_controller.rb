@@ -1,12 +1,7 @@
-require 'net/http'
-require 'uri'
-require 'open-uri'
-require 'httparty'
-require 'json'
-
 class MenuItemsController < ApplicationController
   def index
-    @menu_items = MenuItem.retrieve
+    @menu_items = MenuItem.retrieve_zesty
+
     respond_to do |format|
       format.html
       format.json { render json: { } }
