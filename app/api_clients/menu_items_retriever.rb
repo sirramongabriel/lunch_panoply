@@ -1,5 +1,6 @@
 require 'net/http'
 require 'open-uri'
+require 'pp'
 
 module MenuItemsRetriever
   def MenuItemsRetriever.retrieve_flickr
@@ -8,8 +9,8 @@ module MenuItemsRetriever
 
     # Set the request headers
     headers = {
-                key: "#{ENV['key']}",
-                secret: "#{ENV['secret']}"
+                'Key:' => ENV['key'],
+                'Secret:' => ENV['secret'] 
               }
 
     # Send GET request
