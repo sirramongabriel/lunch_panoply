@@ -6,7 +6,7 @@ require 'json'
 
 class MenuItemsController < ApplicationController
   def index
-
+    @menu_items = MenuItem.retrieve
     respond_to do |format|
       format.html
       format.json { render json: { } }
