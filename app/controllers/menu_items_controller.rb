@@ -6,24 +6,6 @@ require 'json'
 
 class MenuItemsController < ApplicationController
   def index
-    # MenuItemsRetriever for adapter pattern
-    # @menu_items = MenuItemsRetriever.retrieve 
-
-    # uri = URI.parse("http://devapi.zest.com/")
-
-    # http = Net::HTTP.new(uri.host, uri.port)
-    # request = Net::HTTP::Get.new(uri.request_uri)
-    # request.basic_auth("Accept: 'application/json; version=2", "ENV['X-HASTY-API-KEY']")
-
-    # response = http.request(request)
-
-    uri = URI('http://devapi.zesty.com/restaurants?latitude=37.7597272&longitude=-122.418352')
-    params = {limit: 1 }
-    uri.query = URI.encode_www_form(params)
-
-    response = Net::HTTP.get_response(uri)
-
-    @response = response.body
 
     respond_to do |format|
       format.html

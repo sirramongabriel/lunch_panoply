@@ -2,38 +2,17 @@ require 'net/http'
 require 'open-uri'
 
 module MenuItemsRetriever
-  # Implements adapter pattern
+  def retrieve
+    # Set request URL
+    url = 'http://devapi.zesty.com/restaurants?latitude=37.7597272&longitude=-122.418352'
 
-  def send_request
-    uri = URI.parse(
-                      "-H 'Accept: application/json; version=2', 
-                      -H '#{ ENV['X-HASTY-API-KEY'] }', 
-                      http://devapi.zesty.com/restaurants?latidue37.7597272&longitude=-122.418352"
-                    )
-    "Hello world"
-  end
+    # Set the request authentication headers
+    headers = {
+                'Accept:' => 'application/json; version=2',
+                'X-HASTY-API-KEY:' => "#{ENV['X-HASTY-API-KEY']}"
+              }
 
-  # def headers
-    
-  # end
-
-  def get_response
-
-  end
-
-
-
-  private
-
-  def uri
-    uri = URI(
-                "-H 'Accept: application/json; version=2', 
-                -H '#{ ENV['X-HASTY-API-KEY'] }', 
-                http://devapi.zesty.com/restaurants?latidue37.7597272&longitude=-122.418352"
-              )
-  end
-
-  def key
-    ENV['X-HASTY-API-KEY']
+    # Send GET request
+    response = open(url, headers).read
   end
 end

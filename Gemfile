@@ -41,4 +41,5 @@ group :test do
 	gem 'launchy'
 	gem 'shoulda'
 	gem 'shoulda-matchers'
+  gem 'fakeweb'
 end

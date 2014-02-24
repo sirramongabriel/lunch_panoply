@@ -5,15 +5,11 @@ require 'httparty'
 
 class MenuItem < ActiveRecord::Base
   include HTTParty
-  extend MenuItemsRetriever
+  include MenuItemsRetriever
   # format :json
   format :html
 
   attr_accessible :calories, :price, :title
-
-  # def initialize(retriever=MenuItemsRetriver.new)
-  #   @retriever = retriever
-  # end
 
   belongs_to :menu
   belongs_to :venue
@@ -29,6 +25,10 @@ class MenuItem < ActiveRecord::Base
   has_many :images
 
   validates_presence_of :title, :price, :calories
+
+  def retrieve
+    
+  end
 
   def MenuItem.find_by_state
     
