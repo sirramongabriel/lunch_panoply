@@ -27,8 +27,8 @@ class MenuItem < ActiveRecord::Base
 
   validates_presence_of :title, :price, :calories
 
-  def MenuItem.retrieve_zesty
-    MenuItemsRetriever.retrieve_zesty
+  def MenuItem.all_meals
+    MenuItemsRetriever.all_meals
   end
 
   def MenuItem.retrieve_flickr

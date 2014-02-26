@@ -9,5 +9,9 @@
     <li><%#= rep.phone %></li>
   </ol>
 <%# end %>
-<%= @menu_items %>
+<ul>
+<% @menu_items.each do |dish| %>
+    <li><%= dish.inspect %></li>
 
+<% end %>
+</ul>
