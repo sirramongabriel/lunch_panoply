@@ -1,17 +1,10 @@
 <h1>MenuItems#index</h1>
 <p>Find me in app/views/menu_items/index.html.erb</p>
 
-
-<%# @rep_by_state.each do |rep| %>
-  <ol>
-    <li><%#= rep.name %></li>
-    <li><%#= rep.party %></li>
-    <li><%#= rep.phone %></li>
-  </ol>
+  <%= @menu_items.inspect %>
+<%#@menu_items.each do |dish| %>
+  <li><%#= dish.inspect %></li>
+  <li><%#= dish.name %></li>
+  <li><%#= dish.description %></li>
 <%# end %>
-<ul>
-<% @menu_items.each do |dish| %>
-    <li><%= dish.inspect %></li>
-
-<% end %>
 </ul>

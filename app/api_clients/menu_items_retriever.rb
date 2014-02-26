@@ -1,9 +1,16 @@
 require 'net/http'
 require 'open-uri'
-require 'pp'
 
 module MenuItemsRetriever
   def MenuItemsRetriever.all_meals
+    # Set request URL
+
+    # Set the request authentication headers
+
+    # Send GET request
+  end
+
+  def MenuItemsRetriever.gluten_free
     # Set request URL
     url = 'http://devapi.zesty.com/restaurants?latitude=37.7597272&longitude=-122.418352'
 
@@ -18,9 +25,5 @@ module MenuItemsRetriever
 
     data = JSON.parse(json)
     data['dishes']
-  end
-
-  def MenuItemsRetriever.gluten_free
-
   end
 end

@@ -1,13 +1,13 @@
 class MenuItemsController < ApplicationController
   def index
     @menu_items = MenuItem.all_meals
-    # @flickrs = MenuItem.retrieve_flickr
-
+    
     respond_to do |format|
       format.html
       format.json { render json: { } }
     end
   end
+end
 
   def create
   end

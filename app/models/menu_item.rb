@@ -6,7 +6,6 @@ require 'menu_items_retriever'
 
 class MenuItem < ActiveRecord::Base
   include HTTParty
-  extend MenuItemsRetriever
   format :json
   # format :html
 
