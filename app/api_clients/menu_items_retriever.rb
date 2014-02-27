@@ -8,12 +8,13 @@ module MenuItemsRetriever
   include HTTParty
 
   def MenuItemsRetriever.all_meals
-    connection = Faraday.get(
-                              'http://devapi.zesty.com/restaurants?latitude=37.7597272&longitude=-122.418352',
-                              { },
-                              { 'Accept' => "application/json; version=2", 'X-HASTY-API-KEY' => ENV['X-HASTY-API-KEY'] }
-                            )
-    
+    request = Faraday.get(
+                            'http://devapi.zesty.com/restaurants?latitude=37.7597272&longitude=-122.418352',
+                            { },
+                            { 'Accept' => "application/json; version=2", 'X-HASTY-API-KEY' => ENV['X-HASTY-API-KEY'] }
+                          )
+   data = JSON.parse(request.body, opts = { symbolize_names: true })
+   data[:dishes]
   end
 
   def MenuItemsRetriever.gluten_free
