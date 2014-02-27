@@ -30,10 +30,6 @@ class MenuItem < ActiveRecord::Base
     MenuItemsRetriever.all_meals
   end
 
-  def MenuItem.retrieve_flickr
-    MenuItemsRetriever.retrieve_flickr
-  end
-
   def MenuItem.find_by_state
     
   end

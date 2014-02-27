@@ -7,7 +7,6 @@ class MenuItemsController < ApplicationController
       format.json { render json: { } }
     end
   end
-end
 
   def create
   end
@@ -23,7 +22,6 @@ end
     # coerce params into menu_items_filters
     # for menu_items_retriever
   end
-
 end
 
 # curl -H 'Accept: application/json; version=2' -H 'X-HASTY-API-KEY: efdb8f7f2fe9c47e34dfe1fb7c491d0638ec2d86' 'http://devapi.zesty.com/restaurants?latitude=37.7597272&longitude=-122.418352'
