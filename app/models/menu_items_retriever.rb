@@ -3,12 +3,8 @@ require 'uri'
 require 'open-uri'
 require 'faraday'
 
-class MenuItemsRetriever  
+class MenuItemsRetriever < ActiveRecord::Base
   include HTTParty
-
-  def initialize(filters)
-    @filters = filters
-  end
 
   def retrieve
     []

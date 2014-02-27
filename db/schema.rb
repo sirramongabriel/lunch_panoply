@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140212021255) do
+ActiveRecord::Schema.define(:version => 20140227214353) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -154,8 +154,31 @@ ActiveRecord::Schema.define(:version => 20140212021255) do
     t.binary   "img3"
     t.binary   "img4"
     t.binary   "img5"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "venue_id"
+    t.string   "course"
+    t.text     "description"
+    t.string   "carbohydrates"
+    t.string   "protein"
+    t.string   "fat"
+    t.boolean  "vegetarian"
+    t.boolean  "paleo"
+    t.boolean  "vegan"
+    t.boolean  "gluten_free"
+    t.boolean  "bal"
+    t.boolean  "low_cal"
+    t.boolean  "low_carb"
+    t.boolean  "low_fat"
+    t.boolean  "hi_protein"
+    t.string   "price_cents"
+    t.string   "name"
+    t.string   "full_image_path"
+  end
+
+  create_table "menu_items_retrievers", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "menus", :force => true do |t|

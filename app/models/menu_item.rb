@@ -11,6 +11,10 @@ class MenuItem < ActiveRecord::Base
 
   attr_accessible :calories, :price, :title
 
+  belongs_to :menu_items_retriever
+  delegate :all, :gluten_free, :hi_protein, :paleo, :vegan, :vegetarian, 
+           to: :menu_items_retriever
+  
   belongs_to :menu
   belongs_to :venue
 
@@ -26,8 +30,13 @@ class MenuItem < ActiveRecord::Base
 
   validates_presence_of :title, :price, :calories
 
+  def initialize()
+    @menu_items_retriever = MenuItemsRetriever.new
+  end
+
   def MenuItem.all_meals
-    MenuItemsRetriever.all_meals
+    menu_items = MenuItemsRetriever.new
+    menu_items.all
   end
 
   def MenuItem.find_by_state
