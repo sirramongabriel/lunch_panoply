@@ -19,7 +19,7 @@ class MenuItemsRetriever < ActiveRecord::Base
                             { 'Accept' => "application/json; version=2", 'X-HASTY-API-KEY' => ENV['X-HASTY-API-KEY'] }
                          )
     data = JSON.parse(request.body, opts = { symbolize_names: true })
-    data[:dishes]
+    data[:dishes][10]
   end
 
   def gluten_free
@@ -28,8 +28,8 @@ class MenuItemsRetriever < ActiveRecord::Base
                             { },
                             { 'Accept' => "application/json; version=2", 'X-HASTY-API-KEY' => ENV['X-HASTY-API-KEY'] }
                          )
-    data = JSON.parse(request.body, opts = { symbolize_names: false })
-    data[:dishes][:gluten_free]
+    data = JSON.parse(request.body, opts = { symbolize_names: true })
+    data[:dishes][:gluten_free][:true]
   end
 
   def hi_protein
