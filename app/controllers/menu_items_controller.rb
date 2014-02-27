@@ -1,6 +1,6 @@
 class MenuItemsController < ApplicationController
   def index
-    @menu_items = MenuItem.all_meals
+    @menu_items = MenuItem.all
     
     respond_to do |format|
       format.html

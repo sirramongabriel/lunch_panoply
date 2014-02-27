@@ -9,11 +9,14 @@ class MenuItem < ActiveRecord::Base
   format :json
   # format :html
 
-  attr_accessible :calories, :price, :title
+  attr_accessible :calories, :venu_id, :course, :description, :carbohydrates,
+                  :protein, :fat, :vegetarian, :paleo, :vegan, :gluten_free,
+                  :bal, :low_cal, :low_carb, :low_fat, :hi_protein, :price_cents,
+                  :name, :full_image_path
 
-  belongs_to :menu_items_retriever
-  delegate :all, :gluten_free, :hi_protein, :paleo, :vegan, :vegetarian, 
-           to: :menu_items_retriever
+  # belongs_to :menu_items_retriever
+  # delegate :all, :gluten_free, :hi_protein, :paleo, :vegan, :vegetarian, 
+  #          to: :menu_items_retriever
   
   belongs_to :menu
   belongs_to :venue
@@ -34,7 +37,7 @@ class MenuItem < ActiveRecord::Base
     @menu_items_retriever = MenuItemsRetriever.new
   end
 
-  def MenuItem.all_meals
+  def MenuItem.all
     menu_items = MenuItemsRetriever.new
     menu_items.all
   end
