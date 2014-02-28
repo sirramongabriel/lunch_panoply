@@ -33,13 +33,12 @@ class MenuItem < ActiveRecord::Base
 
   validates_presence_of :title, :price, :calories
 
-  def initialize()
-    @menu_items_retriever = MenuItemsRetriever.new
+  def initialize(menu_items_retriever=MenuItemsRetriever.new)
+    @menu_items_retriever = menu_items_retriever
   end
 
-  def MenuItem.all
-    menu_items = MenuItemsRetriever.new
-    menu_items.all
+  def all
+    @menu_items_retriever.all
   end
 
   def MenuItem.find_by_state
