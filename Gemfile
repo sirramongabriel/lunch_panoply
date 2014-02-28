@@ -43,4 +43,5 @@ group :test do
 	gem 'shoulda'
 	gem 'shoulda-matchers'
   gem 'fakeweb'
+  gem 'webmock'
 end

@@ -1,6 +1,7 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
+require 'faker'
 
 FactoryGirl.define do
-  factory :menu_items_retriever do
+  factory :menu_items_retriever do |r|
+    r.retriever
   end
 end

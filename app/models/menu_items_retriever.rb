@@ -6,8 +6,12 @@ require 'faraday'
 class MenuItemsRetriever < ActiveRecord::Base
   include HTTParty
 
+  def initialize(filters=[])
+    @filters = filters
+  end
+
   def retrieve
-    []
+    [ ]
   end
 
   def all
@@ -18,7 +22,7 @@ class MenuItemsRetriever < ActiveRecord::Base
                             { },
                             { 'Accept' => "application/json; version=2", 'X-HASTY-API-KEY' => ENV['X-HASTY-API-KEY'] }
                          )
-    data = JSON.parse(request.body, opts = { symbolize_names: true })
+    data = JSON.parse(request, opts = { symbolize_names: true })
     data[:dishes][10]
   end
 
@@ -28,7 +32,7 @@ class MenuItemsRetriever < ActiveRecord::Base
                             { },
                             { 'Accept' => "application/json; version=2", 'X-HASTY-API-KEY' => ENV['X-HASTY-API-KEY'] }
                          )
-    data = JSON.parse(request.body, opts = { symbolize_names: true })
+    data = JSON.parse("#{request.body}", opts = { symbolize_names: true })
     data[:dishes][:gluten_free][:true]
   end
 

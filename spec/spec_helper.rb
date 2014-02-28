@@ -3,6 +3,8 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 # require 'rspec/autorun'
+require 'fakeweb'
+require 'webmock/rspec'
 require 'factory_girl_rails'
 require 'shoulda'
 require 'shoulda-matchers'
