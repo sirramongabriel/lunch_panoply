@@ -14,6 +14,7 @@ gem 'rubocop'
 gem 'twitter-bootstrap-rails'
 gem 'puma'
 gem 'httparty'
+gem 'curb'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

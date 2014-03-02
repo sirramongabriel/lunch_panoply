@@ -16,14 +16,17 @@ class MenuItemsRetriever < ActiveRecord::Base
 
   def all
     [MenuItem.new]
+    base_url = "http://devapi.zesty.com/restaurants?latitude=37.7597272&longitude=-122.418352"
 
-    request = Faraday.get(
-                            'http://devapi.zesty.com/restaurants?latitude=37.7597272&longitude=-122.418352',
-                            { },
-                            { 'Accept' => "application/json; version=2", 'X-HASTY-API-KEY' => ENV['X-HASTY-API-KEY'] }
-                         )
-    data = JSON.parse(request, opts = { symbolize_names: true })
-    data[:dishes][10]
+    conn = Curl.get(base_url) do |curl|
+      curl.headers["Accept"] = 'application/json; version=2'
+      curl.headers["X-HASTY-API-KEY"] = ENV['X-HASTY-API-KEY']
+      curl.verbose = true
+      curl.perform
+      # curl.body_str
+    end
+
+    puts conn.body_str
   end
 
   def gluten_free
