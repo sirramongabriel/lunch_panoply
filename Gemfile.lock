@@ -245,6 +245,7 @@ GEM
     uglifier (2.4.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    vcr (2.8.0)
     warden (1.2.3)
       rack (>= 1.0)
     webmock (1.17.3)
@@ -288,4 +289,5 @@ DEPENDENCIES
   shoulda-matchers
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
+  vcr
   webmock

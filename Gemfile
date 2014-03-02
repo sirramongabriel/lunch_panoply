@@ -30,6 +30,7 @@ group :development, :test do
 	gem 'guard-zeus'
 	gem 'guard-rspec', require: false
 	gem 'dotenv-rails'
+  gem 'vcr'
 end
 
 group :development do
