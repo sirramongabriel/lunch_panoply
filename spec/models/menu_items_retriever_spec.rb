@@ -8,8 +8,6 @@ describe 'MenuItemsRetriever' do
     #      to_return(:status => 200, :body => "", :headers => {})
   end 
 
-  
-
   subject(:retriever) { MenuItemsRetriever.new(filters) } 
   let(:filters) { { } }
   let(:fake_faraday_response) { "{  }" }
@@ -45,12 +43,14 @@ describe 'MenuItemsRetriever' do
     #                             }
 
     it 'makes a request using Faraday' do
+      VCR.use_cassette
+
       # subject.all
       # expect(Faraday).to receive(:get).once
       # subject.all
-      expect(Faraday).to receive(:get) { fake_faraday_response }
+      # expect(Faraday).to receive(:get) { fake_faraday_response }
       # expect(Faraday).to receive(:get).once
-      subject.all
+      # subject.all
     end
 
     it 'returns all menu items' do
