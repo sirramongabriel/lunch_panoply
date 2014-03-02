@@ -8,6 +8,7 @@ require 'webmock/rspec'
 require 'factory_girl_rails'
 require 'shoulda'
 require 'shoulda-matchers'
+require 'support/vcr_setup'
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 

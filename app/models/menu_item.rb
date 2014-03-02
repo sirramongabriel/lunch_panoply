@@ -1,12 +1,10 @@
 require 'net/http'
 require 'uri'
 require 'open-uri'
-require 'httparty'
 require 'menu_items_retriever'
 
 class MenuItem < ActiveRecord::Base
-  include HTTParty
-  format :json
+  # format :json
   # format :html
 
   attr_accessible :calories, :venu_id, :course, :description, :carbohydrates,
@@ -39,6 +37,9 @@ class MenuItem < ActiveRecord::Base
 
   def all
     @menu_items_retriever.all
+    # menu_items.each do |item|
+    #   menu_item.api_dish_id = api_call(dish)
+    # end
   end
 
   def MenuItem.find_by_state

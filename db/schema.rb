@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140227214950) do
+ActiveRecord::Schema.define(:version => 20140302194518) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -148,6 +148,7 @@ ActiveRecord::Schema.define(:version => 20140227214950) do
     t.string   "price_cents"
     t.string   "name"
     t.string   "full_image_path"
+    t.integer  "api_dish_id"
   end
 
   create_table "menu_items_retrievers", :force => true do |t|

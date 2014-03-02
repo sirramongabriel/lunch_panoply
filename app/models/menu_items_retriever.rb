@@ -4,8 +4,6 @@ require 'open-uri'
 require 'faraday'
 
 class MenuItemsRetriever < ActiveRecord::Base
-  include HTTParty
-
   def initialize(filters=[])
     @filters = filters
   end
@@ -16,8 +14,6 @@ class MenuItemsRetriever < ActiveRecord::Base
 
   def all
     [MenuItem.new]
-    base_url = "http://devapi.zesty.com/restaurants?latitude=37.7597272&longitude=-122.418352"
-
     conn = Faraday.new(url: 'http://devapi.zesty.com') do |c|
       c.use Faraday::Request::UrlEncoded
       c.use Faraday::Response::Logger
@@ -29,9 +25,9 @@ class MenuItemsRetriever < ActiveRecord::Base
                           { },
                           { "Accept" => 'application/json; version=2', "X-HASTY-API-KEY" => ENV['X-HASTY-API-KEY']  }
                        )
-    # response.body
-    payload = JSON.parse(response.body)
 
+    payload = JSON.parse(response.body, symbolize_names: true)
+    payload[:dishes]
   end
 
   def gluten_free
