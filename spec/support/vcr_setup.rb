@@ -1,12 +1,19 @@
 require 'vcr'
 
-VCR.configure do |config|
-  # the dir where your cassettes are saved
-  config.cassette_library_dir = Rails.root.join("spec", "vcr")
+VCR.configure do |c|
+  c.cassette_library_dir = 'vcr/cassettes'
+  c.hook_into :fakeweb
+  c.default_cassette_options = { record: :once }
+end
 
-  # my HTTP request service
-  config.hook_into :faraday
+VCR.use_cassette('localhost') do
+  # Net::HTTP.get_response('localhost', '/', 7777)
+  conn = Faraday.new(url: 'http://localhost') do |faraday|
+    faraday.request :url_encoded
+    faraday.response :logger
+    faraday.adapter Faraday.default_adapter
+  end
 
-  # add debugger
-  config.debug_logger
+  response = conn.get('/7777')
+  response.body
 end
