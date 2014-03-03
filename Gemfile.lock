@@ -279,4 +279,4 @@ DEPENDENCIES
   shoulda-matchers
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
-  vcr
+  vcr (= 2.8.0)

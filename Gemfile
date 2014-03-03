@@ -17,7 +17,7 @@ gem 'puma'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier',     '>= 1.0.3'
   gem 'font-awesome-sass'
 end
 
@@ -29,7 +29,7 @@ group :development, :test do
 	gem 'guard-zeus'
 	gem 'guard-rspec', require: false
 	gem 'dotenv-rails'
-  gem 'vcr'
+  gem 'vcr',           '2.8.0'
 end
 
 group :development do
