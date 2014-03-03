@@ -3,48 +3,52 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 # require 'rspec/autorun'
-require 'fakeweb'
-# require 'webmock/rspec'
+# require 'fakeweb'
+require 'webmock/rspec'
 require 'factory_girl_rails'
 require 'shoulda'
 require 'shoulda-matchers'
 require 'faraday'
-require 'vcr'
+# require 'vcr'
+
 
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+ 
+  # FakeWeb.allow_net_connect = false
 
-FakeWeb.allow_net_connect = false
+# VCR.configure do |c|
+#   c.cassette_library_dir = 'vcr/cassettes'
+#   c.hook_into :fakeweb
+#   c.default_cassette_options = { record: :once }
+#   c.debug_logger = File.open(ARGV.first, 'w')
+# end
 
-VCR.configure do |c|
-  c.cassette_library_dir = 'vcr/cassettes'
-  c.hook_into :fakeweb
-  c.default_cassette_options = { record: :once }
-  c.debug_logger = File.open(ARGV.first, 'w')
-end
+# VCR.use_cassette('localhost') do
+#   # Net::HTTP.get_response('localhost', '/', 7777)
+#     conn = Faraday.new(url: 'http://devapi.zesty.com') do |c|
+#       c.use Faraday::Request::UrlEncoded
+#       c.use Faraday::Response::Logger
+#       c.use Faraday::Adapter::NetHttp
+#     end
 
-VCR.use_cassette('localhost') do
-  # Net::HTTP.get_response('localhost', '/', 7777)
-    conn = Faraday.new(url: 'http://devapi.zesty.com') do |c|
-      c.use Faraday::Request::UrlEncoded
-      c.use Faraday::Response::Logger
-      c.use Faraday::Adapter::NetHttp
-    end
+#     response = conn.get(
+#                           '/restaurants?latitude=37.7597272&longitude=-122.418352',
+#                           { },
+#                           { "Accept" => 'application/json; version=2', "X-HASTY-API-KEY" => ENV['X-HASTY-API-KEY']  }
+#                        )
 
-    response = conn.get(
-                          '/restaurants?latitude=37.7597272&longitude=-122.418352',
-                          { },
-                          { "Accept" => 'application/json; version=2', "X-HASTY-API-KEY" => ENV['X-HASTY-API-KEY']  }
-                       )
+#     payload = JSON.parse(response.body, symbolize_names: true)
+#     payload[:dishes]
 
-    payload = JSON.parse(response.body, symbolize_names: true)
-    payload[:dishes]
-
-  response.body
-end
+#   response.body
+# end
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
+
+  # WebMock
+  WebMock.disable_net_connect! allow_localhost: true
 
   # database_cleaner config
   config.before(:suite) do
@@ -61,9 +65,9 @@ RSpec.configure do |config|
   end
 
   # Fakeweb config
-  config.before(:each) do
-    FakeWeb.clean_registry
-  end
+  # config.before(:each) do
+  #   FakeWeb.clean_registry
+  # end
 
   # ## Mock Framework
   #
