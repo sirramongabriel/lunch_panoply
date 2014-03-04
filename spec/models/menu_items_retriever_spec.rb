@@ -21,13 +21,8 @@ describe 'MenuItemsRetriever' do
   describe '#all' do
     context 'upon success' do
       it 'makes a request using Faraday' do
-
         request = stub_request(:get, "http://localhost").
           to_return(body: "abc")
-
-        expect(request).to have_status(:ok)
-        # expect(stub_request(:get, "http://localhost")).to be_a_kind_of(WebMock)
-
       end
 
       it 'returns all menu items' do
@@ -37,7 +32,13 @@ describe 'MenuItemsRetriever' do
     end
 
     context 'upon failure' do
-      it 'should'
+      it 'reports failure error for Faraday' do 
+
+      end
+
+      it 'returns no menu items' do
+
+      end
     end
   end 
 end
