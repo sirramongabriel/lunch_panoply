@@ -19,21 +19,23 @@ describe 'MenuItemsRetriever' do
   end
 
   describe '#all' do
-    it 'makes a request using Faraday' do
+    context 'upon success' do
+      it 'makes a request using Faraday' do
 
-      stub_request(:get, "http://localhost").
-        to_return(body: "abc")
+        stub_request(:get, "http://localhost").
+          to_return(body: "abc")
 
-      request = Faraday.get("http://localhost")
+        expect(stub_request).to_return 
+      end
 
-      # expect(request.body).to eq "abc"
+      it 'returns all menu items' do
+        stub_request(:get, "http://devapi.zesty.com/restaurants?latitude=37.7597272&longitude=-122.418352").
+          to_return(lambda { |request| { :body => request.body } })
+      end
     end
 
-    it 'returns all menu items' do
-      stub_request(:get, "http://devapi.zesty.com/restaurants?latitude=37.7597272&longitude=-122.418352").
-        to_return(lambda { |request| { :body => request.body } })
-
-      Faraday.get('http://devapi.zesty.com/restaurants?latitude=37.7597272&longitude=-122.418352')
+    context 'upon failure' do
+      it 'should'
     end
   end 
 end
