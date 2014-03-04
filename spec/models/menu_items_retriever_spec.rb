@@ -22,10 +22,12 @@ describe 'MenuItemsRetriever' do
     context 'upon success' do
       it 'makes a request using Faraday' do
 
-        stub_request(:get, "http://localhost").
+        request = stub_request(:get, "http://localhost").
           to_return(body: "abc")
 
-        expect(stub_request).to_return 
+        expect(request).to have_status(:ok)
+        # expect(stub_request(:get, "http://localhost")).to be_a_kind_of(WebMock)
+
       end
 
       it 'returns all menu items' do

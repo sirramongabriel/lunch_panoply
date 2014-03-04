@@ -23,6 +23,7 @@ end
 
 group :development, :test do
 	gem 'rspec-rails'
+  gem 'rspec-api-matchers', '~> 0.6.0'
 	gem 'factory_girl_rails', require: false
   gem 'pry'
 	gem 'pry-rails'
