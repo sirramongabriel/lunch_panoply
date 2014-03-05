@@ -13,31 +13,50 @@ describe 'MenuItemsRetriever' do
   let(:fake_faraday_response) { "{  }" }
 
   describe '#retrieve' do
-    it 'returns a collection of objects' do
+    it 'contains a collection of filter objects in an Array' do
       expect(subject.retrieve).to be_a_kind_of(Array)
     end
   end
 
   describe '#all' do
-    context 'upon success' do
-      it 'makes a request using Faraday' do
-        request = stub_request(:get, "http://localhost").
-          to_return(body: "abc")
+    context 'upon a successful transaction' do
+      subject(:successful_response) { "success!" }
+
+      it 'returns a successful response' do
+        expect(successful_response).to include("success!")
       end
 
-      it 'returns all menu items' do
-        stub_request(:get, "http://devapi.zesty.com/restaurants?latitude=37.7597272&longitude=-122.418352").
-          to_return(lambda { |request| { :body => request.body } })
+      it 'returns a collection of #all menu items as a hash' do
+        menu_items = []
+
+        menu_item1 = { dishes: { 
+                                  name: 'celery cakes',  
+                                  description: 'healthy and delicious',
+                                  price: 2.99
+                                } }
+
+        menu_item2 = { dishes: {
+                                  name: 'chili dogs',
+                                  description: 'made fresh, every month',
+                                  price: 3.99
+                                } }
+
+        menu_items << menu_item1 << menu_item2
+        expect(menu_items).to eq [menu_item1, menu_item2]
+        expect(menu_item1).to be_a_kind_of(Hash)
       end
     end
 
-    context 'upon failure' do
-      it 'reports failure error for Faraday' do 
+    context 'upon an unsuccessful transaction' do
+      subject(:failure_response) { "failure error" }
 
+      it 'returns an error response' do 
+        expect(failure_response).to include("failure error")
       end
 
-      it 'returns no menu items' do
-
+      it 'reutrns no menu items' do
+        menu_items = []
+        expect(menu_items).to be_empty 
       end
     end
   end 
