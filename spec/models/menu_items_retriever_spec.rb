@@ -60,4 +60,73 @@ describe 'MenuItemsRetriever' do
       end
     end
   end 
+
+  describe '#gluten_free' do
+    context 'upon successful transacton' do
+      it 'returns a collection of objects considered #gluten_free' do
+
+      end
+
+      it 'does not return objects with gluten' do
+
+      end
+    end
+
+    context 'upon unsuccessful transaction' do
+      it 'returns nil when there are no #gluten_free menu items' do
+      
+      end
+    end
+  end
+
+  describe '#hi_protein' do
+    context 'upon successful transacton' do
+      it 'returns all menu items with #hi_protein' do
+
+      end
+    end
+
+    context 'upon unsuccessful transaction' do
+      it 'returns nil when there are no #hi_protein menu items' do
+      
+      end
+
+      it 'requires the exclusion of menu items without #hi_protein' do
+
+      end
+    end
+  end
+
+  describe '#paleo' do
+    context 'upon successful transacton' do
+      it 'returns all menu items considered #paleo complient' do
+
+      end
+    end
+
+    context 'upon unsuccessful transaction' do
+      it 'returns nil when there are no #paleo complient menu items' do
+
+      end
+
+      it 'requires the exclusion of menu items not #paleo complient' do 
+      end
+    end
+  end
+
+  describe '#vegan' do
+    context 'upon successful transacton' do
+    end
+
+    context 'upon unsuccessful transaction' do
+    end
+  end
+
+  describe '#vegetarian' do
+    context 'upon successful transacton' do
+    end
+
+    context 'upon unsuccessful transaction' do
+    end
+  end
 end
