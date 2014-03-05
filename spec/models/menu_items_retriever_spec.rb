@@ -67,13 +67,13 @@ describe 'MenuItemsRetriever' do
 
       end
 
-      it 'does not return objects with gluten' do
+      it 'does not include objects where #gluten_free value is false' do
 
       end
     end
 
     context 'upon unsuccessful transaction' do
-      it 'returns nil when there are no #gluten_free menu items' do
+      it 'returns empty array when there are no #gluten_free menu items' do
       
       end
     end
@@ -81,52 +81,71 @@ describe 'MenuItemsRetriever' do
 
   describe '#hi_protein' do
     context 'upon successful transacton' do
-      it 'returns all menu items with #hi_protein' do
+      it 'returns a collection of objects considered #hi_protein' do
 
       end
+
+      it 'does not include objects where #hi_protein value is false'
     end
 
     context 'upon unsuccessful transaction' do
-      it 'returns nil when there are no #hi_protein menu items' do
+      it 'returns empty array when there are no #hi_protein menu items' do
       
-      end
-
-      it 'requires the exclusion of menu items without #hi_protein' do
-
       end
     end
   end
 
   describe '#paleo' do
     context 'upon successful transacton' do
-      it 'returns all menu items considered #paleo complient' do
+      it 'returns a collection of objects considered #paleo complient' do
+
+      end
+
+      it 'does not include objects where #paleo value is false' do
 
       end
     end
 
     context 'upon unsuccessful transaction' do
-      it 'returns nil when there are no #paleo complient menu items' do
+      it 'returns empty array when there are no #paleo complient menu items' do
 
-      end
-
-      it 'requires the exclusion of menu items not #paleo complient' do 
       end
     end
   end
 
   describe '#vegan' do
     context 'upon successful transacton' do
+      it 'returns a collection of objects considered #vegan complient' do
+
+      end
+
+      it 'does not include objects where #vegan value is false' do
+
+      end
     end
 
     context 'upon unsuccessful transaction' do
+      it 'returns empty array when there are no #vegan menu items' do
+
+      end
     end
   end
 
   describe '#vegetarian' do
     context 'upon successful transacton' do
+      it 'returns a collection of objects considered #vegetarian complient' do
+
+      end
+
+      it 'does not include objects where #vegetarian value is false' do
+
+      end
     end
 
     context 'upon unsuccessful transaction' do
+      it 'returns empty array when there are no #vegetarian menu items' do 
+
+      end
     end
   end
 end
