@@ -65,32 +65,32 @@ describe 'MenuItemsRetriever' do
   describe '#gluten_free' do
     context 'upon successful transacton' do
       it 'returns a collection of objects considered #gluten_free' do
-        menu_items = { dishes: {gluten_free: true}}
+        filters = { dishes: {gluten_free: true}}
+        menu_items = []
         menu_item1 = { dishes: {gluten_free: true}}
-        menu_item2 = { dishes: {gluten_free: true}}
-        menu_items.store(menu_item1[:dishes], menu_item1[:gluten_free])
-        menu_items.store(menu_item2[:dishes], menu_item2[:gluten_free])        
-        expect(menu_items).to include(menu_item1, menu_item2)
+        menu_item2 = { dishes: {gluten_free: true}}  
+        menu_items << menu_item1 << menu_item2     
+        expect(menu_items).to eq [menu_item1, menu_item2]
         expect(menu_item1).to be_a_kind_of(Hash)
+        expect(menu_item2).to be_a_kind_of(Hash)
       end
 
       it 'does not include objects where #gluten_free value is false' do
-        menu_items = retriever.retrieve
         filters = { dishes: { gluten_free: true }}
         menu_item1 = { dishes: { gluten_free: false }}
         menu_item2 = { dishes: { gluten_free: true }}
-        menu_items << menu_item1 << menu_item2
+        menu_item1[:dishes].each { |hash| hash.delete_if { |key, val| val == false }}
         expect(filters).not_to eq menu_item1
         expect(filters).to eq menu_item2
       end
     end
 
     context 'upon unsuccessful transaction' do
-      # it 'returns empty array when there are no #gluten_free menu items' do
-      #   menu_items = retriever.retrieve
-      #   menu_items = { dishes: { gluten_free: false } }
-      #   expect(menu_items).to be_empty
-      # end
+      it 'returns empty array when there are no #gluten_free menu items' do
+        menu_items = retriever.retrieve
+        expect(menu_items).to be_empty
+        expect(menu_items).to be_a_kind_of(Array)
+      end
     end
   end
 
@@ -104,7 +104,14 @@ describe 'MenuItemsRetriever' do
         expect(menu_items).to eq [menu_item1, menu_item2]
       end
 
-      it 'does not include objects where #hi_protein value is false'
+      it 'does not include objects where #hi_protein value is false' do 
+        filters = { dishes: { hi_protein: true }}
+        menu_item1 = { dishes: { hi_protein: false }}
+        menu_item2 = { dishes: { hi_protein: true }}
+        menu_item1[:dishes].each { |hash| hash.delete_if { |key, val| val == false }}
+        expect(filters).not_to eq menu_item1
+        expect(filters).to eq menu_item2
+      end
     end
 
     context 'upon unsuccessful transaction' do
