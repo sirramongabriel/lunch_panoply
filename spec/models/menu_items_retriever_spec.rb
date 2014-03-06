@@ -66,33 +66,40 @@ describe 'MenuItemsRetriever' do
     context 'upon successful transacton' do
       it 'returns a collection of objects considered #gluten_free' do
         menu_items = retriever.retrieve
-        menu_item1[:dishes][:gluten_free] = true
-        menu_item2[:dishes][:gluten_free] = true
+        menu_item1[:dishes][:gluten_free]
+        menu_item2[:dishes][:gluten_free]
         menu_items << menu_item1 << menu_item2
         expect(menu_items).to eq [menu_item1, menu_item2]
         expect(menu_item1).to be_a_kind_of(Hash)
       end
 
-      it 'does not include objects where #gluten_free value is false' do
-        menu_items = retriever.retrieve
-        menu_item1[:dishes][:gluten_free] = false
-        menu_item2[:dishes][:gluten_free] = true
-        menu_items << menu_item1 << menu_item2
-        expect(menu_items).not_to be_valid
-      end
+      # it 'does not include objects where #gluten_free value is false' do
+      #   menu_items = retriever.retrieve
+      #   filters = { dishes: { gluten_free: true }}
+      #   menu_item1 = { dishes: { gluten_free: false }}
+      #   menu_item2 = { dishes: { gluten_free: true }}
+      #   menu_items << menu_item1 << menu_item2
+      #   expect(menu_items).to eq [menu_item2]
+      # end
     end
 
     context 'upon unsuccessful transaction' do
-      it 'returns empty array when there are no #gluten_free menu items' do
-        
-      end
+      # it 'returns empty array when there are no #gluten_free menu items' do
+      #   menu_items = retriever.retrieve
+      #   menu_items = { dishes: { gluten_free: false } }
+      #   expect(menu_items).to be_empty
+      # end
     end
   end
 
   describe '#hi_protein' do
     context 'upon successful transacton' do
       it 'returns a collection of objects considered #hi_protein' do
-
+        menu_items = retriever.retrieve
+        menu_item1 = { dishes: { hi_protein: true }}
+        menu_item2 = { dishes: { hi_protein: true }}
+        menu_items << menu_item1 << menu_item2
+        expect(menu_items).to eq [menu_item1, menu_item2]
       end
 
       it 'does not include objects where #hi_protein value is false'

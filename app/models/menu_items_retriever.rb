@@ -37,7 +37,7 @@ class MenuItemsRetriever < ActiveRecord::Base
                             { 'Accept' => "application/json; version=2", 'X-HASTY-API-KEY' => ENV['X-HASTY-API-KEY'] }
                          )
     data = JSON.parse("#{request.body}", opts = { symbolize_names: true })
-    data[:dishes][:gluten_free][:true] 
+    data[:dishes][:gluten_free][true] 
   end
 
   def hi_protein
@@ -47,7 +47,7 @@ class MenuItemsRetriever < ActiveRecord::Base
                             { 'Accept' => "application/json; version=2", 'X-HASTY-API-KEY' => ENV['X-HASTY-API-KEY'] }
                          )
     data = JSON.parse(request.body, opts = { symbolize_names: true })
-    data[:hi_pro]
+    data[:dishes][:hi_pro][:true]
   end
 
   def paleo
@@ -57,7 +57,7 @@ class MenuItemsRetriever < ActiveRecord::Base
                             { 'Accept' => "application/json; version=2", 'X-HASTY-API-KEY' => ENV['X-HASTY-API-KEY'] }
                          )
     data = JSON.parse(request.body, opts = { symbolize_names: true })
-    data[:paleo]
+    data[:dishes][:paleo][:true]
   end
 
   def vegan
@@ -67,7 +67,7 @@ class MenuItemsRetriever < ActiveRecord::Base
                             { 'Accept' => "application/json; version=2", 'X-HASTY-API-KEY' => ENV['X-HASTY-API-KEY'] }
                          )
     data = JSON.parse(request.body, opts = { symbolize_names: true })
-    data[:vegan]
+    data[:dishes][:vegan][:true]
   end
 
   def vegetarian
@@ -77,6 +77,6 @@ class MenuItemsRetriever < ActiveRecord::Base
                             { 'Accept' => "application/json; version=2", 'X-HASTY-API-KEY' => ENV['X-HASTY-API-KEY'] }
                          )
     data = JSON.parse(request.body, opts = { symbolize_names: true })
-    data[:vegetarian]
+    data[:dishes][:vegetarian][:true]
   end
 end
