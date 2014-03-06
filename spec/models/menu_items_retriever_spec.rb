@@ -74,14 +74,15 @@ describe 'MenuItemsRetriever' do
         expect(menu_item1).to be_a_kind_of(Hash)
       end
 
-      # it 'does not include objects where #gluten_free value is false' do
-      #   menu_items = retriever.retrieve
-      #   filters = { dishes: { gluten_free: true }}
-      #   menu_item1 = { dishes: { gluten_free: false }}
-      #   menu_item2 = { dishes: { gluten_free: true }}
-      #   menu_items << menu_item1 << menu_item2
-      #   expect(menu_items).to eq [menu_item2]
-      # end
+      it 'does not include objects where #gluten_free value is false' do
+        menu_items = retriever.retrieve
+        filters = { dishes: { gluten_free: true }}
+        menu_item1 = { dishes: { gluten_free: false }}
+        menu_item2 = { dishes: { gluten_free: true }}
+        menu_items << menu_item1 << menu_item2
+        expect(filters).not_to eq menu_item1
+        expect(filters).to eq menu_item2
+      end
     end
 
     context 'upon unsuccessful transaction' do
