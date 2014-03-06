@@ -65,17 +65,20 @@ describe 'MenuItemsRetriever' do
   describe '#gluten_free' do
     context 'upon successful transacton' do
       it 'returns a collection of objects considered #gluten_free' do
-        menu_items = []
+        menu_items = retriever.retrieve
+        menu_item1[:dishes][:gluten_free] = true
+        menu_item2[:dishes][:gluten_free] = true
         menu_items << menu_item1 << menu_item2
         expect(menu_items).to eq [menu_item1, menu_item2]
         expect(menu_item1).to be_a_kind_of(Hash)
       end
 
       it 'does not include objects where #gluten_free value is false' do
-        menu_items = []
+        menu_items = retriever.retrieve
         menu_item1[:dishes][:gluten_free] = false
+        menu_item2[:dishes][:gluten_free] = true
         menu_items << menu_item1 << menu_item2
-        expect(menu_items).to be_true
+        expect(menu_items).not_to be_valid
       end
     end
 
