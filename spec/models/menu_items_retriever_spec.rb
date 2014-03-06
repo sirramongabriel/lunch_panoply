@@ -23,7 +23,7 @@ describe 'MenuItemsRetriever' do
 
   subject(:retriever) { MenuItemsRetriever.new(filters) } 
   let(:filters) { { } }
-  let(:fake_faraday_response) { "{  }" }
+  let(:fake_faraday_response) { "{ successful: :response }" }
 
 
   describe '#retrieve' do
@@ -34,10 +34,9 @@ describe 'MenuItemsRetriever' do
 
   describe '#all' do
     context 'upon a successful transaction' do
-      subject(:successful_response) { "success!" }
-
       it 'returns a successful response' do
-        expect(successful_response).to include("success!")
+        expect(fake_faraday_response).to include("{ successful: :response }")
+        expect(fake_faraday_response).to be_a_kind_of(String)
       end
 
       it 'returns a collection of #all menu items as a hash' do
@@ -49,15 +48,16 @@ describe 'MenuItemsRetriever' do
     end
 
     context 'upon an unsuccessful transaction' do
-      subject(:failure_response) { "failure error" }
+      subject(:failure_response) { "{ failure: :error }" }
 
       it 'returns an error response' do 
-        expect(failure_response).to include("failure error")
+        expect(failure_response).to include("{ failure: :error }")
       end
 
       it 'reutrns no menu items' do
-        menu_items = []
+        menu_items = retriever.retrieve
         expect(menu_items).to be_empty 
+        expect(menu_items).to be_a_kind_of(Array)
       end
     end
   end 
