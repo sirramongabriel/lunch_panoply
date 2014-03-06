@@ -19,6 +19,8 @@ describe 'MenuItemsRetriever' do
                                   price: 3.99
                                 } } }
 
+
+
   subject(:retriever) { MenuItemsRetriever.new(filters) } 
   let(:filters) { { } }
   let(:fake_faraday_response) { "{  }" }
@@ -39,7 +41,7 @@ describe 'MenuItemsRetriever' do
       end
 
       it 'returns a collection of #all menu items as a hash' do
-        menu_items = []
+        menu_items = retriever.retrieve
         menu_items << menu_item1 << menu_item2
         expect(menu_items).to eq [menu_item1, menu_item2]
         expect(menu_item1).to be_a_kind_of(Hash)
