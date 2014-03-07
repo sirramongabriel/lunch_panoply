@@ -1,12 +1,6 @@
 require 'spec_helper'
 
 describe 'MenuItemsRetriever' do
-  # before do
-  #   Faraday.stub(:get).with("") #.and_return()
-  #   # stub_request(:get, "http://devapi.zesty.com/restaurants?latitude=37.7597272&longitude=-122.418352").
-  #   #  with(:headers => {'Accept'=>'application/json; version=2', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.0', 'X-Hasty-Api-Key'=>'efdb8f7f2fe9c47e34dfe1fb7c491d0638ec2d86'}).
-  #   #      to_return(:status => 200, :body => "", :headers => {})
-  # end 
   let(:menu_item1) { { dishes: { 
                                   name: 'celery cakes',  
                                   description: 'healthy and delicious',
@@ -25,7 +19,6 @@ describe 'MenuItemsRetriever' do
   let(:filters) { { } }
   let(:fake_faraday_response) { "{ successful: :response }" }
 
-
   describe '#retrieve' do
     it 'contains a collection of filter objects in an Array' do
       expect(subject.retrieve).to be_a_kind_of(Array)
@@ -37,6 +30,7 @@ describe 'MenuItemsRetriever' do
       it 'returns a successful response' do
         expect(fake_faraday_response).to include("{ successful: :response }")
         expect(fake_faraday_response).to be_a_kind_of(String)
+        expect()
       end
 
       it 'returns a collection of #all menu items as a hash' do
@@ -54,7 +48,7 @@ describe 'MenuItemsRetriever' do
         expect(failure_response).to include("{ failure: :error }")
       end
 
-      it 'reutrns no menu items' do
+      it 'returns no menu items' do
         menu_items = retriever.retrieve
         expect(menu_items).to be_empty 
         expect(menu_items).to be_a_kind_of(Array)
@@ -65,8 +59,8 @@ describe 'MenuItemsRetriever' do
   describe '#gluten_free' do
     context 'upon successful transacton' do
       it 'returns a collection of objects considered #gluten_free' do
-        filters =    { dishes: { gluten_free: true }}
         menu_items = []
+        filters =    { dishes: { gluten_free: true }}
         menu_item1 = { dishes: { gluten_free: true }}
         menu_item2 = { dishes: { gluten_free: true }}  
         menu_items << menu_item1 << menu_item2     
@@ -85,6 +79,12 @@ describe 'MenuItemsRetriever' do
     end
 
     context 'upon unsuccessful transaction' do
+      subject(:failure_response) { "{ failure: :error }" }
+
+      it 'returns an error response' do 
+        expect(failure_response).to include("{ failure: :error }")
+      end
+
       it 'returns empty array when there are no #gluten_free menu items' do
         menu_items = retriever.retrieve
         expect(menu_items).to be_empty
@@ -113,6 +113,12 @@ describe 'MenuItemsRetriever' do
     end
 
     context 'upon unsuccessful transaction' do
+      subject(:failure_response) { "{ failure: :error }" }
+
+      it 'returns an error response' do 
+        expect(failure_response).to include("{ failure: :error }")
+      end
+
       it 'returns empty array when there are no #hi_protein menu items' do
         menu_items = retriever.retrieve
         expect(menu_items).to be_empty
@@ -134,11 +140,19 @@ describe 'MenuItemsRetriever' do
       it 'does not include objects where #paleo value is false' do
         filters =    { dishes: { paleo: true }}
         menu_item1 = { dishes: { paleo: false }}
+        menu_item2 = { dishes: { paleo: true }}
         expect(filters).not_to eq menu_item1
+        expect(filters).to eq menu_item2
       end
     end
 
     context 'upon unsuccessful transaction' do
+      subject(:failure_response) { "{ failure: :error }" }
+
+      it 'returns an error response' do 
+        expect(failure_response).to include("{ failure: :error }")
+      end
+
       it 'returns empty array when there are no #paleo complient menu items' do
         menu_items = retriever.retrieve
         expect(menu_items).to be_empty
@@ -160,11 +174,19 @@ describe 'MenuItemsRetriever' do
       it 'does not include objects where #vegan value is false' do
         filters =    { dishes: { paleo: true }}
         menu_item1 = { dishes: { paleo: false }}
+        menu_item2 = { dishes: { paleo: true }}
         expect(filters).not_to eq menu_item1
+        expect(filters).to eq menu_item2
       end
     end
 
     context 'upon unsuccessful transaction' do
+      subject(:failure_response) { "{ failure: :error }" }
+
+      it 'returns an error response' do 
+        expect(failure_response).to include("{ failure: :error }")
+      end
+
       it 'returns empty array when there are no #vegan menu items' do
         menu_items = retriever.retrieve
         expect(menu_items).to be_empty
@@ -186,11 +208,19 @@ describe 'MenuItemsRetriever' do
       it 'does not include objects where #vegetarian value is false' do
         filters = { dishes: { vegetarian: true }}
         menu_item1 = { dishes: { vegetarian: false }}
+        menu_item2 = { dishes: { vegetarian: true }}
         expect(filters).not_to eq menu_item1
+        expect(filters).to eq menu_item2
       end
     end
 
     context 'upon unsuccessful transaction' do
+      subject(:failure_response) { "{ failure: :error }" }
+
+      it 'returns an error response' do 
+        expect(failure_response).to include("{ failure: :error }")
+      end
+
       it 'returns empty array when there are no #vegetarian menu items' do 
         menu_items = retriever.retrieve
         expect(menu_items).to be_empty
