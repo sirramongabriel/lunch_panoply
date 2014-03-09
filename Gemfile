@@ -32,6 +32,7 @@ group :development, :test do
 	gem 'dotenv-rails'
   gem 'vcr',                '2.8.0'
   gem 'json_spec'
+  gem 'fuubar'
 end
 
 group :development do

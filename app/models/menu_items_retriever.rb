@@ -2,8 +2,12 @@ require 'net/http'
 require 'uri'
 require 'open-uri'
 require 'faraday'
+require 'pry'
 
 class MenuItemsRetriever < ActiveRecord::Base
+
+  belongs_to :menu_item
+
   def initialize(filters=[])
     @filters = filters
   end
@@ -27,7 +31,9 @@ class MenuItemsRetriever < ActiveRecord::Base
                        )
 
     payload = JSON.parse(response.body, symbolize_names: true)
+    binding.pry
     payload[:dishes]
+    # payload[:restaurants]
   end
 
   def gluten_free

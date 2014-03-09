@@ -30,7 +30,6 @@ describe 'MenuItemsRetriever' do
       it 'returns a successful response' do
         expect(fake_faraday_response).to include("{ successful: :response }")
         expect(fake_faraday_response).to be_a_kind_of(String)
-        expect()
       end
 
       it 'returns a collection of #all menu items as a hash' do

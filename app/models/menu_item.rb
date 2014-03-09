@@ -2,6 +2,8 @@ require 'net/http'
 require 'uri'
 require 'open-uri'
 require 'menu_items_retriever'
+require 'pry'
+
 
 class MenuItem < ActiveRecord::Base
   # format :json
@@ -29,11 +31,17 @@ class MenuItem < ActiveRecord::Base
 
   has_many :images
 
+  has_one :menu_items_retriever
+
   validates_presence_of :title, :price, :calories
 
   def initialize(menu_items_retriever=MenuItemsRetriever.new)
     @menu_items_retriever = menu_items_retriever
   end
+
+  # def MenuItem.save_from_api
+  #   MenuItemsRetriever.all 
+  # end
 
   def all
     @menu_items_retriever.all
