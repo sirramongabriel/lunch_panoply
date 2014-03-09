@@ -1,7 +1,10 @@
 class MenuItemsController < ApplicationController
+  before_filter :get_venue, only: [:index]
+
   def index
-    @menu_items = MenuItem.new.all
-    
+    # @menu_items = MenuItem.new.all
+    @menu_items = @venu.menu_items
+
     respond_to do |format|
       format.html
       format.json { render json: { } }
@@ -21,6 +24,10 @@ class MenuItemsController < ApplicationController
   def menu_items_filters
     # coerce params into menu_items_filters
     # for menu_items_retriever
+  end
+
+  def get_venue
+    @venue = Venue.find(params[:venue_id])
   end
 end
 
