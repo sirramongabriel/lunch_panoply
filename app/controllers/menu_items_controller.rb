@@ -1,9 +1,10 @@
 class MenuItemsController < ApplicationController
-  before_filter :get_venue, only: [:index]
+  # before_filter :get_venue, only: [:index]
 
   def index
     # @menu_items = MenuItem.new.all
-    @menu_items = @venu.menu_items
+    @venue = Venue.find(params[:venue_id])
+    @menu_items = @venue.menu_items
 
     respond_to do |format|
       format.html
@@ -27,7 +28,7 @@ class MenuItemsController < ApplicationController
   end
 
   def get_venue
-    @venue = Venue.find(params[:venue_id])
+    @venue = Venue.menu_items.find(params[:venue_id])
   end
 end
 

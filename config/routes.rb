@@ -27,15 +27,14 @@ LunchPanoply::Application.routes.draw do
   # end
 
   resources :venues do
-    # resources :menus
-    resources :menu_items
-  end
-  
-  resources :menus do
     resources :menu_items
   end
 
-    # resources :sessions, only: [:new, :create, :destroy, :failure]
+  # resources :menus do
+  #   resources :menu_items
+  # end
+
+  # resources :sessions, only: [:new, :create, :destroy, :failure]
   # resources :identities
   # match '/auth/:provider/callback', to: 'sessions#create'
 

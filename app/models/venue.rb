@@ -1,8 +1,10 @@
 class Venue < ActiveRecord::Base
   attr_accessible :address, :city, :email, :fax, :name, :phone, :state, :zip
 
-  has_many :menus
-  has_many :menu_items, through: :menus
+  # has_one :menu
+  # has_many :menu_items, through: :menu
+
+  has_many :menu_items
 
   validates_presence_of :name
   validates :state, length: { is: 2 }
