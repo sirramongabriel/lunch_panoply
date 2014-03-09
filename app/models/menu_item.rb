@@ -9,14 +9,12 @@ class MenuItem < ActiveRecord::Base
   # format :json
   # format :html
 
-  attr_accessible :calories, :venu_id, :course, :description, :carbohydrates,
+  attr_accessible :calories, :venue_id, :course, :description, :carbohydrates,
                   :protein, :fat, :vegetarian, :paleo, :vegan, :gluten_free,
                   :bal, :low_cal, :low_carb, :low_fat, :hi_protein, :price_cents,
                   :name, :full_image_path
 
-  # belongs_to :menu_items_retriever
-  # delegate :all, :gluten_free, :hi_protein, :paleo, :vegan, :vegetarian, 
-  #          to: :menu_items_retriever
+  validates_presence_of :name, :calories, :price_cents
   
   belongs_to :menu
   belongs_to :venue
@@ -31,13 +29,11 @@ class MenuItem < ActiveRecord::Base
 
   has_many :images
 
-  has_one :menu_items_retriever
+  has_many :menu_items_retrievers
 
-  validates_presence_of :title, :price, :calories
-
-  def initialize(menu_items_retriever=MenuItemsRetriever.new)
-    @menu_items_retriever = menu_items_retriever
-  end
+  # def initialize(menu_items_retriever=MenuItemsRetriever.new)
+  #   @menu_items_retriever = menu_items_retriever
+  # end
 
   # def MenuItem.save_from_api
   #   MenuItemsRetriever.all 

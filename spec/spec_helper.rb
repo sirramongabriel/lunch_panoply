@@ -9,21 +9,13 @@ require 'factory_girl_rails'
 require 'shoulda'
 require 'shoulda-matchers'
 require 'faraday'
-# require 'vcr'
 
 
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
-  # config.before(:each) do
-  #   stub_request(:get, 'http://devapi.zesty.com/restaurants?latitude=37.7597272&longitude=-122.418352').
-  #     with(headers: { 'Accept' => 'application/json; version=2' }).
-  #       to_return(status: 200, body: "stubbed response", headers: { })
-  # end
-
   config.include FactoryGirl::Syntax::Methods
-  config.include JsonSpec::Helpers
 
   # WebMock
   config.include WebMock::API
