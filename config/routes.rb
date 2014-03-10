@@ -30,6 +30,8 @@ LunchPanoply::Application.routes.draw do
     resources :menu_items
   end
 
+  resources :menu_items
+
   # resources :menus do
   #   resources :menu_items
   # end

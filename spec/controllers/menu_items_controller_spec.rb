@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe MenuItemsController do
-  let(:menu_items) { create :menu_item }
+  let(:menu_item) { create :menu_item }
 
   describe 'GET #index' do
     it 'returns http success and renders the :index template' do
-      get :index, venue_id: menu_items.menu_id, id: menu_items.id
+      get :index, venue_id: menu_item.venue_id, id: menu_item.id
       response.should be_success
     end
   end
@@ -19,14 +19,14 @@ describe MenuItemsController do
 
   describe 'GET #show' do
     it 'returns http success' do
-      get :show
+      get :show, venue_id: menu_item.venue_id, id: menu_item.id
       response.should be_success
     end
   end
 
   describe 'GET #destroy' do
     it 'returns http success' do
-      get :destroy
+      get :destroy, venue_id: menu_item.venue_id, id: menu_item.id
       response.should be_success
     end
   end

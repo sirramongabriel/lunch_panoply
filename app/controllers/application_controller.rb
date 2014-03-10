@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
  	# helper_method :correct_employee?
  
   private
+  def current_venue
+    @current_venue ||= Venue.find(session[:venue_id]) if session[:venue_id]
+  end
+
   def current_employee
     @current_employee ||= Employee.find(session[:employee_id]) if session[:employee_id]
   end

@@ -11,7 +11,9 @@
       <a href="#" class="list-group-item active">
         <h4 class="list-group-item-heading"><%= @venue.name %></h4>
         <p class="list-group-item-text">
-          Eat Green
+          <span class="pull-left">
+            <%= link_to 'View Menu', venue_menu_item_path(@venue), class: 'btn btn-sm btn-info' %>
+          </span>
         </p>
       </a>
       <li class="list-group-item"><%= @venue.name %></li>

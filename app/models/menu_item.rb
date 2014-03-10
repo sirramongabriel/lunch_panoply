@@ -12,12 +12,11 @@ class MenuItem < ActiveRecord::Base
   attr_accessible :calories, :venue_id, :course, :description, :carbohydrates,
                   :protein, :fat, :vegetarian, :paleo, :vegan, :gluten_free,
                   :bal, :low_cal, :low_carb, :low_fat, :hi_protein, :price_cents,
-                  :name, :full_image_path, :menu_id
+                  :name, :full_image_path
 
   validates_presence_of :name, :calories, :price_cents
   
   belongs_to :venue
-  # belongs_to :venue
 
   has_many :comments
   has_many :employees, through: :comments

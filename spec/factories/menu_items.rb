@@ -2,8 +2,9 @@ require 'faker'
 
 FactoryGirl.define do
   factory :menu_item do 
-    calories        { Faker::Number.number(3) }
+    association :venue, factory: :venue
     venue_id        { 1 }
+    calories        { Faker::Number.number(3) }
     course          { 'Entree' }
     description     { Faker::Lorem.sentence(3, true) }
     carbohydrates   { Faker::Number.number(1) }

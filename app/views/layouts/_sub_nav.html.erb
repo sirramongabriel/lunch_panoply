@@ -19,9 +19,10 @@
   <div class="collapse navbar-collapse" style="margin-top: 0%;">
     <ul class="nav navbar-nav">
       <!-- This hidden one just makes scrollspy reset when going above the team section -->
-      <li style="display: none;"><a href="#home"></a><i class="icon-home"></i>HOME</li><span class="arror-left"></span>
+      <li style="display: none;"><a href="#home"></a><i class="icon-home"></i>HOME</li>
+      <span class="arror-left"></span>
       <li>
-        <%= link_to menus_path, class: 'scroll'  do %>
+        <%= link_to menu_items_path, class: 'scroll'  do %>
           <i class="icon-list"></i>ENTREES<span class="arrow-left"></span>
         <% end %>
       </li>
