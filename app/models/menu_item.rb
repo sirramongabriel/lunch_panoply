@@ -30,17 +30,45 @@ class MenuItem < ActiveRecord::Base
 
   has_many :menu_items_retrievers
 
-  # def initialize(menu_items_retriever=MenuItemsRetriever.new)
-  #   @menu_items_retriever = menu_items_retriever
-  # end
+  def initialize(menu_items_retriever=MenuItemsRetriever.new)
+    @menu_items_retriever = menu_items_retriever
+  end
 
   # def MenuItem.save_from_api
   #   MenuItemsRetriever.all 
   # end
 
+  def MenuItem.save_api_response
+    @menu_items_retriever.save_api_response.each do |menu_item|
+      menu = MenuItem.new(
+                        name:             menu_item[:name],
+                        calories:         menu_item[:calories],
+                        course:           menu_item[:course],
+                        description:      menu_item[:description],
+                        carbohydrates:    menu_item[:carbohydrates],
+                        protein:          menu_item[:protein],
+                        fat:              menu_item[:fat],
+                        vegetarian:       menu_item[:vegetarian],
+                        paleo:            menu_item[:paleo],
+                        vegan:            menu_item[:vegan],
+                        gluten_free:      menu_item[:gluten_free],
+                        bal:              menu_item[:bal],
+                        low_cal:          menu_item[:low_cal],
+                        low_carb:         menu_item[:low_carb],
+                        low_fat:          menu_item[:low_fat],
+                        hi_protein:       menu_item[:hi_protein],
+                        price_cents:      menu_item[:price_cents],
+                        full_image_path:  menu_item[:full_image_path],
+                        api_dish_id:      menu_item[:api_dish_id],
+                        api_venue_id:     menu_item[:api_venue_id]
+                      )
+      menu
+    end
+  end
+
   def all
     @menu_items_retriever.all
-    # menu_items.each do |item|
+    # menu_items.each do |menu_item|
     #   menu_item.api_dish_id = api_call(dish)
     # end
   end

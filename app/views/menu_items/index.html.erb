@@ -7,6 +7,6 @@
   <li><strong>Entree</strong>: <%= dish[:name] %></li>
   <li><strong>Course</strong>: <%= dish[:course] %></li>
   <li><strong>Description</strong>: <%= dish[:description] %></li>
-  <li><strong>Price</strong>: $<%#= sprintf('%.2f', dish[:price_cents]) %></li><hr />
+  <li><strong>Price</strong>: $<%= sprintf('%.2f', dish[:price_cents] / 100) %></li><hr />
 <% end %>
 </ul>

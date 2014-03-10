@@ -2,7 +2,6 @@ require 'net/http'
 require 'uri'
 require 'open-uri'
 require 'faraday'
-require 'pry'
 
 class MenuItemsRetriever < ActiveRecord::Base
 
@@ -29,8 +28,7 @@ class MenuItemsRetriever < ActiveRecord::Base
                           { "Accept" => 'application/json; version=2', "X-HASTY-API-KEY" => ENV['X-HASTY-API-KEY']  }
                        )
 
-    payload = JSON.parse(response.body, symbolize_names: true)
-    binding.pry
+    payload = JSON.parse(response.body, opts = { symbolize_names: true, object_class: true })
     payload[:dishes]
   end
 
@@ -49,9 +47,7 @@ class MenuItemsRetriever < ActiveRecord::Base
                        )
 
     payload = JSON.parse(response.body, symbolize_names: true)
-    binding.pry
     payload[:dishes]
-    # payload[:restaurants]
   end
 
   def gluten_free

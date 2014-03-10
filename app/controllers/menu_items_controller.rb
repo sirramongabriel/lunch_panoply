@@ -2,7 +2,8 @@ class MenuItemsController < ApplicationController
   before_filter :get_venue, only: [:index, :create]
 
   def index
-    @menu_items = @venue.menu_items
+    # @menu_items = @venue.menu_items
+    @menu_items = MenuItem.new.all
 
     respond_to do |format|
       format.html
@@ -15,6 +16,7 @@ class MenuItemsController < ApplicationController
   # end
 
   def results
+    # save = MenuItem.save_api_response
     @menu_item                 = MenuItem.new(params[:menu_item])
     @menu_item.name            = payload[:dishes][:name]
     @menu_item.calories        = payload[:dishes][:calories]
@@ -38,8 +40,12 @@ class MenuItemsController < ApplicationController
     @menu_item.api_venue_id    = payload[:dishes][:api_venue_id] 
   end
 
+  def new
+
+  end
+
   def create
-    @menu_items = MenuItemsRetriever.new
+    # @menu_items = MenuItemsRetriever.new
     # @menu_items.results.each_with_index do |key, val|
     #   menu_item[:key][:val].save
     # end
