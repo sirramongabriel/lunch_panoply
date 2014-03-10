@@ -41,27 +41,27 @@ class MenuItem < ActiveRecord::Base
   def MenuItem.save_api_response
     @menu_items_retriever.save_api_response.each do |menu_item|
       menu = MenuItem.new(
-                        name:             menu_item[:name],
-                        calories:         menu_item[:calories],
-                        course:           menu_item[:course],
-                        description:      menu_item[:description],
-                        carbohydrates:    menu_item[:carbohydrates],
-                        protein:          menu_item[:protein],
-                        fat:              menu_item[:fat],
-                        vegetarian:       menu_item[:vegetarian],
-                        paleo:            menu_item[:paleo],
-                        vegan:            menu_item[:vegan],
-                        gluten_free:      menu_item[:gluten_free],
-                        bal:              menu_item[:bal],
-                        low_cal:          menu_item[:low_cal],
-                        low_carb:         menu_item[:low_carb],
-                        low_fat:          menu_item[:low_fat],
-                        hi_protein:       menu_item[:hi_protein],
-                        price_cents:      menu_item[:price_cents],
-                        full_image_path:  menu_item[:full_image_path],
-                        api_dish_id:      menu_item[:api_dish_id],
-                        api_venue_id:     menu_item[:api_venue_id]
-                      )
+                            name:             menu_item[:name],
+                            calories:         menu_item[:calories],
+                            course:           menu_item[:course],
+                            description:      menu_item[:description],
+                            carbohydrates:    menu_item[:carbohydrates],
+                            protein:          menu_item[:protein],
+                            fat:              menu_item[:fat],
+                            vegetarian:       menu_item[:vegetarian],
+                            paleo:            menu_item[:paleo],
+                            vegan:            menu_item[:vegan],
+                            gluten_free:      menu_item[:gluten_free],
+                            bal:              menu_item[:bal],
+                            low_cal:          menu_item[:low_cal],
+                            low_carb:         menu_item[:low_carb],
+                            low_fat:          menu_item[:low_fat],
+                            hi_protein:       menu_item[:hi_protein],
+                            price_cents:      menu_item[:price_cents],
+                            full_image_path:  menu_item[:full_image_path],
+                            api_dish_id:      menu_item[:api_dish_id],
+                            api_venue_id:     menu_item[:api_venue_id]
+                         )
       menu
     end
   end
