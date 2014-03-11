@@ -16,7 +16,7 @@ class MenuItemsController < ApplicationController
   end
 
   def create
-    @menu_item = MenuItem.save_api_response
+    @menu_item = MenuItem.new.save_api_response
 
     if @menu_item.save
       redirect_to([@venue, @menu_item], success: 'Venue Created!')

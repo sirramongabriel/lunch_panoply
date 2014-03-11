@@ -30,9 +30,9 @@ class MenuItem < ActiveRecord::Base
 
   has_many :menu_items_retrievers
 
-  def initialize(menu_items_retriever=MenuItemsRetriever.new)
-    @retrieve = menu_items_retriever
-  end
+  # def initialize(menu_items_retriever=MenuItemsRetriever.new)
+  #   @retrieve = menu_items_retriever
+  # end
 
   # def MenuItem.save_from_api
   #   MenuItemsRetriever.all 
@@ -41,8 +41,9 @@ class MenuItem < ActiveRecord::Base
   def save_api_response
     # menus = MenuItemsRetriever.new.save_api_response
     # menus
+    @retreive = MenuItemsRetriever.new(save_api_response)
 
-    @retrieve.save_api_response.each do |menu_item|
+    @retrieve.each do |menu_item|
       menu_item = MenuItem.new(
                             name:             menu_item[:dishes][:name],
                             calories:         menu_item[:dishes][:calories],
@@ -65,12 +66,12 @@ class MenuItem < ActiveRecord::Base
                             api_dish_id:      menu_item[:dishes][:api_dish_id],
                             api_venue_id:     menu_item[:dishes][:api_venue_id]
                          )
-      menu_item
+      menu_item.save!
     end
   end
 
   def all
-    @menu_items_retriever.all
+    MenuItemsRetriever.new(all)
     # menu_items.each do |menu_item|
     #   menu_item.api_dish_id = api_call(dish)
     # end
